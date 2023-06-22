@@ -6,8 +6,9 @@ public class Math {
 	// 지원 뺴기 
 	
 	// 강현 곱하기
-	public  int asd() {
+	public  int 곱하기() {
 		int i = 1 * 2;
+		
 		return i;
 	}
 	// 주환 나누기 
