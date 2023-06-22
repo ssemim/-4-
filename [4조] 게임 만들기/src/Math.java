@@ -11,5 +11,7 @@ public class Math {
 	// 주환 나누기
 
 	// 냥곤 냐옹냐옹
-
+	private void naong() {
+		System.out.println("naong");
+	}
 }
