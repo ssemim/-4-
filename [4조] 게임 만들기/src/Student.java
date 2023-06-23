@@ -12,9 +12,17 @@ public class Student {
 		this.point = point;
 	}
 
-	public Student(String id, String password) {
+	public Student(String id, String school, int point) {
+		super();
 		this.id = id;
-		this.password = password;
+		this.school = school;
+		this.point = point;
+	}
+
+	public Student(String id, int point) {
+		super();
+		this.id = id;
+		this.point = point;
 	}
 
 	public String getId() {
