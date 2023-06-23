@@ -17,6 +17,12 @@ public class Student {
 		this.password = password;
 	}
 
+	public Student(String id, String school, int point) {
+		this.id = id;
+		this.school = school;
+		this.point = point;
+	}
+
 	public String getId() {
 		return id;
 	}

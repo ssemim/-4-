@@ -28,5 +28,4 @@ public class School {
 	public String toString() {
 		return "School [userId=" + userId + ", pointAll=" + pointAll + "]";
 	}
-
 }

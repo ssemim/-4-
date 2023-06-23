@@ -5,7 +5,7 @@ public interface GameInterface {
 	int insert(Student student);
 	
 	// 로그인
-	int login(Student student);
+	Student login(String id, String password);
 	
 	// 뽑기
 	int 뽑기();
