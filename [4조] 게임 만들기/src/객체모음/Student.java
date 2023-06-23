@@ -1,3 +1,4 @@
+package 객체모음;
 
 public class Student {
 	String id;

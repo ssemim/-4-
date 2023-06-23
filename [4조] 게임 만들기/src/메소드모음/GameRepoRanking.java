@@ -1,3 +1,4 @@
+package 메소드모음;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dbutil.DBUtil;
+import 객체모음.School;
+import 객체모음.Student;
 
 public class GameRepoRanking implements GameInterface {
 	@Override

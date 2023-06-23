@@ -1,4 +1,8 @@
+package 메소드모음;
 import java.util.List;
+
+import 객체모음.School;
+import 객체모음.Student;
 
 public interface GameInterface {
 	// 회원가입
