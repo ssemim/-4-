@@ -11,7 +11,6 @@ import 객체모음.School;
 import 객체모음.Student;
 
 public class GameRepoRanking implements GameInterface {
-	Random random = new Random();
 
 	@Override
 	public int insert(Student student) {
@@ -72,12 +71,6 @@ public class GameRepoRanking implements GameInterface {
 		}
 		
 		return null;
-	}
-
-	@Override
-	public int 뽑기(String type) {
-		random.st(random.random(type));
-		return 0;
 	}
 
 	/**
