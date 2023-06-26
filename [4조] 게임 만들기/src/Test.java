@@ -1,8 +1,8 @@
-import 메소드모음.GameRepoRanking;
+import 메소드모음.Login;
 
 public class Test {
 	public static void main(String[] args) {
-		GameRepoRanking grr = new GameRepoRanking();
+		Login grr = new Login();
 		grr.insertBasicCharacter("aa");
 	}
 }
