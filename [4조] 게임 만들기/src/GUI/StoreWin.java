@@ -4,11 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dbutil.DBUtil;
 import 객체모음.Student;
 import 메소드모음.PickItem;
 
@@ -83,11 +90,11 @@ public class StoreWin extends JFrame {
 				if (s.getPoint() >= 1000) {
 					int point = s.getPoint();
 					PickItem pick = new PickItem(s, "캐릭터");
-					int item = pick.pickItem();
-					System.out.println(item);
+					int item = ItemLook("캐릭터", pick.pickItem());
 					s.setPoint(point - 1000);
 					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
 					lblNewLabel.setVisible(true);
+
 				}
 			}
 		});
@@ -101,21 +108,52 @@ public class StoreWin extends JFrame {
 				if (s.getPoint() >= 1000) {
 					int a = s.getPoint();
 					PickItem pick = new PickItem(s, "배경");
-					int item = pick.pickItem();
+					int item = ItemLook("배경", pick.pickItem());
 					s.setPoint(a - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/150150 배경더미" + item + ".png")));
+					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
 					lblNewLabel.setVisible(true);
+
 				}
 			}
 		});
 		contentPane.setLayout(null);
 
-		lblNewLabel.setBounds(223, 118, 361, 338);
+		lblNewLabel.setBounds(220, 10, 364, 191);
 		contentPane.add(lblNewLabel);
 		contentPane.add(Charbtn);
 		contentPane.add(BackWinbtn);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
+	}
+
+	public int ItemLook(String type, int item) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Integer> l = new ArrayList<>();
+
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "SELECT * FROM item where type = ?;";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, type);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				l.add(rs.getInt("no"));
+			}
+			for (int i = 0; i < l.size(); i++) {
+				if (l.get(i).equals(item)) {
+					return i + 1;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+		return -1;
 	}
 }

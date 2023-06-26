@@ -22,7 +22,7 @@ public class PickItem {
 	}
 
 	// 타입나누는 곳
-	private List<Integer> random(String type) {
+	public List<Integer> random() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -32,7 +32,7 @@ public class PickItem {
 			conn = DBUtil.getConnection();
 			String sql = "select * from item where type = ?";
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, type);
+			stmt.setString(1, this.type);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				l.add(rs.getInt("no"));
@@ -54,7 +54,7 @@ public class PickItem {
 	 * @return 아이템 pk 번호
 	 */
 	public int pickItem() {
-		List<Integer> l = random(this.type);
+		List<Integer> l = random();
 		int a = l.size();
 		int ran = (int) (Math.random() * a);
 		int q = l.get(ran);

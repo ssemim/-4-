@@ -14,9 +14,8 @@ public class Inventory {
 	Student s;
 	String type;
 
-	public Inventory(Student s, String type) {
+	public Inventory(Student s) {
 		this.s = s;
-		this.type = type;
 	}
 
 	// 타입과 학생 id를 받아 학생이 이 아이템을 가지고 있는지를 true false로 알려줌
