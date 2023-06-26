@@ -25,6 +25,10 @@ public class Student {
 		this.point = point;
 	}
 
+	public Student() {
+		
+	}
+	
 	public String getId() {
 		return id;
 	}

@@ -5,12 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import pack.DBUtil;
+import dbutil.DBUtil;
 import 객체모음.Student;
 
 // 타입별 뽑기 메소드
 public class Random {
-	Student s = new Student();
+	Student s = new Student;
 	int[] st;
 
 	// 타입나누는 곳

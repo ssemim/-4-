@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pack.DBUtil;
+import dbutil.DBUtil;
 import 객체모음.School;
 import 객체모음.Student;
 
