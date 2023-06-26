@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -66,6 +68,15 @@ public class DinogameWin extends JFrame {
 		Coinlbl.setLocation(681, 235);
 		
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		// 뒤로가기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelectgameWin SW = new SelectgameWin();
+				SW.setVisible(true);
+				dispose();
+			}
+		});
+		
 		Backbtn.setBounds(733, 210, 40, 40);
 		contentPane.add(Backbtn);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -47,11 +49,47 @@ public class MainWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 		
 		JButton Gamebtn = new JButton("게임하기"); // 게임하기 버튼
+		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
+		Gamebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelectgameWin SlecW = new SelectgameWin();
+				SlecW.setVisible(true);
+				dispose();
+			}
+		});
+		
 		JButton invenbtn = new JButton("인벤토리"); // 인벤 버튼
+		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
+		invenbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				invenWin IW = new invenWin();
+				IW.setVisible(true);
+				dispose();
+			}
+		});
+		
 		JButton rankbtn = new JButton("랭킹"); // 랭킹 버튼
+		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
+		rankbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RankWin RW = new RankWin();
+				RW.setVisible(true);
+				dispose();
+			}
+		});
+		
 		JButton Storebtn = new JButton("상점"); // 상점 버튼
+		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
+		Storebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StoreWin StoreW = new StoreWin();
+				StoreW.setVisible(true);
+				dispose();
+			}
+		});
 		
 		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -56,22 +58,26 @@ public class invenWin extends JFrame {
 		JButton Restartbtn = new JButton("다시하기");
 		Restartbtn.setEnabled(false);
 		
-		JButton Backbtn = new JButton();
+		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin();
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 		
 		JLabel Coinlbl = new JLabel("1.000");
 		
 		JPanel ItemCharpanel = new JPanel();
-		
-		JPanel ItemCharpanel_1 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(49)
-					.addComponent(ItemCharpanel, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-					.addGap(36)
-					.addComponent(ItemCharpanel_1, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+					.addGap(68)
+					.addComponent(ItemCharpanel, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(Restartbtn, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -86,53 +92,29 @@ public class invenWin extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(122)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(ItemCharpanel_1, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ItemCharpanel, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+					.addComponent(Restartbtn, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(8)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(Restartbtn, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-							.addGap(8)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(17)
-									.addComponent(Coinlbl)))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))
+							.addGap(17)
+							.addComponent(Coinlbl)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(135, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(160, Short.MAX_VALUE)
+					.addComponent(ItemCharpanel, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
+					.addGap(147))
 		);
-		
-		JScrollBar scrollBar_1 = new JScrollBar();
-		GroupLayout gl_ItemCharpanel_1 = new GroupLayout(ItemCharpanel_1);
-		gl_ItemCharpanel_1.setHorizontalGroup(
-			gl_ItemCharpanel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_ItemCharpanel_1.createSequentialGroup()
-					.addContainerGap(203, Short.MAX_VALUE)
-					.addComponent(scrollBar_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-		);
-		gl_ItemCharpanel_1.setVerticalGroup(
-			gl_ItemCharpanel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ItemCharpanel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollBar_1, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		ItemCharpanel_1.setLayout(gl_ItemCharpanel_1);
-		
-		JScrollBar scrollBar = new JScrollBar();
 		GroupLayout gl_ItemCharpanel = new GroupLayout(ItemCharpanel);
 		gl_ItemCharpanel.setHorizontalGroup(
 			gl_ItemCharpanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ItemCharpanel.createSequentialGroup()
-					.addContainerGap(203, Short.MAX_VALUE)
-					.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGap(0, 220, Short.MAX_VALUE)
 		);
 		gl_ItemCharpanel.setVerticalGroup(
 			gl_ItemCharpanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ItemCharpanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollBar, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-					.addContainerGap())
+				.addGap(0, 300, Short.MAX_VALUE)
 		);
 		ItemCharpanel.setLayout(gl_ItemCharpanel);
 		contentPane.setLayout(gl_contentPane);

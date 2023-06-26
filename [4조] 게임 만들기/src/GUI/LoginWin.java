@@ -2,14 +2,18 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -61,9 +65,25 @@ public class LoginWin extends JFrame {
 		JLabel PWlbl = new JLabel("PW"); // 패스워드 라벨
 		
 		JButton Joinbtn = new JButton("가입하기"); // 가입하기 버튼
-		JButton Loginbtn = new JButton("로그인"); // 로그인 버튼
-
+		// 가입하기버튼을 누르면 JoinWin으로 이동하는 액션리스너
+		Joinbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JoinWin JW = new JoinWin();
+				JW.setVisible(true);
+				dispose();
+			}
+		});
 		
+		JButton Loginbtn = new JButton("로그인"); // 로그인 버튼
+		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		Loginbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin();
+				MW.setVisible(true);
+				dispose();
+			}
+		});
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

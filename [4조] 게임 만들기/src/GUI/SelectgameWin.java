@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -50,10 +52,26 @@ public class SelectgameWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 		
 		JButton Dinobtn = new JButton("냥곤런");
+		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
+		Dinobtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DinogameWin DW = new DinogameWin();
+				DW.setVisible(true);
+				dispose();
+			}
+		});
 		
-		JPanel Charpnl = new JPanel();
+		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		
 		JButton Backbtn = new JButton("뒤"); // 뒤로가기버튼(이미지처리할거임)
+		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin();
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 		
 		CoinField = new JTextField();
 		CoinField.setColumns(10);

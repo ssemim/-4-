@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,6 +61,14 @@ public class JoinWin extends JFrame {
 		JLabel Schoollbl = new JLabel("School"); // 학교
 		
 		JButton Joinbtn = new JButton("가입하기"); // 가입버튼
+		// 가입하기버튼을 누르면 LoginWin으로 이동하는 액션리스너
+		Joinbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginWin LW = new LoginWin();
+				LW.setVisible(true);
+				dispose();
+					}
+				});
 		JButton Overlapbtn = new JButton("중복확인"); // ID 중복확인 버튼
 		
 		IDField = new JTextField(); // ID 입력
