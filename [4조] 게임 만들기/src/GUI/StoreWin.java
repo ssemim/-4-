@@ -86,7 +86,7 @@ public class StoreWin extends JFrame {
 					int item = pick.pickItem();
 					System.out.println(item);
 					s.setPoint(point - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + (item) + ".gif")));
+					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
 					lblNewLabel.setVisible(true);
 				}
 			}
@@ -103,7 +103,7 @@ public class StoreWin extends JFrame {
 					PickItem pick = new PickItem(s, "배경");
 					int item = pick.pickItem();
 					s.setPoint(a - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + (item) + ".gif")));
+					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/150150 배경더미" + item + ".png")));
 					lblNewLabel.setVisible(true);
 				}
 			}
