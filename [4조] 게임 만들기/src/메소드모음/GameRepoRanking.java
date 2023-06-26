@@ -90,6 +90,8 @@ public class GameRepoRanking implements GameInterface {
 				Student student = new Student(inputId, school, point);
 				return student;
 			}
+			
+			insertBasicCharacter(id);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -290,4 +292,6 @@ public class GameRepoRanking implements GameInterface {
 			DBUtil.close(conn);
 		}
 	}
+	
+	
 }
