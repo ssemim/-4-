@@ -28,7 +28,7 @@ public class Inventory {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "select * from (SELECT * FROM item where type = ?) a left join  inventory b on a.no = b.itemNo and b.studentId = ? group by a.no;";
+			String sql = "select * from (SELECT * FROM item where type = ?) a left join  inventory b on a.no = b.itemNo and b.studentId = ? group by a.name";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, type);
 			stmt.setString(2, s.getId());
