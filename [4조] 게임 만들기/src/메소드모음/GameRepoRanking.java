@@ -187,4 +187,24 @@ public class GameRepoRanking implements GameInterface {
 
 		return list;
 	}
+	
+	private void insertBasicCharacter(String id) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Student> list = new ArrayList<>();
+
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "INSERT INTO equipment (`studentId`) VALUES (?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+	}
 }
