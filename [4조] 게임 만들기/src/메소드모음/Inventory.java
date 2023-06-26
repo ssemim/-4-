@@ -14,9 +14,8 @@ public class Inventory {
 	Student s;
 	String type;
 
-	public Inventory(Student s, String type) {
+	public Inventory(Student s) {
 		this.s = s;
-		this.type = type;
 	}
 
 	// 타입과 학생 id를 받아 학생이 이 아이템을 가지고 있는지를 true false로 알려줌
@@ -28,7 +27,7 @@ public class Inventory {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "select * from (SELECT * FROM item where type = ?) a left join  inventory b on a.no = b.itemNo and b.studentId = ? group by a.no;";
+			String sql = "select * from (SELECT * FROM item where type = ?) a left join  inventory b on a.no = b.itemNo and b.studentId = ? group by a.name;";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, type);
 			stmt.setString(2, s.getId());
