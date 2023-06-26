@@ -1,4 +1,5 @@
 package 메소드모음;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,75 +11,12 @@ import dbutil.DBUtil;
 import 객체모음.School;
 import 객체모음.Student;
 
-public class GameRepoRanking implements GameInterface {
-
-	@Override
-	public int insert(Student student) {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		
-		String sql = "insert into student (id, password, school) values (?,?,?);";
-		
-		try {
-			conn = DBUtil.getConnection();
-			stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, student.getId());
-			stmt.setString(2, student.getPassword());
-			stmt.setString(3, student.getSchool());
-			
-			stmt.executeUpdate();
-				
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
-		}
-		return 0;
-	}
-
-	@Override
-	public Student login(String id, String password) {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		String sql = "select `password` from student where id = ? and password = ?";
-		
-		
-		try {
-			conn = DBUtil.getConnection();
-			stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, id);
-			stmt.setString(2, password);
-			
-			rs = stmt.executeQuery();
-			while(rs.next())	{
-				String inputId = rs.getString("id");
-				String school = rs.getString("school");
-				int point = rs.getInt("point");
-				Student student = new Student(inputId, school, point);
-				return student;
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
-		}
-		
-		return null;
-	}
-
+public class RankingSystem {
 	/**
 	 * 학교 랭킹 반환 메소드
 	 * 
 	 * @return 학교 리스트
 	 */
-	@Override
 	public List<School> schoolRangking() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -116,7 +54,6 @@ public class GameRepoRanking implements GameInterface {
 	 * @param 접속중인 학생 객체
 	 * @return 학생리스트
 	 */
-	@Override
 	public List<Student> classRangking(Student student) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -155,7 +92,6 @@ public class GameRepoRanking implements GameInterface {
 	 * @param 게임 no
 	 * @return 학생리스트
 	 */
-	@Override
 	public List<Student> studentRangking(int gameNo) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -187,4 +123,5 @@ public class GameRepoRanking implements GameInterface {
 
 		return list;
 	}
+	
 }
