@@ -88,7 +88,7 @@ public class Login {
 				Student student = new Student(inputId, school, point);
 				return student;
 			}
-			
+
 			insertBasicCharacter(id);
 			insertBasicWallpaper(id);
 
@@ -102,7 +102,7 @@ public class Login {
 
 		return null;
 	}
-	
+
 	private static boolean validateId(String id) {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
 		Pattern pattern = Pattern.compile(id);
@@ -155,8 +155,7 @@ public class Login {
 		}
 		return false;
 	}
-	
-	
+
 	private void insertBasicCharacter(String id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -176,7 +175,7 @@ public class Login {
 			DBUtil.close(conn);
 		}
 	}
-	
+
 	private void insertBasicWallpaper(String id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
