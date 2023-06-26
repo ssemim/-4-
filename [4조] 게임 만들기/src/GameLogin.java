@@ -15,7 +15,6 @@ public class GameLogin implements GameInterface{
 		
 		String sql = "insert into student (id, password, school) values (?,?,?);";
 		
-		
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -25,7 +24,7 @@ public class GameLogin implements GameInterface{
 			stmt.setString(3, student.getSchool());
 			
 			stmt.executeUpdate();
-			
+				
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
