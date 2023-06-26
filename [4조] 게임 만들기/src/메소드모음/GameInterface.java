@@ -12,7 +12,7 @@ public interface GameInterface {
 	Student login(String id, String password);
 	
 	// 뽑기
-	int 뽑기();
+	int 뽑기(String type);
 
 	// 학교별 랭킹
 	// 학교 - 이름, 누적점수

@@ -14,7 +14,6 @@ public class Student {
 	}
 
 	public Student(String id, String school, int point) {
-		super();
 		this.id = id;
 		this.school = school;
 		this.point = point;
