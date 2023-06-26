@@ -24,6 +24,8 @@ public class Student {
 		this.id = id;
 		this.point = point;
 	}
+	
+	
 
 	public Student() {
 		
