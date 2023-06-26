@@ -20,6 +20,7 @@ public class MainWin extends JFrame {
 
 	private JPanel contentPane;
 	Image image;
+
 	/**
 	 * Launch the application.
 	 */
@@ -101,7 +102,7 @@ public class MainWin extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(124)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				s	.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
