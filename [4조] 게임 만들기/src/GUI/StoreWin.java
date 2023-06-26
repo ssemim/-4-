@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -25,37 +24,32 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
 public class StoreWin extends JFrame {
-
 	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StoreWin frame = new StoreWin(new Student("dd", "당리초", 2200000));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					StoreWin frame = new StoreWin();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	/**
 	 * Create the frame.
 	 */
-	public StoreWin() {
+	public StoreWin(Student s) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-
 		// 프레임 설정
 		setTitle("상점"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
@@ -69,20 +63,15 @@ public class StoreWin extends JFrame {
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin();
+				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
 				dispose();
 			}
 		});
-
 		JLabel Coinlbl = new JLabel("1.000");
-
 		JPanel Charpnl = new JPanel();
-
 		JButton Charbtn = new JButton("캐릭터 뽑기");
-
 		JButton BackWinbtn = new JButton("배경 뽑기");
-
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addGap(33)
