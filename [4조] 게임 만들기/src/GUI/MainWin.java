@@ -1,7 +1,10 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,12 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class MainWin extends JFrame {
 
 	private JPanel contentPane;
-
+	Image image;
 	/**
 	 * Launch the application.
 	 */
@@ -47,9 +51,10 @@ public class MainWin extends JFrame {
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
-		
-		JButton Gamebtn = new JButton("게임하기"); // 게임하기 버튼
+	
+	
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
+		JButton Gamebtn = new JButton(); // 인벤 버튼
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectgameWin SlecW = new SelectgameWin();

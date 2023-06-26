@@ -58,7 +58,6 @@ public class DinogameWin extends JFrame {
 		
 		JButton Restartbtn = new JButton("다시하기"); // 다시하기 버튼
 		Restartbtn.setEnabled(false);
-//		Backbtn.setSize(40, 40);
 		
 		JLabel Coinlbl = new JLabel("1.000"); // 포인트 확인 라벨
 		Coinlbl.setLocation(681, 235);
