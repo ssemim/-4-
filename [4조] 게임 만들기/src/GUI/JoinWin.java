@@ -12,16 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-<<<<<<< HEAD
 import java.awt.Color;
 import javax.swing.ImageIcon;
-=======
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.Login;
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
