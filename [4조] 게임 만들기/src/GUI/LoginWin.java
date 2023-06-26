@@ -1,31 +1,26 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import 메소드모음.Login;
 
 public class LoginWin extends JFrame {
 	private JPanel contentPane;
 	private JTextField IDField;
-	private JTextField PWField;
-	
+	private JPasswordField PWField;
+
 	/**
 	 * Launch the application.
 	 */
@@ -62,7 +57,7 @@ public class LoginWin extends JFrame {
 		IDField.setBounds(83, 20, 164, 30);
 		IDField.setColumns(10);
 
-		PWField = new JTextField();
+		PWField = new JPasswordField();
 		PWField.setBounds(83, 68, 164, 30);
 		PWField.setColumns(10);
 
@@ -87,12 +82,18 @@ public class LoginWin extends JFrame {
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin();
-				MW.setVisible(true);
-				dispose();
+				Login login = new Login();
+				if (login.login(IDField.getText(), PWField.getText()) != null) {
+					MainWin MW = new MainWin();
+					MW.setVisible(true);
+					dispose();
+				} else {
+					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
+				}
+
 			}
 		});
-		
+
 		Container c = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
@@ -102,20 +103,20 @@ public class LoginWin extends JFrame {
 		contentPane.add(PWlbl);
 		contentPane.add(IDField);
 		contentPane.add(PWField);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 243, 272, 193);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(12, 70, 97, 23);
 		panel.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.setBounds(58, 70, 97, 23);
 		panel.add(btnNewButton_1);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인더미.png")));
 		lblNewLabel.setBounds(0, 0, 296, 179);

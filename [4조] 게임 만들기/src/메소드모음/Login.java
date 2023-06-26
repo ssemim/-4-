@@ -10,7 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import dbutil.DBUtil;
-import 객체모음.School;
 import 객체모음.Student;
 
 public class Login {
@@ -22,22 +21,22 @@ public class Login {
 		String sql = "insert into student (id, password, school) values (?,?,?);";
 
 		try {
-			if (!validateId(student.getId())) {
-				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.");
-				return -1;
-			}
-			if (student.getId().length() < 8 || student.getId().length() > 15) {
-				System.out.println("아이디는 8 ~ 15 자리수로 설정해야 합니다.");
-			}
-
-			if (!validatePassword(student.getPassword())) {
-				System.out.println("비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.");
-				return -1;
-			}
-			if (student.getPassword().length() < 8 || student.getPassword().length() > 20) {
-				System.out.println("비밀번호는 8 ~ 20 자리수로 설정해야 합니다.");
-				return -1;
-			}
+//			if (!validateId(student.getId())) {
+//				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.");
+//				return -1;
+//			}
+//			if (student.getId().length() < 8 || student.getId().length() > 15) {
+//				System.out.println("아이디는 8 ~ 15 자리수로 설정해야 합니다.");
+//			}
+//
+//			if (!validatePassword(student.getPassword())) {
+//				System.out.println("비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.");
+//				return -1;
+//			}
+//			if (student.getPassword().length() < 8 || student.getPassword().length() > 20) {
+//				System.out.println("비밀번호는 8 ~ 20 자리수로 설정해야 합니다.");
+//				return -1;
+//			}
 
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -164,7 +163,7 @@ public class Login {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "INSERT INTO equipment (`studentId`) VALUES (?, 1)";
+			String sql = "INSERT INTO equipment (`studentId`, itemNo) VALUES (?, 1)";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			stmt.executeUpdate();
