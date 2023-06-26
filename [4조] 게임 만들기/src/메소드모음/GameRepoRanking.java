@@ -1,4 +1,5 @@
 package 메소드모음;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,11 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dbutil.DBUtil;
+import pack.DBUtil;
 import 객체모음.School;
 import 객체모음.Student;
 
 public class GameRepoRanking implements GameInterface {
+	Random random = new Random();
+
 	@Override
 	public int insert(Student student) {
 		return 0;
@@ -22,7 +25,8 @@ public class GameRepoRanking implements GameInterface {
 	}
 
 	@Override
-	public int 뽑기() {
+	public int 뽑기(String type) {
+		random.st(random.random(type));
 		return 0;
 	}
 
