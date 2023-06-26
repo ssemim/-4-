@@ -19,6 +19,7 @@ public class Inventory {
 		this.type = type;
 	}
 
+	// 타입과 학생 id를 받아 학생이 이 아이템을 가지고 있는지를 true false로 알려줌
 	public List<Boolean> ItemAcquisition(String type) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
