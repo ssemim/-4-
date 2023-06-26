@@ -21,6 +21,7 @@ public class MainWin extends JFrame {
 
 	private JPanel contentPane;
 	Image image;
+
 	/**
 	 * Launch the application.
 	 */
@@ -92,10 +93,15 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
+<<<<<<< HEAD
 		
 		JButton Storebtn = new JButton(); // 상점 버튼
 		Storebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/랭킹버튼.png")));
 		Storebtn.setContentAreaFilled(false); // 내용 채우기 X
+=======
+
+		JButton Storebtn = new JButton("상점"); // 상점 버튼
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -104,42 +110,41 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
-		
-		
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(124)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(124)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
-								.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE))
-							.addGap(133)
-							.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)) // 캐릭터 판넬 가로
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 240,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 240,
+												GroupLayout.PREFERRED_SIZE))
+								.addGap(133)
+								.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)) // 캐릭터
+																														// 판넬
+																														// 가로
 						.addComponent(Gamebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(137, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(77, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE) // 캐릭터 판넬 가로
+				.addContainerGap(137, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
+				.createSequentialGroup().addContainerGap(77, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE) // 캐릭터 판넬
+																												// 가로
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(Gamebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addGap(31)
-							.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-							.addGap(29)
-							.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-					.addGap(32)
-					.addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-					.addGap(72))
-		);
+								.addComponent(Gamebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addGap(31)
+								.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addGap(29)
+								.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+				.addGap(32).addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+				.addGap(72)));
 		contentPane.setLayout(gl_contentPane);
 	}
 }
