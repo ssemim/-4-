@@ -22,6 +22,7 @@ public class invenWin extends JFrame {
 	Inventory inven;
 	PickItem pickItem;
 	private int cCount;
+	private int wCount;
 	
 	/**
 	 * Launch the application.
@@ -53,12 +54,20 @@ public class invenWin extends JFrame {
 		ImageIcon[] cIcons = new ImageIcon[cList2.size()];
 		ImageIcon[] cIconsBlock = new ImageIcon[cList2.size()];
 		ImageIcon[] wIcons = new ImageIcon[wList2.size()];
+		ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
 		
 		for (int i = 0; i < cList2.size(); i++) {
 			cIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터"+(i+1)+".gif"));
 		}
 		for (int i = 0; i < cList2.size(); i++) {
 			cIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터"+(i+1)+"잠금.png"));
+		}
+		
+		for (int i = 0; i < wList2.size(); i++) {
+			wIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터"+(i+1)+".gif"));
+		}
+		for (int i = 0; i < wList2.size(); i++) {
+			wIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터"+(i+1)+"잠금.png"));
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +103,7 @@ public class invenWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setBounds(630, 202, 60, 15);
 		
-		JButton cBtnLeft = new JButton("New button");
+		JButton cBtnLeft = new JButton("");
 		cBtnLeft.setBounds(40, 307, 30, 50);
 		contentPane.setLayout(null);
 		contentPane.add(cBtnLeft);
@@ -103,20 +112,19 @@ public class invenWin extends JFrame {
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 		
-		JLabel cLbl = new JLabel("New label");
+		JLabel cLbl = new JLabel("");
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
 		cCount = 0;
 		cLbl.setBounds(77, 231, 158, 200);
 		contentPane.add(cLbl);
 		
 		
-		JButton cBtnRight = new JButton("New button");
+		JButton cBtnRight = new JButton("");
 		cBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (cCount < cList2.size())
 					cCount += 1;
-				System.out.println(cCount);
 				if (cList.get(cCount)) {
 					cLbl.setIcon(cIcons[cCount]);
 				} else {
@@ -134,7 +142,6 @@ public class invenWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (cCount > 0)
 					cCount -= 1;
-				System.out.println(cCount);
 				if (cList.get(cCount)) {
 					cLbl.setIcon(cIcons[cCount]);
 				} else {
@@ -149,6 +156,55 @@ public class invenWin extends JFrame {
 		});
 		cBtnRight.setBounds(246, 307, 30, 50);
 		contentPane.add(cBtnRight);
+		
+		JLabel wLbl = new JLabel("");
+		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
+		wLbl.setBounds(360, 232, 158, 200);
+		contentPane.add(wLbl);
+		
+		wCount = 0;
+		
+		JButton wBtnLeft = new JButton("");
+		JButton wBtnRight = new JButton("");
+		wBtnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (wCount > 0)
+					wCount -= 1;
+				if (wList.get(cCount)) {
+					wLbl.setIcon(wIcons[cCount]);
+				} else {
+					wLbl.setIcon(wIconsBlock[cCount]);
+				}
+				if (wCount == 0)
+					wBtnLeft.setEnabled(false);
+				wBtnRight.setEnabled(true);
+				revalidate();
+				repaint();
+			}
+		});
+		wBtnLeft.setBounds(312, 307, 30, 50);
+		contentPane.add(wBtnLeft);
+		
+		wBtnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (wCount < wList2.size())
+					wCount += 1;
+				if (wList.get(cCount)) {
+					wLbl.setIcon(wIcons[cCount]);
+				} else {
+					wLbl.setIcon(wIconsBlock[cCount]);
+				}
+				if (wCount == wList2.size() - 1)
+					wBtnRight.setEnabled(false);
+				wBtnLeft.setEnabled(true);
+				revalidate();
+				repaint();
+			}
+		});
+		wBtnRight.setBounds(530, 307, 30, 50);
+		contentPane.add(wBtnRight);
 		
 	}
 }
