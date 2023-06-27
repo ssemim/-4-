@@ -1,8 +1,8 @@
 package GUI;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import 객체모음.School;
 import 객체모음.Student;
+import 메소드모음.RankingSystem;
 
 public class RankWin extends JFrame {
 
@@ -22,6 +24,7 @@ public class RankWin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
@@ -39,6 +42,10 @@ public class RankWin extends JFrame {
 	 * Create the frame.
 	 */
 	public RankWin(Student s) {
+		RankingSystem RS = new RankingSystem();
+		List<Student> classList = null;
+		List<School> school = null;
+		List<Student> studentAll = null;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -60,12 +67,15 @@ public class RankWin extends JFrame {
 				dispose();
 			}
 		});
+
+		JLabel lblNewLabel_2 = new JLabel("1");
+
 		JPanel Schoolpanel = new JPanel(); // 학교 랭킹
-
+		school = RS.schoolRangking();
 		JPanel Studentpanel = new JPanel(); // 학생 랭킹
-
+		classList = RS.classRangking(s);
 		JPanel AllStudentpanel = new JPanel(); // 전체 랭킹
-
+		studentAll = RS.studentRangking(Integer.valueOf(lblNewLabel_2.getText()));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane
 				.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -89,13 +99,21 @@ public class RankWin extends JFrame {
 						.addComponent(AllStudentpanel, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap(150, Short.MAX_VALUE)));
 
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_4_2 = new JLabel("");
+		JLabel lblNewLabel_5_2 = new JLabel("");
+		JLabel lblNewLabel_3_2 = new JLabel("");
 
-		JLabel lblNewLabel_4_2 = new JLabel("New label");
+		if (school.size() >= 3) {
+			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
+			lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
+			lblNewLabel_5_2.setText("3등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
+		} else if (school.size() == 2) {
+			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
+			lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
+		} else {
+			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
+		}
 
-		JLabel lblNewLabel_5_2 = new JLabel("New label");
-
-		JLabel lblNewLabel_3_2 = new JLabel("New label");
 		GroupLayout gl_AllStudentpanel = new GroupLayout(AllStudentpanel);
 		gl_AllStudentpanel.setHorizontalGroup(
 				gl_AllStudentpanel.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
@@ -110,13 +128,22 @@ public class RankWin extends JFrame {
 						.addComponent(lblNewLabel_5_2).addContainerGap(41, Short.MAX_VALUE)));
 		AllStudentpanel.setLayout(gl_AllStudentpanel);
 
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(classList.get(1).getSchool() + "  교내랭킹");
+		JLabel lblNewLabel_4_1 = new JLabel("");
+		JLabel lblNewLabel_5_1 = new JLabel("");
+		JLabel lblNewLabel_3_1 = new JLabel("");
 
-		JLabel lblNewLabel_4_1 = new JLabel("New label");
+		if (classList.size() >= 3) {
+			lblNewLabel_3_1.setText("1등 : " + classList.get(0).getId() + " " + classList.get(0).getPoint());
+			lblNewLabel_4_1.setText("2등 : " + classList.get(1).getId() + " " + classList.get(1).getPoint());
+			lblNewLabel_5_1.setText("3등 : " + classList.get(2).getId() + " " + classList.get(2).getPoint());
+		} else if (studentAll.size() == 2) {
+			lblNewLabel_3_1.setText("1등 : " + classList.get(0).getId() + " " + classList.get(0).getPoint());
+			lblNewLabel_4_1.setText("2등 : " + classList.get(1).getId() + " " + classList.get(1).getPoint());
+		} else {
+			lblNewLabel_3_1.setText("1등 : " + classList.get(0).getId() + " " + classList.get(0).getPoint());
+		}
 
-		JLabel lblNewLabel_5_1 = new JLabel("New label");
-
-		JLabel lblNewLabel_3_1 = new JLabel("New label");
 		GroupLayout gl_Studentpanel = new GroupLayout(Studentpanel);
 		gl_Studentpanel
 				.setHorizontalGroup(gl_Studentpanel.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
@@ -131,13 +158,22 @@ public class RankWin extends JFrame {
 						.addComponent(lblNewLabel_5_1).addContainerGap(43, Short.MAX_VALUE)));
 		Studentpanel.setLayout(gl_Studentpanel);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("학교별 랭킹");
+		JLabel lblNewLabel_3 = new JLabel("");
+		JLabel lblNewLabel_4 = new JLabel("");
+		JLabel lblNewLabel_5 = new JLabel("");
 
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		if (studentAll.size() >= 3) {
+			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getPointAll());
+			lblNewLabel_4.setText("2등 : " + school.get(1).getName() + " " + school.get(1).getPointAll());
+			lblNewLabel_5.setText("3등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
+		} else if (studentAll.size() == 2) {
+			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getPointAll());
+			lblNewLabel_4.setText("2등 : " + school.get(1).getName() + " " + school.get(1).getPointAll());
+		} else {
+			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getPointAll());
+		}
 
-		JLabel lblNewLabel_4 = new JLabel("New label");
-
-		JLabel lblNewLabel_5 = new JLabel("New label");
 		GroupLayout gl_Schoolpanel = new GroupLayout(Schoolpanel);
 		gl_Schoolpanel.setHorizontalGroup(gl_Schoolpanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_Schoolpanel.createSequentialGroup().addGap(96)
