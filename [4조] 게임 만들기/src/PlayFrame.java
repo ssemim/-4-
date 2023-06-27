@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import 객체모음.Student;
+import 메소드모음.InsertPoint;
 
 /*
  * @author Soyoung Kim
@@ -261,7 +262,7 @@ public class PlayFrame extends JFrame {
 							if (cnt < 1) { // 카운트다운 끝. 인간이 죽은 경우
 								System.out.println("카운트다운 끝. 유저의 패배.");
 								
-								int i = test.test(s, returnPoint());
+								int i = InsertPoint.test(s, returnPoint());
 								System.out.println(i);
 							}
 						}
