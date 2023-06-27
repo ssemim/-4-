@@ -18,23 +18,21 @@ public class MainWin extends JFrame {
 
 	private JPanel contentPane;
 	Image image;
-
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
 //					MainWin frame = new MainWin();
 //					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	/**
 	 * Create the frame.
 	 */
@@ -44,33 +42,34 @@ public class MainWin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-
+		
 		// 메인창 프레임 설정
 		setTitle("Main"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
+
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		JButton Gamebtn = new JButton(); // 인벤 버튼
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectgameWin SlecW = new SelectgameWin();
+				SelectgameWin SlecW = new SelectgameWin(s);
 				SlecW.setVisible(true);
 				dispose();
 			}
 		});
-
+		
 		JButton invenbtn = new JButton("인벤토리"); // 인벤 버튼
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
 		invenbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				invenWin IW = new invenWin();
+				invenWin IW = new invenWin(s);
 				IW.setVisible(true);
 				dispose();
 			}
 		});
-
+		
 		JButton rankbtn = new JButton("랭킹"); // 랭킹 버튼
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
 		rankbtn.addActionListener(new ActionListener() {
@@ -85,7 +84,7 @@ public class MainWin extends JFrame {
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StoreWin StoreW = new StoreWin();
+				StoreWin StoreW = new StoreWin(s);
 				StoreW.setVisible(true);
 				dispose();
 			}
@@ -94,9 +93,11 @@ public class MainWin extends JFrame {
 		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(124)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(124)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
