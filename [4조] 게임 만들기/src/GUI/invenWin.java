@@ -1,6 +1,6 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -16,7 +16,6 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
-import java.awt.Color;
 
 public class invenWin extends JFrame {
 
@@ -110,6 +109,13 @@ public class invenWin extends JFrame {
 		cCount = 0;
 		contentPane.add(cLbl);
 
+		JButton cBtnLeft = new JButton("");
+		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		cBtnLeft.setEnabled(false);
+		cBtnLeft.setBackground(Color.BLACK);
+		cBtnLeft.setBounds(35, 307, 30, 50);
+		contentPane.add(cBtnLeft);
+		
 		JButton cBtnRight = new JButton("");
 		cBtnRight.setBackground(Color.BLACK);
 		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
@@ -176,12 +182,6 @@ public class invenWin extends JFrame {
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
 		
-		JButton cBtnLeft = new JButton("");
-		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
-		cBtnLeft.setEnabled(false);
-		cBtnLeft.setBackground(Color.BLACK);
-		cBtnLeft.setBounds(35, 307, 30, 50);
-		contentPane.add(cBtnLeft);
 
 	}
 }
