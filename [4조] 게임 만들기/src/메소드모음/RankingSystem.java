@@ -25,15 +25,21 @@ public class RankingSystem {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "select school, sum(point) " + "from (select a.id, a.school, max(b.point) as point "
-					+ "from student a " + "left join gamelog b on a.id = b.studentid \r\n" + "group by a.id) as a\r\n"
-					+ "group by school limit 3;";
+			String sql = "select `last`.id, `last`.school, sum(`last`.point) as point from "
+					+ "(SELECT A.id, A.school, SUM(C.max_score_sum) AS point\r\n" + "	FROM student A\r\n"
+					+ "	inner JOIN (\r\n" + "		SELECT studentId, SUM(max_score) AS max_score_sum\r\n"
+					+ "		FROM (\r\n" + "			SELECT studentId, gameNo, MAX(point) AS max_score\r\n"
+					+ "			FROM gamelog\r\n" + "			WHERE gameNo IN (1, 2, 3)\r\n"
+					+ "			GROUP BY studentId, gameNo\r\n" + "		) AS subquery\r\n"
+					+ "		GROUP BY studentId\r\n" + "	) AS C ON A.id = C.studentId\r\n"
+					+ "	GROUP BY A.id, A.school\r\n"
+					+ "	ORDER BY `point` DESC) as `last` group by school order by point desc;";
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				String schoolName = rs.getString("school");
-				int pointAll = rs.getInt("sum(point)");
+				int pointAll = rs.getInt("point");
 
 				list.add(new School(schoolName, pointAll));
 			}
@@ -45,6 +51,7 @@ public class RankingSystem {
 			DBUtil.close(conn);
 		}
 
+		System.out.println("학교" + list.toString());
 		return list;
 	}
 
@@ -62,8 +69,13 @@ public class RankingSystem {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "select a.id, a.school, max(b.point) as point from student a left join gamelog b on a.id = b.studentid \r\n"
-					+ "group by a.id having a.school = ?";
+			String sql = "SELECT A.id, A.school, SUM(C.max_score_sum) AS point\r\n" + "	FROM student A\r\n"
+					+ "	LEFT JOIN (\r\n" + "		SELECT studentId, SUM(max_score) AS max_score_sum\r\n"
+					+ "		FROM (\r\n" + "			SELECT studentId, gameNo, MAX(point) AS max_score\r\n"
+					+ "			FROM gamelog\r\n" + "			WHERE gameNo IN (1, 2, 3)\r\n"
+					+ "			GROUP BY studentId, gameNo\r\n" + "		) AS subquery\r\n"
+					+ "		GROUP BY studentId\r\n" + "	) AS C ON A.id = C.studentId\r\n" + "	WHERE A.school = ?\r\n"
+					+ "	GROUP BY A.id, A.school\r\n" + "	ORDER BY `point` DESC\r\n" + "	LIMIT 3;";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, student.getSchool());
 			rs = stmt.executeQuery();
@@ -100,16 +112,16 @@ public class RankingSystem {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "select a.id, b.gameNo, b.point from student a \r\n"
-					+ "left join gamelog b on a.id = b.studentid\r\n" + "where gameNo = ? \r\n"
-					+ "order by b.point desc limit 3;";
+			String sql = "SELECT studentId , gameNo, MAX(point) AS max_score\r\n" + " FROM gamelog\r\n"
+					+ "			WHERE gameNo IN (1, 2, 3)\r\n"
+					+ "			GROUP BY studentId, gameNo having gameNo = ? order by max_score desc";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, gameNo);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				String parseId = rs.getString("id");
-				int point = rs.getInt("point");
+				String parseId = rs.getString("studentId");
+				int point = rs.getInt("max_score");
 
 				list.add(new Student(parseId, point));
 			}
@@ -123,5 +135,5 @@ public class RankingSystem {
 
 		return list;
 	}
-	
+
 }

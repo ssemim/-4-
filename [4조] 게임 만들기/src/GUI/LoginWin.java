@@ -84,7 +84,7 @@ public class LoginWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
 				if (login.login(IDField.getText(), PWField.getText()) != null) {
-					MainWin MW = new MainWin();
+					MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
 					MW.setVisible(true);
 					dispose();
 				} else {
