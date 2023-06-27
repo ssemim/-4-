@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -19,16 +21,12 @@ import dbutil.DBUtil;
 import 객체모음.Student;
 import 메소드모음.PickItem;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 public class StoreWin extends JFrame {
 
 	private JPanel contentPane;
+	private int countBack = 0;
+	private int character = 0;
+	private int item;
 
 	/**
 	 * Launch the application.
@@ -50,6 +48,7 @@ public class StoreWin extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreWin(Student s) {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -60,10 +59,7 @@ public class StoreWin extends JFrame {
 		setTitle("상점"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setVisible(false);
+		getContentPane().setLayout(null);
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBounds(711, 167, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
@@ -72,6 +68,7 @@ public class StoreWin extends JFrame {
 				MainWin MW = new MainWin();
 				MW.setVisible(true);
 				dispose();
+				character = 0;
 			}
 		});
 
@@ -83,43 +80,56 @@ public class StoreWin extends JFrame {
 
 		JButton Charbtn = new JButton("캐릭터 뽑기");
 		Charbtn.setBounds(38, 167, 246, 250);
+//		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				if (s.getPoint() >= 1000) {
-					int point = s.getPoint();
-					PickItem pick = new PickItem(s, "캐릭터");
-					int item = ItemLook("캐릭터", pick.pickItem());
-					s.setPoint(point - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
-					lblNewLabel.setVisible(true);
-
+					if (character == 0) {
+						int point = s.getPoint();
+						PickItem pick = new PickItem(s, "캐릭터");
+						item = ItemLook("캐릭터", pick.pickItem());
+						s.setPoint(point - 1000);
+						Charbtn.setText("");
+						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
+						character++;
+					} else if (character == 1) {
+						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
+						character++;
+					} else if (character == 2) {
+//						 Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
+						character = 0;
+					}
 				}
 			}
 		});
 
 		JButton BackWinbtn = new JButton("배경 뽑기");
 		BackWinbtn.setBounds(316, 167, 246, 250);
-
+//		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000) {
-					int a = s.getPoint();
-					PickItem pick = new PickItem(s, "배경");
-					int item = ItemLook("배경", pick.pickItem());
-					s.setPoint(a - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
-					lblNewLabel.setVisible(true);
-
+					if (countBack == 0) {
+						int a = s.getPoint();
+						PickItem pick = new PickItem(s, "배경");
+						item = ItemLook("배경", pick.pickItem());
+						s.setPoint(a - 1000);
+						BackWinbtn.setText("");
+						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
+						countBack++;
+					} else if (countBack == 1) {
+						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
+						countBack++;
+					} else if (countBack == 2) {
+//						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
+						countBack = 0;
+					}
 				}
 			}
 		});
 		contentPane.setLayout(null);
-
-		lblNewLabel.setBounds(220, 10, 364, 191);
-		contentPane.add(lblNewLabel);
 		contentPane.add(Charbtn);
 		contentPane.add(BackWinbtn);
 		contentPane.add(Coinlbl);
