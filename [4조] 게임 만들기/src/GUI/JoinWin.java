@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.Login;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -48,7 +50,10 @@ public class JoinWin extends JFrame {
 	public JoinWin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 500);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
+		contentPane.setForeground(Color.BLACK);
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		// 가입창 프레임 설정
@@ -57,14 +62,23 @@ public class JoinWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 		JLabel IDlbl = new JLabel("ID"); // ID
+		IDlbl.setForeground(Color.WHITE);
+		IDlbl.setBackground(Color.WHITE);
 		IDlbl.setBounds(45, 113, 11, 15);
 		JLabel PWlbl = new JLabel("PW"); // PW
+		PWlbl.setForeground(Color.WHITE);
+		PWlbl.setBackground(Color.WHITE);
 		PWlbl.setBounds(38, 180, 18, 15);
 		JLabel PWPWlbl = new JLabel("PW"); // PW 중복확인
+		PWPWlbl.setForeground(Color.WHITE);
+		PWPWlbl.setBackground(Color.WHITE);
 		PWPWlbl.setBounds(38, 244, 18, 15);
 		JLabel Schoollbl = new JLabel("School"); // 학교
+		Schoollbl.setForeground(Color.WHITE);
+		Schoollbl.setBackground(Color.WHITE);
 		Schoollbl.setBounds(17, 313, 39, 15);
-		JButton Joinbtn = new JButton("가입하기"); // 가입버튼
+		JButton Joinbtn = new JButton(""); // 가입버튼
+		Joinbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/가입하기버튼.png")));
 		Joinbtn.setBounds(106, 383, 81, 39);
 		// 가입하기버튼을 누르면 LoginWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
@@ -88,8 +102,9 @@ public class JoinWin extends JFrame {
 				}
 			}
 		});
-		JButton Overlapbtn = new JButton("중복확인"); // ID 중복확인 버튼
-		Overlapbtn.setBounds(196, 63, 81, 23);
+		JButton Overlapbtn = new JButton(""); // ID 중복확인 버튼
+		Overlapbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/중복확인버튼.png")));
+		Overlapbtn.setBounds(196, 62, 80, 30);
 
 		Overlapbtn.addActionListener(new ActionListener() {
 			@Override
