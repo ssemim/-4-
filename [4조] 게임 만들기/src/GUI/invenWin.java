@@ -24,21 +24,21 @@ public class invenWin extends JFrame {
 	private int cCount;
 	private int wCount;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					invenWin frame = new invenWin(new Student("dd", 0));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					invenWin frame = new invenWin(new Student("dd", 0));
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -56,19 +56,7 @@ public class invenWin extends JFrame {
 		ImageIcon[] wIcons = new ImageIcon[wList2.size()];
 		ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
 
-		for (int i = 0; i < cList2.size(); i++) {
-			cIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터" + (i + 1) + ".gif"));
-		}
-		for (int i = 0; i < cList2.size(); i++) {
-			cIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터" + (i + 1) + "잠금.png"));
-		}
-
-		for (int i = 0; i < wList2.size(); i++) {
-			wIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + ".png"));
-		}
-		for (int i = 0; i < wList2.size(); i++) {
-			wIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + "잠금.png"));
-		}
+		inven.imageSet(cList, cList2, wList, wList2, cIcons, cIconsBlock, wIcons, wIconsBlock);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -123,33 +111,16 @@ public class invenWin extends JFrame {
 		cBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (cCount < cList2.size())
-					cCount += 1;
-				if (cList.get(cCount)) {
-					cLbl.setIcon(cIcons[cCount]);
-				} else {
-					cLbl.setIcon(cIconsBlock[cCount]);
-				}
-				if (cCount == cList2.size() - 1)
-					cBtnRight.setEnabled(false);
-				cBtnLeft.setEnabled(true);
+				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
 				revalidate();
 				repaint();
+
 			}
 		});
 		cBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (cCount > 0)
-					cCount -= 1;
-				if (cList.get(cCount)) {
-					cLbl.setIcon(cIcons[cCount]);
-				} else {
-					cLbl.setIcon(cIconsBlock[cCount]);
-				}
-				if (cCount == 0)
-					cBtnLeft.setEnabled(false);
-				cBtnRight.setEnabled(true);
+				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
 				revalidate();
 				repaint();
 			}
@@ -170,16 +141,7 @@ public class invenWin extends JFrame {
 		wBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (wCount > 0)
-					wCount -= 1;
-				if (wList.get(cCount)) {
-					wLbl.setIcon(wIcons[cCount]);
-				} else {
-					wLbl.setIcon(wIconsBlock[cCount]);
-				}
-				if (wCount == 0)
-					wBtnLeft.setEnabled(false);
-				wBtnRight.setEnabled(true);
+				wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
 				revalidate();
 				repaint();
 			}
@@ -190,16 +152,7 @@ public class invenWin extends JFrame {
 		wBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (wCount < wList2.size())
-					wCount += 1;
-				if (wList.get(cCount)) {
-					wLbl.setIcon(wIcons[cCount]);
-				} else {
-					wLbl.setIcon(wIconsBlock[cCount]);
-				}
-				if (wCount == wList2.size() - 1)
-					wBtnRight.setEnabled(false);
-				wBtnLeft.setEnabled(true);
+				wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
 				revalidate();
 				repaint();
 			}
