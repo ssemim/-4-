@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,9 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import 객체모음.Student;
 import 메소드모음.Login;
-import java.awt.Color;
 
 public class LoginWin extends JFrame {
 	private JPanel contentPane;
@@ -38,18 +37,19 @@ public class LoginWin extends JFrame {
 			}
 		});
 	}
+
 	/**
 	 * Create the frame.
 	 */
 	public LoginWin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 200); // 프레임 크기
-		setUndecorated(true); // 창 프레임 없애기 
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		// 로그인 프레임 설정
 		setTitle("Login"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
@@ -65,11 +65,11 @@ public class LoginWin extends JFrame {
 		JLabel IDlbl = new JLabel("ID"); // 아이디 라벨
 		IDlbl.setBounds(44, 41, 22, 15);
 		IDlbl.setForeground(Color.WHITE);
-		
+
 		JLabel PWlbl = new JLabel("PW"); // 패스워드 라벨
 		PWlbl.setBounds(44, 89, 22, 15);
 		PWlbl.setForeground(Color.WHITE);
-		
+
 		JButton Joinbtn = new JButton(); // 가입하기 버튼
 		Joinbtn.setBounds(59, 137, 80, 40);
 		Joinbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/가입하기버튼.png")));
@@ -86,18 +86,18 @@ public class LoginWin extends JFrame {
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Loginbtn.addActionListener(new ActionListener() {
-	         public void actionPerformed(ActionEvent e) {
-	            Login login = new Login();
-	            if (login.login(IDField.getText(), PWField.getText()) != null) {
-	               MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
-	               MW.setVisible(true);
-	               dispose();
-	            } else {
-	               System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
-	            }
+			public void actionPerformed(ActionEvent e) {
+				Login login = new Login();
+				if (login.login(IDField.getText(), PWField.getText()) != null) {
+					MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
+					MW.setVisible(true);
+					dispose();
+				} else {
+					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
+				}
 
-	         }
-	      });
+			}
+		});
 
 		Container c = getContentPane();
 		contentPane.setLayout(null);
@@ -109,7 +109,6 @@ public class LoginWin extends JFrame {
 		contentPane.add(PWlbl);
 		contentPane.add(IDField);
 		contentPane.add(PWField);
-
 
 		setVisible(true); // 창이 보이게
 	}

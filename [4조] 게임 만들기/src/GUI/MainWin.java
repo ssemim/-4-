@@ -11,8 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import 객체모음.Student;
+import 메소드모음.equipmentItem;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -28,7 +30,8 @@ public class MainWin extends JFrame {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
-//					MainWin frame = new MainWin();
+//					Student s = new Student();
+//					MainWin frame = new MainWin(s);
 //					frame.setVisible(true);
 //				} catch (Exception e) {
 //					e.printStackTrace();
@@ -113,19 +116,21 @@ public class MainWin extends JFrame {
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cutbtn.setVisible(true);
-//				cutbtn.setBorderPainted(false); // 외곽선 X
-//				cutbtn.setOpaque(false); // 투명화
-//				cutbtn.setFocusPainted(false);
-				cutbtn.setContentAreaFilled(false);
+				cutbtn.setBorderPainted(false); // 외곽선없애기
+				cutbtn.setContentAreaFilled(false); // 영역채우기x
+				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
+//				cutbtn.setVisible(true);
+//				cutbtn.setContentAreaFilled(false);
 				System.exit(0);
 			}
 		});
-		
-		
-		
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
+		
+		equipmentItem e = new equipmentItem();
+		e.equipmentItem(e.selectItemIamgeName(e.itemNos(s)), Charpanel);
+		Charpanel.setBounds(502, 182, 150, 200);
+		contentPane.setLayout(null);
 		contentPane.add(cutbtn);
 		contentPane.add(Storebtn);
 		contentPane.add(rankbtn);
