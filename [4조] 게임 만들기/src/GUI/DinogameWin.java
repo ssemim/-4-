@@ -40,6 +40,7 @@ public class DinogameWin extends JFrame {
 	public DinogameWin(Student s, String[] equipmentName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

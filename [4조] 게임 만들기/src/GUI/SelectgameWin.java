@@ -44,6 +44,7 @@ public class SelectgameWin extends JFrame {
 	public SelectgameWin(Student s, String[] equipmentName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,12 +66,27 @@ public class SelectgameWin extends JFrame {
 				dispose();
 			}
 		});
+		
+		JButton cutbtn = new JButton(""); // 종료하기
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setLocation(758, 10);
+		cutbtn.setSize(30, 30);
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(511, 170, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
+		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(624, 115, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
@@ -85,6 +101,13 @@ public class SelectgameWin extends JFrame {
 		JButton btnRun = new JButton("HANGMAN");
 		btnRun.setBounds(120, 216, 270, 80);
 		
+		JButton numbtn = new JButton("NUMBER");
+		numbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		numbtn.setBounds(120, 311, 270, 80);
+		
 		JButton btnRun_1 = new JButton("FALL");
 		btnRun_1.setBounds(120, 405, 270, 80);
 		contentPane.setLayout(null);
@@ -93,19 +116,14 @@ public class SelectgameWin extends JFrame {
 		contentPane.add(Dinobtn);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
-		
-		JButton Dinobtn_2_1 = new JButton("NUMBER");
-		Dinobtn_2_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		Dinobtn_2_1.setBounds(120, 311, 270, 80);
-		contentPane.add(Dinobtn_2_1);
+		contentPane.add(cutbtn);
+		contentPane.add(numbtn);
 		
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setForeground(Color.WHITE);
 		Coinlbl.setBounds(533, 140, 60, 15);
 		contentPane.add(Coinlbl);
+		
 	}
 
 }

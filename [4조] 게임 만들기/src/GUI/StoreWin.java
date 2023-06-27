@@ -63,8 +63,10 @@ public class StoreWin extends JFrame {
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null);
 		setUndecorated(true); // 창 프레임 없애기
-		JButton Backbtn = new JButton();
+		
+		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(711, 167, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
@@ -90,6 +92,7 @@ public class StoreWin extends JFrame {
 		
 		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 		Charbtn.setBounds(38, 167, 250, 250);
+		Charbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,9 +117,10 @@ public class StoreWin extends JFrame {
 			}
 		});
 
-		JButton BackWinbtn = new JButton("");
+		JButton BackWinbtn = new JButton(""); // 배경뽑기
 		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 		BackWinbtn.setBounds(316, 167, 250, 250);
+		BackWinbtn.setBorderPainted(false); // 버튼 테두리 제거
 //		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
@@ -153,13 +157,11 @@ public class StoreWin extends JFrame {
 		
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
-		cutbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cutbtn.setBorderPainted(false); // 외곽선없애기
-				cutbtn.setContentAreaFilled(false); // 영역채우기x
-				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
 				System.exit(0);
 			}
 		});
