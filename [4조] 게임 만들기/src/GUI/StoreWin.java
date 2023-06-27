@@ -68,6 +68,7 @@ public class StoreWin extends JFrame {
 				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
 				dispose();
+				countBack = 0;
 				character = 0;
 			}
 		});
