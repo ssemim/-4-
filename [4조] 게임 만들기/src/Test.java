@@ -1,3 +1,5 @@
+import javax.swing.JPanel;
+
 import 객체모음.Student;
 import 메소드모음.equipmentItem;
 
@@ -13,6 +15,8 @@ public class Test {
 		for (String string : arr) {
 			System.out.println(string);
 		}
+		equipmentItem e = new equipmentItem();
+		JPanel pnl = e.equipmentItem(e.selectItemIamgeName(e.itemNos(s)));
 	}
 }
 

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import GUI.invenWin;
@@ -95,16 +96,20 @@ public class equipmentItem {
 	 * @return	panel
 	 */
 	
-	public static JPanel equipmentItem(String[] arr) {
-		JPanel pnl = new JPanel();
-		JLabel wlbl = new JLabel();
-		wlbl.setSize(150, 200);
+	public void equipmentItem(String[] arr, JPanel pnl) {
+		pnl.setLayout(null);
+		
 		JLabel clbl = new JLabel();
-		clbl.setSize(150, 200);
-		new ImageIcon(invenWin.class.getResource("/이미지/" + arr[0] + ".gif"));
-		new ImageIcon(invenWin.class.getResource("/이미지/" + arr[1] + ".gif"));
-		pnl.add(wlbl);
-		pnl.add(clbl);
-		return pnl;
+		ImageIcon cicon = new ImageIcon(invenWin.class.getResource("/이미지/" + arr[0] + ".gif"));
+		clbl.setIcon(cicon);
+		clbl.setBounds(0, 0, 150, 200);
+		pnl.add(clbl, JLayeredPane.PALETTE_LAYER);
+		
+		JLabel wlbl = new JLabel();
+		ImageIcon wicon = new ImageIcon(invenWin.class.getResource("/이미지/" + arr[1] + ".png"));
+		wlbl.setIcon(wicon);
+		wlbl.setBounds(0, 0, 150, 200);
+		pnl.add(wlbl, JLayeredPane.DEFAULT_LAYER);
+		
 	}
 }

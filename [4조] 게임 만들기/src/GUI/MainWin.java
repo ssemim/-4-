@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.equipmentItem;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainWin extends JFrame {
 
@@ -25,7 +27,8 @@ public class MainWin extends JFrame {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
-//					MainWin frame = new MainWin();
+//					Student s = new Student();
+//					MainWin frame = new MainWin(s);
 //					frame.setVisible(true);
 //				} catch (Exception e) {
 //					e.printStackTrace();
@@ -52,6 +55,7 @@ public class MainWin extends JFrame {
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		JButton Gamebtn = new JButton(); // 인벤 버튼
+		Gamebtn.setBounds(129, 82, 240, 80);
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectgameWin SlecW = new SelectgameWin(s);
@@ -61,6 +65,7 @@ public class MainWin extends JFrame {
 		});
 		
 		JButton invenbtn = new JButton("인벤토리"); // 인벤 버튼
+		invenbtn.setBounds(129, 193, 240, 80);
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
 		invenbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,6 +76,7 @@ public class MainWin extends JFrame {
 		});
 		
 		JButton rankbtn = new JButton("랭킹"); // 랭킹 버튼
+		rankbtn.setBounds(129, 302, 240, 80);
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
 		rankbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -80,6 +86,7 @@ public class MainWin extends JFrame {
 			}
 		});
 		JButton Storebtn = new JButton("상점"); // 상점 버튼
+		Storebtn.setBounds(129, 414, 240, 80);
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,40 +95,16 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
-
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(124)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 240,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 240,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(133)
-								.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)) // 캐릭터
-																														// 판넬
-																														// 가로
-						.addComponent(Gamebtn, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap(137, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap(77, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(Charpanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE) // 캐릭터 판넬
-																												// 가로
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(Gamebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-								.addGap(31)
-								.addComponent(invenbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-								.addGap(29)
-								.addComponent(rankbtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-				.addGap(32).addComponent(Storebtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-				.addGap(72)));
-		contentPane.setLayout(gl_contentPane);
+		
+		equipmentItem e = new equipmentItem();
+		JPanel Charpanel = new JPanel();
+		e.equipmentItem(e.selectItemIamgeName(e.itemNos(s)), Charpanel);
+		Charpanel.setBounds(502, 182, 150, 200);
+		contentPane.setLayout(null);
+		contentPane.add(Storebtn);
+		contentPane.add(rankbtn);
+		contentPane.add(invenbtn);
+		contentPane.add(Charpanel);
+		contentPane.add(Gamebtn);
 	}
 }
