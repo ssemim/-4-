@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class MainWin extends JFrame {
 
@@ -39,7 +41,9 @@ public class MainWin extends JFrame {
 	public MainWin(Student s) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600); // 프레임 크기
+		setUndecorated(true); //ㅊ ㅍㄹㅇ ㅇㅇㄱ
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -52,6 +56,7 @@ public class MainWin extends JFrame {
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		JButton Gamebtn = new JButton(); // 인벤 버튼
+		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectgameWin SlecW = new SelectgameWin(s);
@@ -60,7 +65,8 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton invenbtn = new JButton("인벤토리"); // 인벤 버튼
+		JButton invenbtn = new JButton(""); // 인벤 버튼
+		invenbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/인벤토리버튼.png")));
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
 		invenbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,7 +76,8 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton rankbtn = new JButton("랭킹"); // 랭킹 버튼
+		JButton rankbtn = new JButton(""); // 랭킹 버튼
+		rankbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/랭킹버튼.png")));
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
 		rankbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +86,8 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Storebtn = new JButton("상점"); // 상점 버튼
+		JButton Storebtn = new JButton(""); // 상점 버튼
+		Storebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/상점버튼.png")));
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
