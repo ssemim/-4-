@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import 객체모음.Student;
-import 메소드모음.equipmentItem;
+import 메소드모음.EquipmentItem;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -43,6 +43,8 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
+		EquipmentItem e = new EquipmentItem();
+		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600); // 프레임 크기
 		setUndecorated(true); //ㅊ ㅍㄹㅇ ㅇㅇㄱ
@@ -64,7 +66,7 @@ public class MainWin extends JFrame {
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectgameWin SlecW = new SelectgameWin(s);
+				SelectgameWin SlecW = new SelectgameWin(s, equipmentName);
 				SlecW.setVisible(true);
 				dispose();
 			}
@@ -76,7 +78,7 @@ public class MainWin extends JFrame {
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
 		invenbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				invenWin IW = new invenWin(s);
+				invenWin IW = new invenWin(s, equipmentName);
 				IW.setVisible(true);
 				dispose();
 			}
@@ -99,13 +101,14 @@ public class MainWin extends JFrame {
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StoreWin StoreW = new StoreWin(s);
+				StoreWin StoreW = new StoreWin(s, equipmentName);
 				StoreW.setVisible(true);
 				dispose();
 			}
 		});
 		
 		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
+		EquipmentItem.equipmentItem(equipmentName, Charpanel);
 		Charpanel.setBounds(502, 211, 150, 200);
 		contentPane.setLayout(null);
 		
@@ -127,9 +130,6 @@ public class MainWin extends JFrame {
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
 		
-		equipmentItem e = new equipmentItem();
-		e.equipmentItem(e.selectItemIamgeName(e.itemNos(s)), Charpanel);
-		Charpanel.setBounds(502, 182, 150, 200);
 		contentPane.setLayout(null);
 		contentPane.add(cutbtn);
 		contentPane.add(Storebtn);

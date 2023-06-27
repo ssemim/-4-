@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -40,7 +41,7 @@ public class SelectgameWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SelectgameWin(Student s) {
+	public SelectgameWin(Student s, String[] equipmentName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -59,13 +60,14 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		Dinobtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DinogameWin DW = new DinogameWin(s);
+				DinogameWin DW = new DinogameWin(s, equipmentName);
 				DW.setVisible(true);
 				dispose();
 			}
 		});
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(511, 170, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)

@@ -14,7 +14,7 @@ import GUI.invenWin;
 import dbutil.DBUtil;
 import 객체모음.Student;
 
-public class equipmentItem {
+public class EquipmentItem {
 	public int[] itemNos(Student s) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -96,7 +96,7 @@ public class equipmentItem {
 	 * @return	panel
 	 */
 	
-	public void equipmentItem(String[] arr, JPanel pnl) {
+	public static void equipmentItem(String[] arr, JPanel pnl) {
 		pnl.setLayout(null);
 		
 		JLabel clbl = new JLabel();

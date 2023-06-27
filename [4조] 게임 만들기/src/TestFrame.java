@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
-import 메소드모음.equipmentItem;
+import 메소드모음.EquipmentItem;
 
 public class TestFrame extends JFrame {
 
@@ -40,7 +40,7 @@ public class TestFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		Student s = new Student("dd", "낙동초", 0);
-		equipmentItem e = new equipmentItem();
+		EquipmentItem e = new EquipmentItem();
 		JPanel panel = new JPanel();
 		e.equipmentItem(e.selectItemIamgeName(e.itemNos(s)), panel);
 		panel.setBounds(136, 48, 163, 191);
