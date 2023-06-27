@@ -58,9 +58,9 @@ public class StoreWin extends JFrame {
 		// 프레임 설정
 		setTitle("상점"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null);
-		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		setLocationRelativeTo(null);
+		JButton Backbtn = new JButton();
+		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(711, 167, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
@@ -133,12 +133,28 @@ public class StoreWin extends JFrame {
 				}
 			}
 		});
+		
+		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Charbtn);
 		contentPane.add(BackWinbtn);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
+		
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cutbtn.setBorderPainted(false); // 외곽선없애기
+				cutbtn.setContentAreaFilled(false); // 영역채우기x
+				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(752, 10, 30, 30);
+		contentPane.add(cutbtn);
 	}
 
 	// 아이템 이미지를 가져오기 위한 것

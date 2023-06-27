@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
@@ -71,7 +72,7 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton invenbtn = new JButton(""); // 인벤 버튼
+		JButton invenbtn = new JButton(); // 인벤 버튼
 		invenbtn.setBounds(129, 222, 240, 80);
 		invenbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/인벤토리버튼.png")));
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
@@ -83,7 +84,7 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton rankbtn = new JButton(""); // 랭킹 버튼
+		JButton rankbtn = new JButton(); // 랭킹 버튼
 		rankbtn.setBounds(129, 331, 240, 80);
 		rankbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/랭킹버튼.png")));
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
@@ -94,7 +95,7 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Storebtn = new JButton(""); // 상점 버튼
+		JButton Storebtn = new JButton(); // 상점 버튼
 		Storebtn.setBounds(129, 443, 240, 80);
 		Storebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/상점버튼.png")));
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
@@ -106,19 +107,29 @@ public class MainWin extends JFrame {
 			}
 		});
 		
+		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
+		EquipmentItem.equipmentItem(equipmentName, Charpanel);
+		Charpanel.setBounds(502, 211, 150, 200);
+		contentPane.setLayout(null);
+		
+		
 		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				cutbtn.setBorderPainted(false); // 외곽선없애기
+				cutbtn.setContentAreaFilled(false); // 영역채우기x
+				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
+//				cutbtn.setVisible(true);
+//				cutbtn.setContentAreaFilled(false);
 				System.exit(0);
 			}
 		});
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
 		
-		JPanel Charpanel = new JPanel();
-		EquipmentItem.equipmentItem(equipmentName, Charpanel);
-		Charpanel.setBounds(502, 182, 150, 200);
 		contentPane.setLayout(null);
 		contentPane.add(cutbtn);
 		contentPane.add(Storebtn);
