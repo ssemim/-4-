@@ -31,18 +31,18 @@ public class StoreWin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StoreWin frame = new StoreWin(new Student("dd", "당리초", 2200000));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					StoreWin frame = new StoreWin(new Student("dd", "당리초", 2200000));
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -139,6 +139,7 @@ public class StoreWin extends JFrame {
 		contentPane.add(Charpnl);
 	}
 
+	// 아이템 이미지를 가져오기 위한 것
 	public int ItemLook(String type, int item) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -169,6 +170,7 @@ public class StoreWin extends JFrame {
 		return -1;
 	}
 
+	// 학생 점수를 깍는 것
 	public int pointDown(Student s) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
