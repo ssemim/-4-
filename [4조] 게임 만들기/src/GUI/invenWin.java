@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import 객체모음.Student;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
+import java.awt.Color;
 
 public class invenWin extends JFrame {
 
@@ -60,24 +61,28 @@ public class invenWin extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		// 공룡게임 프레임 설정
 		setTitle("인벤토리"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
+		setLocationRelativeTo(null);
 
 		JPanel Charpnl = new JPanel();
 		Charpnl.setBounds(600, 231, 150, 200);
 
 		JButton Restartbtn = new JButton("다시하기");
+		Restartbtn.setBackground(Color.DARK_GRAY);
 		Restartbtn.setBounds(600, 127, 150, 50);
 		Restartbtn.setEnabled(false);
 
-		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		JButton Backbtn = new JButton();
+		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBounds(701, 185, 40, 40);
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 		Backbtn.addActionListener(new ActionListener() {
@@ -90,24 +95,23 @@ public class invenWin extends JFrame {
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setBounds(630, 202, 60, 15);
-
-		JButton cBtnLeft = new JButton("");
-		cBtnLeft.setBounds(40, 307, 30, 50);
 		contentPane.setLayout(null);
-		contentPane.add(cBtnLeft);
+		contentPane.setLayout(null);
 		contentPane.add(Restartbtn);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 
 		JLabel cLbl = new JLabel("");
+		cLbl.setBounds(77, 231, 158, 200);
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
 		cCount = 0;
-		cLbl.setBounds(77, 231, 158, 200);
 		contentPane.add(cLbl);
 
 		JButton cBtnRight = new JButton("");
-		cBtnLeft.setEnabled(false);
+		cBtnRight.setBackground(Color.BLACK);
+		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		cBtnRight.setBounds(247, 307, 30, 50);
 		cBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,26 +121,23 @@ public class invenWin extends JFrame {
 
 			}
 		});
-		cBtnLeft.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
-				revalidate();
-				repaint();
-			}
-		});
-		cBtnRight.setBounds(246, 307, 30, 50);
 		contentPane.add(cBtnRight);
 
 		JLabel wLbl = new JLabel("");
+		wLbl.setBounds(360, 231, 158, 200);
 		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
-		wLbl.setBounds(360, 232, 158, 200);
 		contentPane.add(wLbl);
 
 		wCount = 0;
 
 		JButton wBtnLeft = new JButton("");
+		wBtnLeft.setBackground(Color.BLACK);
+		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		wBtnLeft.setBounds(318, 307, 30, 50);
 		JButton wBtnRight = new JButton("");
+		wBtnRight.setBackground(Color.BLACK);
+		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		wBtnRight.setBounds(530, 307, 30, 50);
 		wBtnLeft.setEnabled(false);
 		wBtnLeft.addActionListener(new ActionListener() {
 			@Override
@@ -146,7 +147,6 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		wBtnLeft.setBounds(312, 307, 30, 50);
 		contentPane.add(wBtnLeft);
 
 		wBtnRight.addActionListener(new ActionListener() {
@@ -157,8 +157,29 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		wBtnRight.setBounds(530, 307, 30, 50);
 		contentPane.add(wBtnRight);
+		
+		JButton cutbtn = new JButton(""); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cutbtn.setBorderPainted(false); // 외곽선없애기
+				cutbtn.setContentAreaFilled(false); // 영역채우기x
+				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(758, 10, 30, 30);
+		contentPane.add(cutbtn);
+		
+		JButton cBtnLeft = new JButton("");
+		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		cBtnLeft.setEnabled(false);
+		cBtnLeft.setBackground(Color.BLACK);
+		cBtnLeft.setBounds(35, 307, 30, 50);
+		contentPane.add(cBtnLeft);
 
 	}
 }
