@@ -66,15 +66,13 @@ public class RankWin extends JFrame {
 
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(RankWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(745, 10, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Backbtn.setBorderPainted(false); // 외곽선없애기
-				Backbtn.setContentAreaFilled(false); // 영역채우기x
-				Backbtn.setFocusPainted(false); // 버튼선택시 테두리X
-				MainWin MW = new MainWin(s);
+			MainWin MW = new MainWin(s);
 				MW.setVisible(true);
 				dispose();
 			}

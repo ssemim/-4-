@@ -115,15 +115,11 @@ public class MainWin extends JFrame {
 		
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cutbtn.setBorderPainted(false); // 외곽선없애기
-				cutbtn.setContentAreaFilled(false); // 영역채우기x
-				cutbtn.setFocusPainted(false); // 버튼선택시 테두리X
-//				cutbtn.setVisible(true);
-//				cutbtn.setContentAreaFilled(false);
 				System.exit(0);
 			}
 		});
