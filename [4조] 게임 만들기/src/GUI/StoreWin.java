@@ -61,6 +61,7 @@ public class StoreWin extends JFrame {
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null);
 		JButton Backbtn = new JButton();
+		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(711, 167, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
