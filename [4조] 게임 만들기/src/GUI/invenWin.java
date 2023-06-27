@@ -120,6 +120,15 @@ public class invenWin extends JFrame {
 		cBtnRight.setBackground(Color.BLACK);
 		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		cBtnRight.setBounds(247, 307, 30, 50);
+		
+		cBtnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
+				revalidate();
+				repaint();
+			}
+		});
 		cBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

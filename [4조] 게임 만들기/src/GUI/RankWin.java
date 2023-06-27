@@ -19,6 +19,7 @@ import 메소드모음.RankingSystem;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class RankWin extends JFrame {
 
@@ -80,8 +81,9 @@ public class RankWin extends JFrame {
 		});
 
 		JLabel allRankLbl = new JLabel("1");
-		allRankLbl.setBounds(95, 39, 76, 15);
-		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		allRankLbl.setBounds(60, 30, 111, 35);
+		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		allRankLbl.setForeground(Color.WHITE);
 
 		JPanel Schoolpanel = new JPanel();
@@ -95,15 +97,15 @@ public class RankWin extends JFrame {
 		studentAll = RS.studentRangking(Integer.valueOf(allRankLbl.getText()));
 
 		JLabel lblNewLabel_4_2 = new JLabel("");
-		lblNewLabel_4_2.setBounds(152, 120, 0, 0);
+		lblNewLabel_4_2.setBounds(30, 120, 180, 30);
 		lblNewLabel_4_2.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_4_2.setForeground(Color.WHITE);
 		JLabel lblNewLabel_5_2 = new JLabel("");
-		lblNewLabel_5_2.setBounds(152, 164, 0, 0);
+		lblNewLabel_5_2.setBounds(30, 160, 180, 30);
 		lblNewLabel_5_2.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_5_2.setForeground(Color.WHITE);
 		JLabel lblNewLabel_3_2 = new JLabel("");
-		lblNewLabel_3_2.setBounds(152, 82, 0, 0);
+		lblNewLabel_3_2.setBounds(30, 80, 180, 30);
 		lblNewLabel_3_2.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_3_2.setForeground(Color.WHITE);
 
@@ -118,20 +120,21 @@ public class RankWin extends JFrame {
 			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
 		}
 
-		JLabel lblNewLabel_1 = new JLabel("<dynamic>  길드내 랭킹");
-		lblNewLabel_1.setBounds(37, 38, 204, 15);
-		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		JLabel lblNewLabel_1 = new JLabel("길드내 랭킹");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(49, 30, 147, 40);
+		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.setBounds(37, 118, 0, 0);
+		lblNewLabel_4_1.setBounds(30, 120, 180, 30);
 		lblNewLabel_4_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_4_1.setForeground(Color.WHITE);
 		JLabel lblNewLabel_5_1 = new JLabel("");
-		lblNewLabel_5_1.setBounds(37, 162, 0, 0);
+		lblNewLabel_5_1.setBounds(30, 160, 180, 30);
 		lblNewLabel_5_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_5_1.setForeground(Color.WHITE);
 		JLabel lblNewLabel_3_1 = new JLabel("");
-		lblNewLabel_3_1.setBounds(37, 80, 0, 0);
+		lblNewLabel_3_1.setBounds(30, 80, 180, 30);
 		lblNewLabel_3_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_3_1.setForeground(Color.WHITE);
 
@@ -147,19 +150,20 @@ public class RankWin extends JFrame {
 		}
 
 		JLabel lblNewLabel = new JLabel("길드별 랭킹");
-		lblNewLabel.setBounds(78, 38, 95, 15);
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(55, 30, 140, 35);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		lblNewLabel.setForeground(Color.WHITE);
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(96, 82, 0, 0);
+		lblNewLabel_3.setBounds(30, 80, 180, 30);
 		lblNewLabel_3.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setBounds(96, 120, 0, 0);
+		lblNewLabel_4.setBounds(30, 120, 180, 30);
 		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_4.setForeground(Color.WHITE);
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setBounds(96, 209, 0, 0);
+		lblNewLabel_5.setBounds(30, 160, 180, 30);
 		lblNewLabel_5.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		lblNewLabel_5.setForeground(Color.WHITE);
 
