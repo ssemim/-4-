@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
 
@@ -43,7 +44,7 @@ public class invenWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public invenWin(Student s) {
+	public invenWin(Student s, String[] equipmentName) {
 		inven = new Inventory(s);
 		List<Boolean> cList = inven.ItemAcquisition("캐릭터");
 		List<Boolean> wList = inven.ItemAcquisition("배경");
@@ -71,6 +72,7 @@ public class invenWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
 		JPanel Charpnl = new JPanel();
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(600, 231, 150, 200);
 
 		JButton Restartbtn = new JButton("다시하기");

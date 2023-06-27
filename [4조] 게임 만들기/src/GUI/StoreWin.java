@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -19,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import dbutil.DBUtil;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
 
 public class StoreWin extends JFrame {
@@ -47,7 +47,7 @@ public class StoreWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public StoreWin(Student s) {
+	public StoreWin(Student s, String[] equipmentName) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -76,6 +76,8 @@ public class StoreWin extends JFrame {
 		Coinlbl.setBounds(640, 184, 60, 15);
 
 		JPanel Charpnl = new JPanel();
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
+		
 		Charpnl.setBounds(601, 217, 150, 200);
 
 		JButton Charbtn = new JButton("캐릭터 뽑기");

@@ -37,7 +37,7 @@ public class DinogameWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DinogameWin(Student s) {
+	public DinogameWin(Student s, String[] equipmentName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -66,7 +66,7 @@ public class DinogameWin extends JFrame {
 		// 뒤로가기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectgameWin SW = new SelectgameWin(s);
+				SelectgameWin SW = new SelectgameWin(s, equipmentName);
 				SW.setVisible(true);
 				dispose();
 			}
