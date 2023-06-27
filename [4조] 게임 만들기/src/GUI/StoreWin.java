@@ -1,32 +1,21 @@
 package GUI;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import dbutil.DBUtil;
 import 객체모음.Student;
-import 메소드모음.PickItem;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 public class StoreWin extends JFrame {
 	private JPanel contentPane;
+
 	/**
 	 * Launch the application.
 	 */
@@ -57,7 +46,6 @@ public class StoreWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
-
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setVisible(false);
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
@@ -73,60 +61,30 @@ public class StoreWin extends JFrame {
 		JPanel Charpnl = new JPanel();
 		JButton Charbtn = new JButton("캐릭터 뽑기");
 		JButton BackWinbtn = new JButton("배경 뽑기");
-		BackWinbtn.setBounds(316, 167, 246, 250);
-
-		BackWinbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (s.getPoint() >= 1000) {
-					int a = s.getPoint();
-					PickItem pick = new PickItem(s, "배경");
-					int item = ItemLook("배경", pick.pickItem());
-					s.setPoint(a - 1000);
-					lblNewLabel.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
-					lblNewLabel.setVisible(true);
-
-				}
-			}
-		});
-		contentPane.setLayout(null);
-
-		lblNewLabel.setBounds(220, 10, 364, 191);
-		contentPane.add(lblNewLabel);
-		contentPane.add(Charbtn);
-		contentPane.add(BackWinbtn);
-		contentPane.add(Coinlbl);
-		contentPane.add(Backbtn);
-		contentPane.add(Charpnl);
-	}
-
-	public int ItemLook(String type, int item) {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		List<Integer> l = new ArrayList<>();
-
-		try {
-			conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM item where type = ?;";
-			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, type);
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				l.add(rs.getInt("no"));
-			}
-			for (int i = 0; i < l.size(); i++) {
-				if (l.get(i).equals(item)) {
-					return i + 1;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
-		}
-		return -1;
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(33)
+				.addComponent(Charbtn, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE).addGap(32)
+				.addComponent(BackWinbtn, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE).addGap(39)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(Coinlbl, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+								.addGap(11)
+								.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(38, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addGap(162)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(BackWinbtn, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(Charbtn, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup().addGap(17).addComponent(Coinlbl)
+										.addGap(18).addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 200,
+												GroupLayout.PREFERRED_SIZE))))
+				.addContainerGap(149, Short.MAX_VALUE)));
+		contentPane.setLayout(gl_contentPane);
 	}
 }

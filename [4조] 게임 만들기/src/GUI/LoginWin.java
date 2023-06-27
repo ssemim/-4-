@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +13,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import 객체모음.Student;
 import 메소드모음.Login;
 
 public class LoginWin extends JFrame {
@@ -37,6 +35,7 @@ public class LoginWin extends JFrame {
 			}
 		});
 	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -87,8 +86,8 @@ public class LoginWin extends JFrame {
 					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
 				}
 
-	         }
-	      });
+			}
+		});
 
 		Container c = getContentPane();
 		contentPane.setLayout(null);
@@ -99,7 +98,6 @@ public class LoginWin extends JFrame {
 		contentPane.add(PWlbl);
 		contentPane.add(IDField);
 		contentPane.add(PWField);
-
 
 		setVisible(true); // 창이 보이게
 	}
