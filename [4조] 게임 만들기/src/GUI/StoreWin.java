@@ -1,6 +1,6 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import dbutil.DBUtil;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
 
 public class StoreWin extends JFrame {
@@ -27,6 +28,7 @@ public class StoreWin extends JFrame {
 	private int countBack = 0;
 	private int character = 0;
 	private int item;
+	private final JLabel BackgroundLbl = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -47,20 +49,25 @@ public class StoreWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public StoreWin(Student s) {
+	public StoreWin(Student s, String[] equipmentName) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		// 프레임 설정
 		setTitle("상점"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true); // 창 프레임 없애기
+		
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(711, 167, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
@@ -74,14 +81,19 @@ public class StoreWin extends JFrame {
 		});
 
 		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setForeground(Color.WHITE);
 		Coinlbl.setBounds(640, 184, 60, 15);
 
 		JPanel Charpnl = new JPanel();
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
+		
 		Charpnl.setBounds(601, 217, 150, 200);
 
-		JButton Charbtn = new JButton("캐릭터 뽑기");
-		Charbtn.setBounds(38, 167, 246, 250);
-//		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
+		JButton Charbtn = new JButton("");
+		
+		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
+		Charbtn.setBounds(38, 167, 250, 250);
+		Charbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -99,15 +111,17 @@ public class StoreWin extends JFrame {
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
 						character++;
 					} else if (character == 2) {
-//						 Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
+						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 						character = 0;
 					}
 				}
 			}
 		});
 
-		JButton BackWinbtn = new JButton("배경 뽑기");
-		BackWinbtn.setBounds(316, 167, 246, 250);
+		JButton BackWinbtn = new JButton(""); // 배경뽑기
+		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
+		BackWinbtn.setBounds(316, 167, 250, 250);
+		BackWinbtn.setBorderPainted(false); // 버튼 테두리 제거
 //		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
@@ -127,17 +141,36 @@ public class StoreWin extends JFrame {
 						countBack++;
 					} else if (countBack == 2) {
 //						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
+						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 						countBack = 0;
 					}
 				}
 			}
 		});
+		
+		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Charbtn);
 		contentPane.add(BackWinbtn);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
+		
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(752, 10, 30, 30);
+		contentPane.add(cutbtn);
+		BackgroundLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
+		BackgroundLbl.setBounds(0, 0, 794, 571);
+		contentPane.add(BackgroundLbl);
 	}
 
 	// 아이템 이미지를 가져오기 위한 것

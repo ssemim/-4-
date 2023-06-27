@@ -13,11 +13,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class SelectgameWin extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField CoinField;
 
 	/**
 	 * Launch the application.
@@ -38,10 +41,12 @@ public class SelectgameWin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SelectgameWin(Student s) {
+	public SelectgameWin(Student s, String[] equipmentName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -51,19 +56,39 @@ public class SelectgameWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
-		JButton Dinobtn = new JButton("냥곤런");
+		JButton Dinobtn = new JButton("RUN");
+		Dinobtn.setBounds(120, 122, 270, 80);
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		Dinobtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DinogameWin DW = new DinogameWin(s);
+				DinogameWin DW = new DinogameWin(s, equipmentName);
 				DW.setVisible(true);
 				dispose();
 			}
 		});
+		
+		JButton cutbtn = new JButton(""); // 종료하기
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setLocation(758, 10);
+		cutbtn.setSize(30, 30);
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
+		Charpnl.setBounds(511, 170, 150, 200);
 
-		JButton Backbtn = new JButton("뒤"); // 뒤로가기버튼(이미지처리할거임)
+		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
+		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setBounds(624, 115, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,34 +97,33 @@ public class SelectgameWin extends JFrame {
 				dispose();
 			}
 		});
-
-		CoinField = new JTextField();
-		CoinField.setColumns(10);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(115)
-				.addComponent(Dinobtn, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE).addGap(117)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(CoinField, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-						.addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap(123, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(110)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(Dinobtn, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(CoinField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(Backbtn, GroupLayout.PREFERRED_SIZE, 40,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(15)
-								.addComponent(Charpnl, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(195, Short.MAX_VALUE)));
-		contentPane.setLayout(gl_contentPane);
+		
+		JButton btnRun = new JButton("HANGMAN");
+		btnRun.setBounds(120, 216, 270, 80);
+		
+		JButton numbtn = new JButton("NUMBER");
+		numbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		numbtn.setBounds(120, 311, 270, 80);
+		
+		JButton btnRun_1 = new JButton("FALL");
+		btnRun_1.setBounds(120, 405, 270, 80);
+		contentPane.setLayout(null);
+		contentPane.add(btnRun);
+		contentPane.add(btnRun_1);
+		contentPane.add(Dinobtn);
+		contentPane.add(Backbtn);
+		contentPane.add(Charpnl);
+		contentPane.add(cutbtn);
+		contentPane.add(numbtn);
+		
+		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setForeground(Color.WHITE);
+		Coinlbl.setBounds(533, 140, 60, 15);
+		contentPane.add(Coinlbl);
+		
 	}
 
 }

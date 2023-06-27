@@ -1,6 +1,6 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
 
@@ -24,26 +25,26 @@ public class invenWin extends JFrame {
 	private int cCount;
 	private int wCount;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					invenWin frame = new invenWin(new Student("dd", 0));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					invenWin frame = new invenWin(new Student("dd", 0));
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public invenWin(Student s) {
+	public invenWin(Student s, String[] equipmentName) {
 		inven = new Inventory(s);
 		List<Boolean> cList = inven.ItemAcquisition("캐릭터");
 		List<Boolean> wList = inven.ItemAcquisition("배경");
@@ -56,40 +57,29 @@ public class invenWin extends JFrame {
 		ImageIcon[] wIcons = new ImageIcon[wList2.size()];
 		ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
 
-		for (int i = 0; i < cList2.size(); i++) {
-			cIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터" + (i + 1) + ".gif"));
-		}
-		for (int i = 0; i < cList2.size(); i++) {
-			cIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/캐릭터" + (i + 1) + "잠금.png"));
-		}
-
-		for (int i = 0; i < wList2.size(); i++) {
-			wIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + ".png"));
-		}
-		for (int i = 0; i < wList2.size(); i++) {
-			wIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + "잠금.png"));
-		}
+		inven.imageSet(cList, cList2, wList, wList2, cIcons, cIconsBlock, wIcons, wIconsBlock);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		// 공룡게임 프레임 설정
 		setTitle("인벤토리"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
+		setLocationRelativeTo(null);
 
 		JPanel Charpnl = new JPanel();
+		EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(600, 231, 150, 200);
 
-		JButton Restartbtn = new JButton("다시하기");
-		Restartbtn.setBounds(600, 127, 150, 50);
-		Restartbtn.setEnabled(false);
-
-		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+		JButton Backbtn = new JButton();
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBounds(701, 185, 40, 40);
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 		Backbtn.addActionListener(new ActionListener() {
@@ -102,110 +92,101 @@ public class invenWin extends JFrame {
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setBounds(630, 202, 60, 15);
-
-		JButton cBtnLeft = new JButton("");
-		cBtnLeft.setBounds(40, 307, 30, 50);
 		contentPane.setLayout(null);
-		contentPane.add(cBtnLeft);
-		contentPane.add(Restartbtn);
+		contentPane.setLayout(null);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 
 		JLabel cLbl = new JLabel("");
+		cLbl.setBounds(77, 231, 158, 200);
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
 		cCount = 0;
-		cLbl.setBounds(77, 231, 158, 200);
 		contentPane.add(cLbl);
 
-		JButton cBtnRight = new JButton("");
+		JButton cBtnLeft = new JButton("");
+		cBtnLeft.setBackground(Color.BLACK);
+		cBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
+		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
 		cBtnLeft.setEnabled(false);
-		cBtnRight.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (cCount < cList2.size())
-					cCount += 1;
-				if (cList.get(cCount)) {
-					cLbl.setIcon(cIcons[cCount]);
-				} else {
-					cLbl.setIcon(cIconsBlock[cCount]);
-				}
-				if (cCount == cList2.size() - 1)
-					cBtnRight.setEnabled(false);
-				cBtnLeft.setEnabled(true);
-				revalidate();
-				repaint();
-			}
-		});
+		cBtnLeft.setBounds(35, 307, 30, 50);
+		contentPane.add(cBtnLeft);
+		
+		JButton cBtnRight = new JButton("");
+		cBtnRight.setBackground(Color.BLACK);
+		cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
+		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		cBtnRight.setBounds(247, 307, 30, 50);
+		
 		cBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (cCount > 0)
-					cCount -= 1;
-				if (cList.get(cCount)) {
-					cLbl.setIcon(cIcons[cCount]);
-				} else {
-					cLbl.setIcon(cIconsBlock[cCount]);
-				}
-				if (cCount == 0)
-					cBtnLeft.setEnabled(false);
-				cBtnRight.setEnabled(true);
+				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
 				revalidate();
 				repaint();
 			}
 		});
-		cBtnRight.setBounds(246, 307, 30, 50);
+		cBtnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
+				revalidate();
+				repaint();
+
+			}
+		});
 		contentPane.add(cBtnRight);
 
 		JLabel wLbl = new JLabel("");
+		wLbl.setBounds(360, 231, 158, 200);
 		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
-		wLbl.setBounds(360, 232, 158, 200);
 		contentPane.add(wLbl);
 
 		wCount = 0;
 
 		JButton wBtnLeft = new JButton("");
+		wBtnLeft.setBackground(Color.BLACK);
+		wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		wBtnLeft.setBounds(318, 307, 30, 50);
 		JButton wBtnRight = new JButton("");
+		wBtnRight.setBackground(Color.BLACK);
+		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		wBtnRight.setBounds(530, 307, 30, 50);
 		wBtnLeft.setEnabled(false);
 		wBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (wCount > 0)
-					wCount -= 1;
-				if (wList.get(cCount)) {
-					wLbl.setIcon(wIcons[cCount]);
-				} else {
-					wLbl.setIcon(wIconsBlock[cCount]);
-				}
-				if (wCount == 0)
-					wBtnLeft.setEnabled(false);
-				wBtnRight.setEnabled(true);
+				wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
 				revalidate();
 				repaint();
 			}
 		});
-		wBtnLeft.setBounds(312, 307, 30, 50);
 		contentPane.add(wBtnLeft);
 
 		wBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (wCount < wList2.size())
-					wCount += 1;
-				if (wList.get(cCount)) {
-					wLbl.setIcon(wIcons[cCount]);
-				} else {
-					wLbl.setIcon(wIconsBlock[cCount]);
-				}
-				if (wCount == wList2.size() - 1)
-					wBtnRight.setEnabled(false);
-				wBtnLeft.setEnabled(true);
+				wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
 				revalidate();
 				repaint();
 			}
 		});
-		wBtnRight.setBounds(530, 307, 30, 50);
 		contentPane.add(wBtnRight);
+		
+		JButton cutbtn = new JButton(""); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(758, 10, 30, 30);
+		contentPane.add(cutbtn);
 
 	}
 }
