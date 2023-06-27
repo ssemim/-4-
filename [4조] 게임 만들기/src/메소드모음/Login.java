@@ -98,7 +98,6 @@ public class Login {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-
 		return null;
 	}
 

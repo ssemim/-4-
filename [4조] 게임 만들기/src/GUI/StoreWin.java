@@ -1,31 +1,21 @@
 package GUI;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import dbutil.DBUtil;
-import 객체모음.Student;
-import 메소드모음.PickItem;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import 객체모음.Student;
+
 public class StoreWin extends JFrame {
 	private JPanel contentPane;
+
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +45,6 @@ public class StoreWin extends JFrame {
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
-
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setVisible(false);
