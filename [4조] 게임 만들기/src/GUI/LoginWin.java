@@ -1,10 +1,12 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,29 +43,36 @@ public class LoginWin extends JFrame {
 	 */
 	public LoginWin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 302, 465); // 프레임 크기
+		setBounds(100, 100, 300, 200); // 프레임 크기
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+
 		// 로그인 프레임 설정
 		setTitle("Login"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null); // 창이 가운데 나오게
-		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
+		setLocationRelativeTo(null);
 		IDField = new JTextField();
-		IDField.setBounds(83, 20, 164, 30);
+		IDField.setBounds(84, 34, 164, 30);
 		IDField.setColumns(10);
 
 		PWField = new JPasswordField();
-		PWField.setBounds(83, 68, 164, 30);
+		PWField.setBounds(84, 82, 164, 30);
 		PWField.setColumns(10);
 
 		JLabel IDlbl = new JLabel("ID"); // 아이디 라벨
-		IDlbl.setBounds(47, 27, 11, 15);
+		IDlbl.setBounds(44, 41, 22, 15);
+		IDlbl.setForeground(Color.WHITE);
+
 		JLabel PWlbl = new JLabel("PW"); // 패스워드 라벨
-		PWlbl.setBounds(47, 75, 18, 15);
-		JButton Joinbtn = new JButton("가입하기"); // 가입하기 버튼
-		Joinbtn.setBounds(59, 116, 81, 40);
+		PWlbl.setBounds(44, 89, 22, 15);
+		PWlbl.setForeground(Color.WHITE);
+
+		JButton Joinbtn = new JButton(); // 가입하기 버튼
+		Joinbtn.setBounds(59, 137, 80, 40);
+		Joinbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/가입하기버튼.png")));
 		// 가입하기버튼을 누르면 JoinWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,8 +81,9 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Loginbtn = new JButton("로그인"); // 로그인 버튼
-		Loginbtn.setBounds(158, 116, 69, 40);
+		JButton Loginbtn = new JButton(); // 로그인 버튼
+		Loginbtn.setBounds(158, 137, 80, 40);
+		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,6 +100,7 @@ public class LoginWin extends JFrame {
 		});
 
 		Container c = getContentPane();
+		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Joinbtn);
