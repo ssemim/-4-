@@ -65,7 +65,7 @@ public class StoreWin extends JFrame {
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin();
+				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
 				dispose();
 				character = 0;
@@ -90,6 +90,7 @@ public class StoreWin extends JFrame {
 						PickItem pick = new PickItem(s, "캐릭터");
 						item = ItemLook("캐릭터", pick.pickItem());
 						s.setPoint(point - 1000);
+						pointDown(s);
 						Charbtn.setText("");
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
 						character++;
@@ -116,6 +117,7 @@ public class StoreWin extends JFrame {
 						PickItem pick = new PickItem(s, "배경");
 						item = ItemLook("배경", pick.pickItem());
 						s.setPoint(a - 1000);
+						pointDown(s);
 						BackWinbtn.setText("");
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
 						countBack++;
@@ -161,6 +163,25 @@ public class StoreWin extends JFrame {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(rs);
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+		return -1;
+	}
+
+	public int pointDown(Student s) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "update student set point = point - 1000 where id = ?;";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, s.getId());
+			return stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
