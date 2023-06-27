@@ -67,7 +67,7 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton invenbtn = new JButton(""); // 인벤 버튼
+		JButton invenbtn = new JButton(); // 인벤 버튼
 		invenbtn.setBounds(129, 222, 240, 80);
 		invenbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/인벤토리버튼.png")));
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
@@ -79,7 +79,7 @@ public class MainWin extends JFrame {
 			}
 		});
 		
-		JButton rankbtn = new JButton(""); // 랭킹 버튼
+		JButton rankbtn = new JButton(); // 랭킹 버튼
 		rankbtn.setBounds(129, 331, 240, 80);
 		rankbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/랭킹버튼.png")));
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
@@ -90,7 +90,7 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Storebtn = new JButton(""); // 상점 버튼
+		JButton Storebtn = new JButton(); // 상점 버튼
 		Storebtn.setBounds(129, 443, 240, 80);
 		Storebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/상점버튼.png")));
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
@@ -101,14 +101,23 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
+		
 		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
 		Charpanel.setBounds(502, 211, 150, 200);
 		contentPane.setLayout(null);
 		
+		
 		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				cutbtn.setVisible(true);
+//				cutbtn.setBorderPainted(false); // 외곽선 X
+//				cutbtn.setOpaque(false); // 투명화
+//				cutbtn.setFocusPainted(false);
+				cutbtn.setContentAreaFilled(false);
 				System.exit(0);
 			}
 		});
