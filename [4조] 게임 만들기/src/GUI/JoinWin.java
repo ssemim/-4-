@@ -168,6 +168,21 @@ public class JoinWin extends JFrame {
 			}
 		});
 
+		JButton Backbtn = new JButton(""); // 뒤로가기
+		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LoginWin();
+				setVisible(false);
+			}
+		});
+
+		Backbtn.setLocation(248, 10);
+		Backbtn.setSize(40, 40);
+
 		IDField = new JTextField(); // ID 입력
 		IDField.setBounds(83, 104, 165, 33);
 		IDField.setColumns(10);
@@ -196,6 +211,7 @@ public class JoinWin extends JFrame {
 		contentPane.add(SchoolField);
 		contentPane.add(PWField);
 		contentPane.add(IDField);
+		contentPane.add(Backbtn);
 
 	}
 }

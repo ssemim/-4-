@@ -17,12 +17,12 @@ public class Test {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "INSERT INTO `team4`.`equipment` (`studentId`, `itemNo`) VALUES (? , '1');";
+			String sql = "select no from item where name = '캐릭터"+3+"'";
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, "ee");
-			stmt.setString(1, "aa");
-			int i = stmt.executeUpdate();
-			System.out.println(i);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				System.out.println("no번호"+rs.getInt("no"));
+			}
 		} catch (SQLException e) {
 		} finally {
 			DBUtil.close(rs);
