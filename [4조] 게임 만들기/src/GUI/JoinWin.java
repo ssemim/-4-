@@ -1,24 +1,21 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.Login;
-import java.awt.Color;
-import javax.swing.ImageIcon;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -77,28 +74,74 @@ public class JoinWin extends JFrame {
 		Schoollbl.setForeground(Color.WHITE);
 		Schoollbl.setBackground(Color.WHITE);
 		Schoollbl.setBounds(17, 313, 39, 15);
+
+		JLabel lblNewLabel = new JLabel(" ");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(17, 358, 259, 68);
+
+		contentPane.add(lblNewLabel);
+
 		JButton Joinbtn = new JButton(""); // 가입버튼
 		Joinbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/가입하기버튼.png")));
-		Joinbtn.setBounds(106, 383, 81, 39);
+		Joinbtn.setBounds(106, 436, 81, 39);
 		// 가입하기버튼을 누르면 LoginWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (count == 1) {
+					IDlbl.setForeground(Color.WHITE);
 					if (PWField.getText().equals(PWPWField.getText())) {
+						PWlbl.setForeground(Color.WHITE);
+						PWPWlbl.setForeground(Color.WHITE);
+
+						lblNewLabel.setText(" ");
+
 						String id = IDField.getText();
-						String password = PWlbl.getText();
+						String password = PWField.getText();
 						String school = SchoolField.getText();
 
-						login.insert(new Student(id, password, school, 0));
+						if (!(school.equals(""))) {
+							Schoollbl.setForeground(Color.WHITE);
 
-						LoginWin LW = new LoginWin();
-						LW.setVisible(true);
-						dispose();
+							int result = login.insert(new Student(id, password, school, 0));
+							if (result == 1) {
+								lblNewLabel.setText("회원가입이 완료되었습니다.");
+
+								LoginWin LW = new LoginWin();
+								LW.setVisible(true);
+								dispose();
+							}
+							if (result == -1) {
+								lblNewLabel.setText("회원가입이 실패했습니다.");
+							}
+							if (result == -2) {
+								lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(8 ~ 20자)</html>");
+								IDlbl.setForeground(Color.RED);
+							} else {
+								IDlbl.setForeground(Color.WHITE);
+							}
+							if (result == -3) {
+								lblNewLabel.setText("<html>비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)</html>");
+								PWlbl.setForeground(Color.RED);
+								PWPWlbl.setForeground(Color.RED);
+							} else {
+								PWlbl.setForeground(Color.WHITE);
+								PWPWlbl.setForeground(Color.WHITE);
+							}
+
+						} else {
+							lblNewLabel.setText("소속된 학교를 입력해주세요");
+							Schoollbl.setForeground(Color.RED);
+						}
+
 					} else {
-						System.out.println("비밀번호가 일치하지 않습니다.");
+						lblNewLabel.setText("비밀번호가 일치하지 않습니다.");
+						PWlbl.setForeground(Color.RED);
+						PWPWlbl.setForeground(Color.RED);
 					}
 				} else {
-					System.out.println("중복확인을 해주세요");
+					lblNewLabel.setText("중복확인을 해주세요");
+					IDlbl.setForeground(Color.RED);
 				}
 			}
 		});
@@ -111,8 +154,16 @@ public class JoinWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (login.duplication(IDField.getText())) {
 					count = 0;
+					lblNewLabel.setText("중복된 아이디가 있습니다.");
+					IDlbl.setForeground(Color.RED);
 				} else {
-					count = 1;
+					if (!(IDField.getText().equals(""))) {
+						count = 1;
+						lblNewLabel.setText("사용 가능한 아이디입니다.");
+						IDlbl.setForeground(Color.WHITE);
+					} else {
+						lblNewLabel.setText("사용 불가능한 아이디입니다.");
+					}
 				}
 			}
 		});
@@ -130,7 +181,7 @@ public class JoinWin extends JFrame {
 		PWPWField.setColumns(10);
 		PWField.setEchoChar('●');
 
-		SchoolField = new JTextField(); // 학교 입력
+		SchoolField = new JTextField(""); // 학교 입력
 		SchoolField.setBounds(83, 304, 165, 33);
 		SchoolField.setColumns(10);
 		PWPWField.setEchoChar('●');
@@ -145,5 +196,6 @@ public class JoinWin extends JFrame {
 		contentPane.add(SchoolField);
 		contentPane.add(PWField);
 		contentPane.add(IDField);
+
 	}
 }
