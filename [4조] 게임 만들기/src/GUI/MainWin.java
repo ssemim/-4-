@@ -65,7 +65,7 @@ public class MainWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
-		JButton Gamebtn = new JButton(); // 인벤 버튼
+		JButton Gamebtn = new JButton(); // 게임하기 버튼
 		Gamebtn.setBounds(129, 111, 240, 80);
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
 		Gamebtn.addActionListener(new ActionListener() {
@@ -75,7 +75,7 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-
+		
 		JButton invenbtn = new JButton(); // 인벤 버튼
 		invenbtn.setBounds(129, 222, 240, 80);
 		invenbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/인벤토리버튼.png")));
@@ -128,12 +128,12 @@ public class MainWin extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 18));
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(531, 181, 99, 20);
-		lblNewLabel.setText("" + s.getPoint());
+		JLabel Coin = new JLabel("");
+		Coin.setFont(new Font("굴림", Font.BOLD, 18));
+		Coin.setForeground(Color.WHITE);
+		Coin.setHorizontalAlignment(SwingConstants.CENTER);
+		Coin.setBounds(531, 181, 99, 20);
+		Coin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
@@ -145,12 +145,12 @@ public class MainWin extends JFrame {
 		contentPane.add(invenbtn);
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
-		contentPane.add(lblNewLabel);
+		contentPane.add(Coin);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
-		lblNewLabel_1.setBounds(502, 181, 20, 20);
-		contentPane.add(lblNewLabel_1);
+		JLabel CoinLbl = new JLabel("");
+		CoinLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
+		CoinLbl.setBounds(502, 181, 20, 20);
+		contentPane.add(CoinLbl);
 
 	}
 }
