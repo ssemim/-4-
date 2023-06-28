@@ -74,14 +74,17 @@ public class Inventory {
 	
 
 	public int cBtnRight(int cCount, JLabel cLbl, JButton cBtnRight, JButton cBtnLeft,
-			List cList, List cList2, ImageIcon[] cIcons, ImageIcon[] cIconsBlock) {
+			List cList, List cList2, ImageIcon[] cIcons, ImageIcon[] cIconsBlock
+			, JButton changeCbtn) {
 		
 		if (cCount < cList2.size())
 			cCount += 1;
 		if ((boolean) cList.get(cCount)) {
 			cLbl.setIcon(cIcons[cCount]);
+			changeCbtn.setEnabled(true);
 		} else {
 			cLbl.setIcon(cIconsBlock[cCount]);
+			changeCbtn.setEnabled(false);
 		}
 		if (cCount == cList2.size() - 1)
 			cBtnRight.setEnabled(false);
@@ -91,13 +94,16 @@ public class Inventory {
 	}
 
 	public int cBtnLeft(int cCount, JLabel cLbl, JButton cBtnRight, JButton cBtnLeft,
-			List cList, List cList2, ImageIcon[] cIcons, ImageIcon[] cIconsBlock) {
+			List cList, List cList2, ImageIcon[] cIcons, ImageIcon[] cIconsBlock
+			,JButton changeCbtn) {
 		if (cCount > 0)
 			cCount -= 1;
 		if ((boolean) cList.get(cCount)) {
 			cLbl.setIcon(cIcons[cCount]);
+			changeCbtn.setEnabled(true);
 		} else {
 			cLbl.setIcon(cIconsBlock[cCount]);
+			changeCbtn.setEnabled(false);
 		}
 		if (cCount == 0)
 			cBtnLeft.setEnabled(false);
@@ -106,13 +112,16 @@ public class Inventory {
 	}
 	
 	public int wBtnLeft(int wCount, JLabel wLbl, JButton wBtnRight, JButton wBtnLeft,
-			List wList, List wList2, ImageIcon[] wIcons, ImageIcon[] wIconsBlock) {
+			List wList, List wList2, ImageIcon[] wIcons, ImageIcon[] wIconsBlock
+			, JButton changeWbtn) {
 		if (wCount > 0)
 			wCount -= 1;
 		if ((boolean) wList.get(wCount)) {
 			wLbl.setIcon(wIcons[wCount]);
+			changeWbtn.setEnabled(true);
 		} else {
 			wLbl.setIcon(wIconsBlock[wCount]);
+			changeWbtn.setEnabled(false);
 		}
 		if (wCount == 0)
 			wBtnLeft.setEnabled(false);
@@ -122,13 +131,16 @@ public class Inventory {
 	}
 
 	public int wBtnRight(int wCount, JLabel wLbl, JButton wBtnRight, JButton wBtnLeft,
-			List wList, List wList2, ImageIcon[] wIcons, ImageIcon[] wIconsBlock) {
+			List wList, List wList2, ImageIcon[] wIcons, ImageIcon[] wIconsBlock
+			, JButton changeWbtn) {
 		if (wCount < wList2.size())
 			wCount += 1;
 		if ((boolean) wList.get(wCount)) {
 			wLbl.setIcon(wIcons[wCount]);
+			changeWbtn.setEnabled(true);
 		} else {
 			wLbl.setIcon(wIconsBlock[wCount]);
+			changeWbtn.setEnabled(false);
 		}
 		if (wCount == wList2.size() - 1)
 			wBtnRight.setEnabled(false);
