@@ -103,10 +103,10 @@ public class Login {
 		return null;
 	}
 
-	private static boolean validateId(String id) {
+	public static boolean validateId(String id) {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
 		Pattern pattern = Pattern.compile(id);
-		Matcher matcher = pattern.matcher("^[a-zA-Z][a-zA-Z0-9]{7,14}$");
+		Matcher matcher = pattern.matcher("^[a-z]$");
 		System.out.println(matcher.matches());
 		return matcher.matches();
 	}
