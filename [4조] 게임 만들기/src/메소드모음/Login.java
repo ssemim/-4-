@@ -51,6 +51,8 @@ public class Login {
 			// 회원 가입 성공 여부 확인
 			if (rowsAffected > 0) {
 				System.out.println("회원 가입이 완료되었습니다.");
+				EquipmentItem.insertBasicInven(student, conn);
+				EquipmentItem.insertBasicEqui(student, conn);
 				return 1;
 			} else {
 				System.out.println("회원 가입에 실패했습니다.");
