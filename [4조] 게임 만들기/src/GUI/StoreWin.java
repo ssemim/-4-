@@ -21,6 +21,7 @@ import dbutil.DBUtil;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
+import java.awt.Font;
 import 유틸.Music;
 import 유틸.SoundButton;
 
@@ -83,8 +84,9 @@ public class StoreWin extends JFrame {
 		});
 
 		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(640, 184, 60, 15);
+		Coinlbl.setBounds(631, 187, 80, 20);
 		Coinlbl.setText("" + s.getPoint());
 
 		JPanel Charpnl = new JPanel();
@@ -171,6 +173,11 @@ public class StoreWin extends JFrame {
 		});
 		cutbtn.setBounds(752, 10, 30, 30);
 		contentPane.add(cutbtn);
+		
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(601, 187, 20, 20);
+		contentPane.add(CoinImgLbl);
 		BackgroundLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
 		BackgroundLbl.setBounds(0, 0, 794, 571);
 		contentPane.add(BackgroundLbl);
