@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GUI게임.HangMan;
+import GUI게임.Dino;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import java.awt.Font;
@@ -60,8 +61,7 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		runbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DinogameWin DW = new DinogameWin(s, equipmentName);
-				DW.setVisible(true);
+				Dino d = new Dino(s);
 				dispose();
 			}
 		});
@@ -134,7 +134,7 @@ public class SelectgameWin extends JFrame {
 		Coinlbl.setBounds(536, 140, 86, 20);
 		contentPane.add(Coinlbl);
 		Coinlbl.setText("" + s.getPoint());
-		
+
 		JLabel CoinLbl = new JLabel("");
 		CoinLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
 		CoinLbl.setBounds(511, 140, 20, 20);
