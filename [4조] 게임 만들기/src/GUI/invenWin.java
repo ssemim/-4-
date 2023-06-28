@@ -84,12 +84,14 @@ public class invenWin extends JFrame {
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
 		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setForeground(Color.WHITE);
 		Coinlbl.setBounds(630, 202, 60, 15);
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
+		Coinlbl.setText("" + s.getPoint());
 
 		JLabel cLbl = new JLabel("");
 		cLbl.setBounds(77, 231, 158, 200);
@@ -103,7 +105,7 @@ public class invenWin extends JFrame {
 		cBtnLeft.setEnabled(false);
 		cBtnLeft.setBounds(35, 307, 30, 50);
 		contentPane.add(cBtnLeft);
-		
+
 		JButton cBtnRight = new JButton("");
 		cBtnRight.setBackground(Color.BLACK);
 		cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
@@ -123,29 +125,29 @@ public class invenWin extends JFrame {
 		wBtnLeft.setBounds(318, 307, 30, 50);
 		wBtnLeft.setEnabled(false);
 		contentPane.add(wBtnLeft);
-		
+
 		JButton wBtnRight = new JButton("");
 		wBtnRight.setBackground(Color.BLACK);
 		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
 		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		wBtnRight.setBounds(530, 307, 30, 50);
 		contentPane.add(wBtnRight);
-		
+
 		JButton changeCbtn = new JButton("변경");
 		changeCbtn.setBounds(108, 470, 97, 23);
 		contentPane.add(changeCbtn);
-		
+
 		JButton changeWbtn = new JButton("변경");
 		changeWbtn.setBounds(383, 470, 97, 23);
 		contentPane.add(changeWbtn);
-		
+
 		JButton cutbtn = new JButton(""); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
-		
+
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
@@ -153,17 +155,17 @@ public class invenWin extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		
+
 		cCount = 0;
 		wCount = 0;
-		
+
 		changeCbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EquipmentItem.changeC(Charpnl, cCount, wCount);
@@ -171,7 +173,7 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		
+
 		changeWbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EquipmentItem.changeC(Charpnl, cCount, wCount);
@@ -179,7 +181,7 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		
+
 		cBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +196,7 @@ public class invenWin extends JFrame {
 				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
 				revalidate();
 				repaint();
-				
+
 			}
 		});
 		wBtnLeft.addActionListener(new ActionListener() {
@@ -205,7 +207,7 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		
+
 		wBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
