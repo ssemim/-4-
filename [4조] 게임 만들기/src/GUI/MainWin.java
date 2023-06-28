@@ -44,7 +44,7 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
-//		SoundButton.test();
+		SoundButton.test();
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
@@ -127,12 +127,12 @@ public class MainWin extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 18));
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(531, 181, 99, 20);
-		lblNewLabel.setText("" + s.getPoint());
+		JLabel ReCoin = new JLabel("");
+		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
+		ReCoin.setForeground(Color.WHITE);
+		ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
+		ReCoin.setBounds(522, 181, 99, 20);
+		ReCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
@@ -144,12 +144,12 @@ public class MainWin extends JFrame {
 		contentPane.add(invenbtn);
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
-		contentPane.add(lblNewLabel);
+		contentPane.add(ReCoin);
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
-		lblNewLabel_1.setBounds(502, 181, 20, 20);
-		contentPane.add(lblNewLabel_1);
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(502, 181, 20, 20);
+		contentPane.add(CoinImgLbl);
 
 	}
 }
