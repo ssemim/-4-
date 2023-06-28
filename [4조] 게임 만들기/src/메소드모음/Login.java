@@ -21,22 +21,15 @@ public class Login {
 		String sql = "insert into student (id, password, school) values (?,?,?);";
 
 		try {
-//			if (!validateId(student.getId())) {
-//				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.");
-//				return -1;
-//			}
-//			if (student.getId().length() < 8 || student.getId().length() > 15) {
-//				System.out.println("아이디는 8 ~ 15 자리수로 설정해야 합니다.");
-//			}
-//
-//			if (!validatePassword(student.getPassword())) {
-//				System.out.println("비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.");
-//				return -1;
-//			}
-//			if (student.getPassword().length() < 8 || student.getPassword().length() > 20) {
-//				System.out.println("비밀번호는 8 ~ 20 자리수로 설정해야 합니다.");
-//				return -1;
-//			}
+			if (!validateId(student.getId())) {
+				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.(8 ~ 15자)");
+				return -2;
+			}
+
+			if (!validatePassword(student.getPassword())) {
+				System.out.println("비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)");
+				return -3;
+			}
 
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -105,18 +98,18 @@ public class Login {
 
 	public static boolean validateId(String id) {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
-		Pattern pattern = Pattern.compile(id);
-		Matcher matcher = pattern.matcher("^[a-z]$");
-		System.out.println(matcher.matches());
+		Pattern pattern = Pattern.compile("[A-Za-z0-9]{8,15}");
+		Matcher matcher = pattern.matcher(id);
+		System.out.println("ID : " + id + "  " + matcher.matches());
 		return matcher.matches();
 	}
 
 	// 비밀번호 패턴 검증 메소드
 	private static boolean validatePassword(String password) {
 		// 영소문자, 대문자, 숫자, 특수문자가 최소 1개 이상 포함되어야 함
-		Pattern pattern = Pattern.compile(password);
-		Matcher matcher = pattern.matcher("^[a-zA-Z][a-zA-Z0-9]{7,14}$");
-		System.out.println(matcher.matches());
+		Pattern pattern = Pattern.compile("[a-zA-Z0-9]*[!@#$%^&*]+{8,20}");
+		Matcher matcher = pattern.matcher(password);
+		System.out.println("PASSWORD : " + password + matcher.matches());
 		return matcher.matches();
 	}
 
