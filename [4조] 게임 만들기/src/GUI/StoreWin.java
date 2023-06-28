@@ -22,6 +22,8 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
 import java.awt.Font;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class StoreWin extends JFrame {
 
@@ -93,7 +95,7 @@ public class StoreWin extends JFrame {
 		Charpnl.setBounds(601, 217, 150, 200);
 
 		// 캐릭터 뽑기 버튼
-		JButton Charbtn = new JButton("");
+		SoundButton Charbtn = new SoundButton(Music.S1);
 		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 		Charbtn.setBounds(38, 167, 250, 250);
 		Charbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -122,7 +124,7 @@ public class StoreWin extends JFrame {
 			}
 		});
 
-		JButton BackWinbtn = new JButton(""); // 배경뽑기
+		SoundButton BackWinbtn = new SoundButton(Music.S1); // 배경뽑기
 		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 		BackWinbtn.setBounds(316, 167, 250, 250);
 		BackWinbtn.setBorderPainted(false); // 버튼 테두리 제거

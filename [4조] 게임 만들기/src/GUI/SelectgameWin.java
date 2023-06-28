@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +16,8 @@ import GUI게임.HangMan;
 import GUI게임.Dino;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
-import java.awt.Font;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class SelectgameWin extends JFrame {
 
@@ -55,7 +57,7 @@ public class SelectgameWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
-		JButton runbtn = new JButton("");
+		SoundButton runbtn = new SoundButton(Music.S1);
 		runbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼달리기.png")));
 		runbtn.setBounds(120, 122, 270, 80);
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
@@ -97,7 +99,7 @@ public class SelectgameWin extends JFrame {
 			}
 		});
 
-		JButton btnRun = new JButton("");
+		SoundButton btnRun = new SoundButton(Music.S1);
 		btnRun.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼행맨.png")));
 		btnRun.setBounds(120, 216, 270, 80);
 		btnRun.addActionListener(new ActionListener() {
@@ -108,7 +110,7 @@ public class SelectgameWin extends JFrame {
 			}
 		});
 
-		JButton numbtn = new JButton("");
+		SoundButton numbtn = new SoundButton(Music.S1);
 		numbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼숫자.png")));
 		numbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -116,7 +118,7 @@ public class SelectgameWin extends JFrame {
 		});
 		numbtn.setBounds(120, 311, 270, 80);
 
-		JButton btnRun_1 = new JButton("");
+		SoundButton btnRun_1 = new SoundButton(Music.S1);
 		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
 		btnRun_1.setBounds(120, 405, 270, 80);
 		contentPane.setLayout(null);
