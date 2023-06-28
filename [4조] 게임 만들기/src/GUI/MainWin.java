@@ -120,6 +120,7 @@ public class MainWin extends JFrame {
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				System.exit(0);
 			}
 		});
