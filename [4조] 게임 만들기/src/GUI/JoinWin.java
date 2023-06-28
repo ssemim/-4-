@@ -1,24 +1,20 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.Login;
-import java.awt.Color;
-import javax.swing.ImageIcon;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -86,7 +82,7 @@ public class JoinWin extends JFrame {
 				if (count == 1) {
 					if (PWField.getText().equals(PWPWField.getText())) {
 						String id = IDField.getText();
-						String password = PWlbl.getText();
+						String password = PWField.getText();
 						String school = SchoolField.getText();
 
 						login.insert(new Student(id, password, school, 0));
