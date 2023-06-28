@@ -90,8 +90,8 @@ public class StoreWin extends JFrame {
 
 		Charpnl.setBounds(601, 217, 150, 200);
 
+		// 캐릭터 뽑기 버튼
 		JButton Charbtn = new JButton("");
-
 		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 		Charbtn.setBounds(38, 167, 250, 250);
 		Charbtn.setBorderPainted(false); // 버튼 테두리 제거

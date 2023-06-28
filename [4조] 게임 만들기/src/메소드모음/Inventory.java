@@ -64,7 +64,7 @@ public class Inventory {
 		}
 
 		for (int i = 0; i < wList2.size(); i++) {
-			wIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + ".png"));
+			wIcons[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + ".gif"));
 		}
 		for (int i = 0; i < wList2.size(); i++) {
 			wIconsBlock[i] = new ImageIcon(invenWin.class.getResource("/이미지/배경" + (i + 1) + "잠금.png"));

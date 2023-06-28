@@ -104,7 +104,7 @@ public class EquipmentItem {
 		pnl.add(clbl, JLayeredPane.PALETTE_LAYER);
 
 		JLabel wlbl = new JLabel();
-		ImageIcon wicon = new ImageIcon(invenWin.class.getResource("/이미지/" + arr[1] + ".png"));
+		ImageIcon wicon = new ImageIcon(invenWin.class.getResource("/이미지/" + arr[1] + ".gif"));
 		wlbl.setIcon(wicon);
 		wlbl.setBounds(0, 0, 150, 200);
 		pnl.add(wlbl, JLayeredPane.DEFAULT_LAYER);
