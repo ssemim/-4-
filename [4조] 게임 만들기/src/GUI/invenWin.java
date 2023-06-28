@@ -24,6 +24,7 @@ public class invenWin extends JFrame {
 	PickItem pickItem;
 	private int cCount;
 	private int wCount;
+	private int[] iarr;
 
 //	/**
 //	 * Launch the application.
@@ -46,6 +47,7 @@ public class invenWin extends JFrame {
 	 */
 	public invenWin(Student s, String[] equipmentName) {
 		inven = new Inventory(s);
+		EquipmentItem e = new EquipmentItem();
 		List<Boolean> cList = inven.ItemAcquisition("캐릭터");
 		List<Boolean> wList = inven.ItemAcquisition("배경");
 
@@ -73,7 +75,7 @@ public class invenWin extends JFrame {
 		setLocationRelativeTo(null);
 
 		JPanel Charpnl = new JPanel();
-		EquipmentItem.equipmentItem(equipmentName, Charpnl);
+		iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(600, 231, 150, 200);
 
 		JButton Backbtn = new JButton();
@@ -166,7 +168,7 @@ public class invenWin extends JFrame {
 		
 		changeCbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EquipmentItem.changeC(Charpnl, cCount, wCount);
+				iarr = e.changeC(Charpnl, cCount, iarr, s);
 				revalidate();
 				repaint();
 			}
@@ -174,7 +176,7 @@ public class invenWin extends JFrame {
 		
 		changeWbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EquipmentItem.changeC(Charpnl, cCount, wCount);
+				iarr = e.changeW(Charpnl, wCount, iarr, s);
 				revalidate();
 				repaint();
 			}
