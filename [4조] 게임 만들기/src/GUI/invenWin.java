@@ -192,7 +192,7 @@ public class invenWin extends JFrame {
       cBtnLeft.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
+            cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock, changeCbtn);
             revalidate();
             repaint();
          }
@@ -200,7 +200,7 @@ public class invenWin extends JFrame {
       cBtnRight.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
+            cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock, changeCbtn);
             revalidate();
             repaint();
 
@@ -209,7 +209,7 @@ public class invenWin extends JFrame {
       wBtnLeft.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
+            wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock, changeWbtn);
             revalidate();
             repaint();
          }
@@ -218,7 +218,7 @@ public class invenWin extends JFrame {
       wBtnRight.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock);
+            wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock, changeWbtn);
             revalidate();
             repaint();
          }
