@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import GUI.invenWin;
 import dbutil.DBUtil;
 import 객체모음.Student;
+import 유틸.Util;
 
 public class EquipmentItem {
 	public int[] itemNos(Student s) {

@@ -1,4 +1,4 @@
-package 메소드모음;
+package 유틸;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

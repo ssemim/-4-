@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import 메소드모음.Login;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class LoginWin extends JFrame {
 	private JPanel contentPane;
@@ -81,7 +83,7 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Loginbtn = new JButton(); // 로그인 버튼
+		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 		Loginbtn.setBounds(158, 137, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
