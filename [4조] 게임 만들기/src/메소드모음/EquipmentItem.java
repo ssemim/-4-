@@ -97,6 +97,8 @@ public class EquipmentItem {
     */
    
    public static void equipmentItem(String[] arr, JPanel pnl) {
+	   System.out.println(arr[0]);
+	   System.out.println(arr[1]);
       pnl.setLayout(null);
       
       JLabel clbl = new JLabel();
@@ -113,38 +115,38 @@ public class EquipmentItem {
       
    }
    
-   public void changeEquipmentItem(Student s, JPanel Charpanel) {
-	   Connection conn = null;
-	      PreparedStatement stmt = null;
-	      ResultSet rs = null;
-	      String[] itemNames = new String[2];
-	      
-	      try {
-	         conn = DBUtil.getConnection();
-	         String sql = "select * from item where no = ? or no = ?";
-	         stmt = conn.prepareStatement(sql);
-	         stmt.setInt(1, Integer.valueOf(arr[0]));
-	         stmt.setInt(2, Integer.valueOf(arr[1]));
-	         rs = stmt.executeQuery();
-	         while (rs.next()) {
-	            String itemName = rs.getString("name");
-	            String type = rs.getString("type");
-	            if (type.equals("캐릭터")) {
-	               itemNames[0] = itemName;
-	            }
-	            else {
-	               itemNames[1] = itemName;
-	            }
-	         }
-	      } catch (SQLException e) {
-	      } finally {
-	         DBUtil.close(rs);
-	         DBUtil.close(stmt);
-	         DBUtil.close(conn);
-	      }
-	   
-	   EquipmentItem e = new EquipmentItem();
-	   String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
-	   EquipmentItem.equipmentItem(equipmentName, Charpanel);
-   }
+//   public void changeEquipmentItem(Student s, JPanel Charpanel) {
+//	   Connection conn = null;
+//	      PreparedStatement stmt = null;
+//	      ResultSet rs = null;
+//	      String[] itemNames = new String[2];
+//	      
+//	      try {
+//	         conn = DBUtil.getConnection();
+//	         String sql = "select * from item where no = ? or no = ?";
+//	         stmt = conn.prepareStatement(sql);
+//	         stmt.setInt(1, Integer.valueOf(arr[0]));
+//	         stmt.setInt(2, Integer.valueOf(arr[1]));
+//	         rs = stmt.executeQuery();
+//	         while (rs.next()) {
+//	            String itemName = rs.getString("name");
+//	            String type = rs.getString("type");
+//	            if (type.equals("캐릭터")) {
+//	               itemNames[0] = itemName;
+//	            }
+//	            else {
+//	               itemNames[1] = itemName;
+//	            }
+//	         }
+//	      } catch (SQLException e) {
+//	      } finally {
+//	         DBUtil.close(rs);
+//	         DBUtil.close(stmt);
+//	         DBUtil.close(conn);
+//	      }
+//	   
+//	   EquipmentItem e = new EquipmentItem();
+//	   String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
+//	   EquipmentItem.equipmentItem(equipmentName, Charpanel);
+//   }
 }
