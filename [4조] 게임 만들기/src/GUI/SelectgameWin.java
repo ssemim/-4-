@@ -1,22 +1,19 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import GUI게임.HangMan;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
 public class SelectgameWin extends JFrame {
 
@@ -100,6 +97,12 @@ public class SelectgameWin extends JFrame {
 		
 		JButton btnRun = new JButton("HANGMAN");
 		btnRun.setBounds(120, 216, 270, 80);
+		btnRun.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new HangMan(s);
+			}
+		});
 		
 		JButton numbtn = new JButton("NUMBER");
 		numbtn.addActionListener(new ActionListener() {
