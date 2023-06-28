@@ -1,5 +1,6 @@
 package 메소드모음;
 
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,6 +94,7 @@ public class EquipmentItem {
 	 */
 
 	public static void equipmentItem(String[] arr, JPanel pnl) {
+		removeAllLabels(pnl);
 		System.out.println(arr[0]);
 		System.out.println(arr[1]);
 		pnl.setLayout(null);
@@ -111,47 +113,11 @@ public class EquipmentItem {
 
 	}
 
-//   public void changeEquipmentItem(Student s, JPanel Charpanel) {
-//	   Connection conn = null;
-//	      PreparedStatement stmt = null;
-//	      ResultSet rs = null;
-//	      String[] itemNames = new String[2];
-//	      
-//	      try {
-//	         conn = DBUtil.getConnection();
-//	         String sql = "select * from item where no = ? or no = ?";
-//	         stmt = conn.prepareStatement(sql);
-//	         stmt.setInt(1, Integer.valueOf(arr[0]));
-//	         stmt.setInt(2, Integer.valueOf(arr[1]));
-//	         rs = stmt.executeQuery();
-//	         while (rs.next()) {
-//	            String itemName = rs.getString("name");
-//	            String type = rs.getString("type");
-//	            if (type.equals("캐릭터")) {
-//	               itemNames[0] = itemName;
-//	            }
-//	            else {
-//	               itemNames[1] = itemName;
-//	            }
-//	         }
-//	      } catch (SQLException e) {
-//	      } finally {
-//	         DBUtil.close(rs);
-//	         DBUtil.close(stmt);
-//	         DBUtil.close(conn);
-//	      }
-//	   
-//	   EquipmentItem e = new EquipmentItem();
-//	   String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
-//	   EquipmentItem.equipmentItem(equipmentName, Charpanel);
-//   }
-
 	public static void insertBasicInven(Student s, Connection conn) throws SQLException {
 		PreparedStatement stmt = null;
 
 		try {
-			String sql = "INSERT INTO `team4`.`inventory` (`studentId`, `itemNo`) " 
-						+ "VALUES (?, '1'), (?, '2');";
+			String sql = "INSERT INTO `team4`.`inventory` (`studentId`, `itemNo`) " + "VALUES (?, '1'), (?, '2');";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, s.getId());
 			stmt.setString(2, s.getId());
@@ -160,19 +126,51 @@ public class EquipmentItem {
 			DBUtil.close(stmt);
 		}
 	}
-	
+
 	public static void insertBasicEqui(Student s, Connection conn) throws SQLException {
 		PreparedStatement stmt = null;
 
 		try {
-			String sql = "INSERT INTO `team4`.`equipment` (`studentId`, `itemNo`) "
-						+ "VALUES (?, '1'), (?, '2');";
+			String sql = "INSERT INTO `team4`.`equipment` (`studentId`, `itemNo`) " + "VALUES (?, '1'), (?, '2');";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, s.getId());
 			stmt.setString(2, s.getId());
 			stmt.executeUpdate();
 		} finally {
 			DBUtil.close(stmt);
+		}
+	}
+
+	public static void changeC(JPanel pnl, int c, int w) {
+		String[] arr = { "캐릭터" + (c + 1), "배경" + (w + 1) };
+		equipmentItem(arr, pnl);
+	}
+
+	private static void removeAllLabels(JPanel panel) {
+		Component[] components = panel.getComponents();
+		for (Component component : components) {
+			if (component instanceof JLabel) {
+				panel.remove(component);
+			}
+		}
+		panel.revalidate();
+		panel.repaint();
+	}
+	
+	public static void updateEqui(Student s, int c, int w) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "UPDATE `team4`.`equipment` SET `itemNo` = '3' WHERE (`no` = '173');";
+			stmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
 		}
 	}
 }

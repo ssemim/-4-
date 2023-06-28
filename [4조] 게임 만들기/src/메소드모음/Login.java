@@ -96,7 +96,7 @@ public class Login {
 		return null;
 	}
 
-	private static boolean validateId(String id) {
+	public static boolean validateId(String id) {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
 		Pattern pattern = Pattern.compile("[A-Za-z0-9]{8,15}");
 		Matcher matcher = pattern.matcher(id);

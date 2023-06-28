@@ -82,13 +82,6 @@ public class invenWin extends JFrame {
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBounds(701, 185, 40, 40);
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
-		Backbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin(s);
-				MW.setVisible(true);
-				dispose();
-			}
-		});
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setBounds(630, 202, 60, 15);
@@ -101,7 +94,6 @@ public class invenWin extends JFrame {
 		JLabel cLbl = new JLabel("");
 		cLbl.setBounds(77, 231, 158, 200);
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
-		cCount = 0;
 		contentPane.add(cLbl);
 
 		JButton cBtnLeft = new JButton("");
@@ -117,6 +109,76 @@ public class invenWin extends JFrame {
 		cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
 		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		cBtnRight.setBounds(247, 307, 30, 50);
+		contentPane.add(cBtnRight);
+
+		JLabel wLbl = new JLabel("");
+		wLbl.setBounds(360, 231, 158, 200);
+		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
+		contentPane.add(wLbl);
+
+		JButton wBtnLeft = new JButton("");
+		wBtnLeft.setBackground(Color.BLACK);
+		wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		wBtnLeft.setBounds(318, 307, 30, 50);
+		wBtnLeft.setEnabled(false);
+		contentPane.add(wBtnLeft);
+		
+		JButton wBtnRight = new JButton("");
+		wBtnRight.setBackground(Color.BLACK);
+		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		wBtnRight.setBounds(530, 307, 30, 50);
+		contentPane.add(wBtnRight);
+		
+		JButton changeCbtn = new JButton("변경");
+		changeCbtn.setBounds(108, 470, 97, 23);
+		contentPane.add(changeCbtn);
+		
+		JButton changeWbtn = new JButton("변경");
+		changeWbtn.setBounds(383, 470, 97, 23);
+		contentPane.add(changeWbtn);
+		
+		JButton cutbtn = new JButton(""); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setBounds(758, 10, 30, 30);
+		contentPane.add(cutbtn);
+		
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
+		
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		cCount = 0;
+		wCount = 0;
+		
+		changeCbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EquipmentItem.changeC(Charpnl, cCount, wCount);
+				revalidate();
+				repaint();
+			}
+		});
+		
+		changeWbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EquipmentItem.changeC(Charpnl, cCount, wCount);
+				revalidate();
+				repaint();
+			}
+		});
 		
 		cBtnLeft.addActionListener(new ActionListener() {
 			@Override
@@ -132,29 +194,9 @@ public class invenWin extends JFrame {
 				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock);
 				revalidate();
 				repaint();
-
+				
 			}
 		});
-		contentPane.add(cBtnRight);
-
-		JLabel wLbl = new JLabel("");
-		wLbl.setBounds(360, 231, 158, 200);
-		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
-		contentPane.add(wLbl);
-
-		wCount = 0;
-
-		JButton wBtnLeft = new JButton("");
-		wBtnLeft.setBackground(Color.BLACK);
-		wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
-		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
-		wBtnLeft.setBounds(318, 307, 30, 50);
-		JButton wBtnRight = new JButton("");
-		wBtnRight.setBackground(Color.BLACK);
-		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
-		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
-		wBtnRight.setBounds(530, 307, 30, 50);
-		wBtnLeft.setEnabled(false);
 		wBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -163,8 +205,7 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		contentPane.add(wBtnLeft);
-
+		
 		wBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -173,20 +214,6 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		contentPane.add(wBtnRight);
-		
-		JButton cutbtn = new JButton(""); // 종료버튼
-		cutbtn.setBackground(Color.BLACK);
-		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
-		cutbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		cutbtn.setBounds(758, 10, 30, 30);
-		contentPane.add(cutbtn);
 
 	}
 }
