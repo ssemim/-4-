@@ -72,7 +72,7 @@ public class LoginWin extends JFrame {
 		PWlbl.setBounds(44, 89, 22, 15);
 		PWlbl.setForeground(Color.WHITE);
 
-		JButton Joinbtn = new JButton(); // 가입하기 버튼
+		SoundButton Joinbtn = new SoundButton(Music.S1); // 가입하기 버튼
 		Joinbtn.setBounds(59, 137, 80, 40);
 		Joinbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/가입하기버튼.png")));
 		// 가입하기버튼을 누르면 JoinWin으로 이동하는 액션리스너

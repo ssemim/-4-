@@ -17,6 +17,8 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class invenWin extends JFrame {
 
@@ -100,7 +102,7 @@ public class invenWin extends JFrame {
       cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
       contentPane.add(cLbl);
 
-      JButton cBtnLeft = new JButton("");
+      SoundButton cBtnLeft = new SoundButton(Music.S1);
       cBtnLeft.setBackground(Color.BLACK);
       cBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
       cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
@@ -108,7 +110,7 @@ public class invenWin extends JFrame {
       cBtnLeft.setBounds(35, 307, 30, 50);
       contentPane.add(cBtnLeft);
 
-      JButton cBtnRight = new JButton("");
+      SoundButton cBtnRight = new SoundButton(Music.S1);
       cBtnRight.setBackground(Color.BLACK);
       cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
       cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
@@ -120,7 +122,7 @@ public class invenWin extends JFrame {
       wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
       contentPane.add(wLbl);
 
-      JButton wBtnLeft = new JButton("");
+      SoundButton wBtnLeft = new SoundButton(Music.S1);
       wBtnLeft.setBackground(Color.BLACK);
       wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
       wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
@@ -128,18 +130,18 @@ public class invenWin extends JFrame {
       wBtnLeft.setEnabled(false);
       contentPane.add(wBtnLeft);
 
-      JButton wBtnRight = new JButton("");
+      SoundButton wBtnRight = new SoundButton(Music.S1);
       wBtnRight.setBackground(Color.BLACK);
       wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
       wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
       wBtnRight.setBounds(530, 307, 30, 50);
       contentPane.add(wBtnRight);
 
-      JButton changeCbtn = new JButton("변경");
+      SoundButton changeCbtn = new SoundButton(Music.S1);
       changeCbtn.setBounds(108, 470, 97, 23);
       contentPane.add(changeCbtn);
 
-      JButton changeWbtn = new JButton("변경");
+      SoundButton changeWbtn = new SoundButton(Music.S1);
       changeWbtn.setBounds(383, 470, 97, 23);
       contentPane.add(changeWbtn);
 
