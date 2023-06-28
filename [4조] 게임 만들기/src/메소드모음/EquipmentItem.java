@@ -93,10 +93,8 @@ public class EquipmentItem {
 	 * @return panel
 	 */
 
-	public static void equipmentItem(String[] arr, JPanel pnl) {
+	public static int[] equipmentItem(String[] arr, JPanel pnl) {
 		removeAllLabels(pnl);
-		System.out.println(arr[0]);
-		System.out.println(arr[1]);
 		pnl.setLayout(null);
 
 		JLabel clbl = new JLabel();
@@ -110,6 +108,10 @@ public class EquipmentItem {
 		wlbl.setIcon(wicon);
 		wlbl.setBounds(0, 0, 150, 200);
 		pnl.add(wlbl, JLayeredPane.DEFAULT_LAYER);
+		int i1 = Integer.valueOf(Util.extractNumbers(arr[0]));
+		int i2 = Integer.valueOf(Util.extractNumbers(arr[1]));
+		int[] iarr = { i1, i2 };
+		return iarr;
 
 	}
 
@@ -141,11 +143,6 @@ public class EquipmentItem {
 		}
 	}
 
-	public static void changeC(JPanel pnl, int c, int w) {
-		String[] arr = { "캐릭터" + (c + 1), "배경" + (w + 1) };
-		equipmentItem(arr, pnl);
-	}
-
 	private static void removeAllLabels(JPanel panel) {
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
@@ -156,21 +153,117 @@ public class EquipmentItem {
 		panel.revalidate();
 		panel.repaint();
 	}
-	
-	public static void updateEqui(Student s, int c, int w) {
-		Connection conn = null;
+
+	// 사진이름 갖고 dbno가져옴
+	private int selectCNo(Student s, int cCount, Connection conn) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		try {
-			conn = DBUtil.getConnection();
-			String sql = "UPDATE `team4`.`equipment` SET `itemNo` = '3' WHERE (`no` = '173');";
+			String sql = "select no from item where name = ?";
 			stmt = conn.prepareStatement(sql);
-		} catch (SQLException e) {
+			stmt.setString(1, "캐릭터" + cCount);
+			System.out.println("시카운트" + cCount);
+			rs = stmt.executeQuery();
+			int no = 0;
+			while (rs.next()) {
+				no = rs.getInt("no");
+			}
+			return no;
 		} finally {
 			DBUtil.close(rs);
 			DBUtil.close(stmt);
-			DBUtil.close(conn);
 		}
 	}
+
+	private void updateEquiC(Student s, int cp, int cn, Connection conn) throws SQLException {
+		PreparedStatement stmt = null;
+
+		try {
+			String sql = "UPDATE `team4`.`equipment` SET `itemNo` = ? WHERE (studentId = ?) and itemNo = ?;";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cn);
+			stmt.setString(2, s.getId());
+			stmt.setInt(3, cp);
+			stmt.executeUpdate();
+		} finally {
+			DBUtil.close(stmt);
+		}
+	}
+
+	public int[] changeC(JPanel pnl, int cCount, int[] iarr, Student s) {
+
+		Connection conn = null;
+		try {
+			conn = DBUtil.getConnection();
+			int cn = selectCNo(s, cCount + 1, conn);
+			int cp = selectCNo(s, iarr[0], conn);
+			updateEquiC(s, cp, cn, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn);
+		}
+
+		String[] arr = { "캐릭터" + (cCount + 1), "배경" + (iarr[1]) };
+		return equipmentItem(arr, pnl);
+
+	}
+
+	// 사진이름 갖고 dbno가져옴
+	private int selectWNo(Student s, int cCount, Connection conn) throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select no from item where name = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "배경" + cCount);
+			rs = stmt.executeQuery();
+			int no = 0;
+			while (rs.next()) {
+				no = rs.getInt("no");
+			}
+			System.out.println("w카운트" + cCount);
+			return no;
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(stmt);
+		}
+	}
+
+	private void updateEquiW(Student s, int cp, int cn, Connection conn) throws SQLException {
+		PreparedStatement stmt = null;
+
+		try {
+			String sql = "UPDATE `team4`.`equipment` SET `itemNo` = ? WHERE (studentId = ?) and itemNo = ?;";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cn);
+			stmt.setString(2, s.getId());
+			stmt.setInt(3, cp);
+			stmt.executeUpdate();
+		} finally {
+			DBUtil.close(stmt);
+		}
+	}
+
+	public int[] changeW(JPanel pnl, int cCount, int[] iarr, Student s) {
+
+		Connection conn = null;
+		try {
+			conn = DBUtil.getConnection();
+			int cn = selectWNo(s, cCount + 1, conn);
+			int cp = selectWNo(s, iarr[1], conn);
+			updateEquiW(s, cp, cn, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn);
+		}
+
+		String[] arr = { "캐릭터" + (iarr[0]), "배경" + (cCount + 1) };
+		return equipmentItem(arr, pnl);
+
+	}
+
 }

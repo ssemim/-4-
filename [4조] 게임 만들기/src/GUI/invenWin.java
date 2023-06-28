@@ -16,15 +16,15 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
-import java.awt.Font;
 
 public class invenWin extends JFrame {
 
-   private JPanel contentPane;
-   Inventory inven;
-   PickItem pickItem;
-   private int cCount;
-   private int wCount;
+	private JPanel contentPane;
+	Inventory inven;
+	PickItem pickItem;
+	private int cCount;
+	private int wCount;
+	private int[] iarr;
 
 //   /**
 //    * Launch the application.
@@ -42,13 +42,12 @@ public class invenWin extends JFrame {
 //      });
 //   }
 
-   /**
-    * Create the frame.
-    */
-   public invenWin(Student s, String[] equipmentName) {
-      inven = new Inventory(s);
-      List<Boolean> cList = inven.ItemAcquisition("캐릭터");
-      List<Boolean> wList = inven.ItemAcquisition("배경");
+
+	public invenWin(Student s, String[] equipmentName) {
+		inven = new Inventory(s);
+		EquipmentItem e = new EquipmentItem();
+		List<Boolean> cList = inven.ItemAcquisition("캐릭터");
+		List<Boolean> wList = inven.ItemAcquisition("배경");
 
       List<Integer> cList2 = new PickItem(s, "캐릭터").random();
       List<Integer> wList2 = new PickItem(s, "배경").random();
@@ -74,7 +73,7 @@ public class invenWin extends JFrame {
       setLocationRelativeTo(null);
 
       JPanel Charpnl = new JPanel();
-      EquipmentItem.equipmentItem(equipmentName, Charpnl);
+      iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
       Charpnl.setBounds(600, 231, 150, 200);
 
       JButton Backbtn = new JButton();
@@ -175,7 +174,7 @@ public class invenWin extends JFrame {
 
       changeCbtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
-            EquipmentItem.changeC(Charpnl, cCount, wCount);
+        	 iarr = e.changeC(Charpnl, cCount, iarr, s);
             revalidate();
             repaint();
          }
@@ -183,7 +182,7 @@ public class invenWin extends JFrame {
 
       changeWbtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
-            EquipmentItem.changeC(Charpnl, cCount, wCount);
+        	 iarr = e.changeW(Charpnl, wCount, iarr, s);
             revalidate();
             repaint();
          }
