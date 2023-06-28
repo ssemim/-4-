@@ -62,6 +62,7 @@ public class DinogameWin extends JFrame {
 
 		JLabel Coinlbl = new JLabel("1.000"); // 포인트 확인 라벨
 		Coinlbl.setLocation(681, 235);
+		Coinlbl.setText("" + s.getPoint());
 
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		// 뒤로가기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너

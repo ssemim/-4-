@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import 메소드모음.Login;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class LoginWin extends JFrame {
 	private JPanel contentPane;
@@ -81,7 +83,7 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Loginbtn = new JButton(); // 로그인 버튼
+		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 		Loginbtn.setBounds(158, 137, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
@@ -99,6 +101,18 @@ public class LoginWin extends JFrame {
 			}
 		});
 
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(258, 10, 30, 30);
+
 		Container c = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
@@ -109,6 +123,7 @@ public class LoginWin extends JFrame {
 		contentPane.add(PWlbl);
 		contentPane.add(IDField);
 		contentPane.add(PWField);
+		contentPane.add(cutbtn);
 
 		setVisible(true); // 창이 보이게
 	}

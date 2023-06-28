@@ -11,7 +11,7 @@ import dbutil.DBUtil;
 public class UserImageOutput {
 
 	// 유저의 아이디를 파라미터로 받아 해당하는 유저가 가진 포인트를 반환하는 메소드
-	public void printPoint(String id) {
+	public int printPoint(String id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -23,9 +23,9 @@ public class UserImageOutput {
 
 			rs = stmt.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				int point = rs.getInt("point");
-				System.out.println(point);
+				return point;
 			}
 
 		} catch (SQLException e) {
@@ -35,5 +35,6 @@ public class UserImageOutput {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
+		return -1;
 	}
 }

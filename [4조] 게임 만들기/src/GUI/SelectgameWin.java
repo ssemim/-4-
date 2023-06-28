@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import GUI게임.HangMan;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
+import java.awt.Font;
 
 public class SelectgameWin extends JFrame {
 
@@ -53,17 +54,18 @@ public class SelectgameWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
-		JButton Dinobtn = new JButton("RUN");
-		Dinobtn.setBounds(120, 122, 270, 80);
+		JButton runbtn = new JButton("");
+		runbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼달리기.png")));
+		runbtn.setBounds(120, 122, 270, 80);
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
-		Dinobtn.addActionListener(new ActionListener() {
+		runbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DinogameWin DW = new DinogameWin(s, equipmentName);
 				DW.setVisible(true);
 				dispose();
 			}
 		});
-		
+
 		JButton cutbtn = new JButton(""); // 종료하기
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -94,39 +96,50 @@ public class SelectgameWin extends JFrame {
 				dispose();
 			}
 		});
-		
-		JButton btnRun = new JButton("HANGMAN");
+
+		JButton btnRun = new JButton("");
+		btnRun.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼행맨.png")));
 		btnRun.setBounds(120, 216, 270, 80);
 		btnRun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new HangMan(s);
+				setVisible(false);
 			}
 		});
-		
-		JButton numbtn = new JButton("NUMBER");
+
+		JButton numbtn = new JButton("");
+		numbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼숫자.png")));
 		numbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		numbtn.setBounds(120, 311, 270, 80);
-		
-		JButton btnRun_1 = new JButton("FALL");
+
+		JButton btnRun_1 = new JButton("");
+		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
 		btnRun_1.setBounds(120, 405, 270, 80);
 		contentPane.setLayout(null);
 		contentPane.add(btnRun);
 		contentPane.add(btnRun_1);
-		contentPane.add(Dinobtn);
+		contentPane.add(runbtn);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 		contentPane.add(cutbtn);
 		contentPane.add(numbtn);
-		
+
 		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(533, 140, 60, 15);
+		Coinlbl.setBounds(536, 140, 86, 20);
 		contentPane.add(Coinlbl);
+		Coinlbl.setText("" + s.getPoint());
 		
+		JLabel CoinLbl = new JLabel("");
+		CoinLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
+		CoinLbl.setBounds(511, 140, 20, 20);
+		contentPane.add(CoinLbl);
+
 	}
 
 }
