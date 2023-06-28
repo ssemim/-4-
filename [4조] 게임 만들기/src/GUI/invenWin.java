@@ -63,7 +63,7 @@ public class invenWin extends JFrame {
 		setBounds(100, 100, 800, 600);
 		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.BLACK);
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -99,7 +99,7 @@ public class invenWin extends JFrame {
 		contentPane.add(Charpnl);
 
 		JLabel cLbl = new JLabel("");
-		cLbl.setBounds(77, 231, 158, 200);
+		cLbl.setBounds(79, 231, 150, 200);
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
 		cCount = 0;
 		contentPane.add(cLbl);
@@ -138,7 +138,7 @@ public class invenWin extends JFrame {
 		contentPane.add(cBtnRight);
 
 		JLabel wLbl = new JLabel("");
-		wLbl.setBounds(360, 231, 158, 200);
+		wLbl.setBounds(363, 230, 150, 200);
 		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
 		contentPane.add(wLbl);
 
