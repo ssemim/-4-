@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -44,6 +46,7 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
+		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +64,7 @@ public class MainWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
-		SoundButton Gamebtn = new SoundButton(Music.S1); // 인벤 버튼
+		SoundButton Gamebtn = new SoundButton(Music.S1); // 게임 버튼
 		Gamebtn.setBounds(129, 111, 240, 80);
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
 		Gamebtn.addActionListener(new ActionListener() {
@@ -142,7 +145,7 @@ public class MainWin extends JFrame {
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		lblNewLabel_1.setBounds(502, 181, 20, 20);
