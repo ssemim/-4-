@@ -16,6 +16,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.Inventory;
 import 메소드모음.PickItem;
+import java.awt.Font;
 
 public class invenWin extends JFrame {
 
@@ -80,12 +81,13 @@ public class invenWin extends JFrame {
       Backbtn.setBorderPainted(false); // 버튼 테두리 제거
       Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
       Backbtn.setBackground(Color.BLACK);
-      Backbtn.setBounds(701, 185, 40, 40);
+      Backbtn.setBounds(710, 182, 40, 40);
       // 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
       JLabel Coinlbl = new JLabel("1.000");
+      Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
       Coinlbl.setForeground(Color.WHITE);
-      Coinlbl.setBounds(630, 202, 60, 15);
+      Coinlbl.setBounds(630, 202, 60, 20);
       contentPane.setLayout(null);
       contentPane.setLayout(null);
       contentPane.add(Coinlbl);
@@ -115,7 +117,7 @@ public class invenWin extends JFrame {
 
       JLabel wLbl = new JLabel("");
       wLbl.setBounds(360, 231, 158, 200);
-      wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.png")));
+      wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
       contentPane.add(wLbl);
 
       JButton wBtnLeft = new JButton("");
@@ -148,9 +150,10 @@ public class invenWin extends JFrame {
       cutbtn.setBounds(758, 10, 30, 30);
       contentPane.add(cutbtn);
       
-      JLabel itemBackLbl = new JLabel("New label");
-      itemBackLbl.setBounds(8, 132, 780, 410);
-      contentPane.add(itemBackLbl);
+      JLabel CoinLbl = new JLabel("");
+      CoinLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/코인이미지.png")));
+      CoinLbl.setBounds(600, 202, 20, 20);
+      contentPane.add(CoinLbl);
 
       Backbtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
