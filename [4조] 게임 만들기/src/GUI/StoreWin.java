@@ -139,7 +139,7 @@ public class StoreWin extends JFrame {
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈2.gif")));
 						countBack++;
 					} else if (countBack == 1) {
-						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
+						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".gif")));
 						countBack++;
 					} else if (countBack == 2) {
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
