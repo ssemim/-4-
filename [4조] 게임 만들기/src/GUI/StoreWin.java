@@ -63,7 +63,7 @@ public class StoreWin extends JFrame {
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null);
 		setUndecorated(true); // 창 프레임 없애기
-		
+
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -83,14 +83,15 @@ public class StoreWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setForeground(Color.WHITE);
 		Coinlbl.setBounds(640, 184, 60, 15);
+		Coinlbl.setText("" + s.getPoint());
 
 		JPanel Charpnl = new JPanel();
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		
+
 		Charpnl.setBounds(601, 217, 150, 200);
 
 		JButton Charbtn = new JButton("");
-		
+
 		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 		Charbtn.setBounds(38, 167, 250, 250);
 		Charbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -103,6 +104,7 @@ public class StoreWin extends JFrame {
 						PickItem pick = new PickItem(s, "캐릭터");
 						item = ItemLook("캐릭터", pick.pickItem());
 						s.setPoint(point - 1000);
+						Coinlbl.setText("" + s.getPoint());
 						pointDown(s);
 						Charbtn.setText("");
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
@@ -122,7 +124,6 @@ public class StoreWin extends JFrame {
 		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 		BackWinbtn.setBounds(316, 167, 250, 250);
 		BackWinbtn.setBorderPainted(false); // 버튼 테두리 제거
-//		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -132,22 +133,22 @@ public class StoreWin extends JFrame {
 						PickItem pick = new PickItem(s, "배경");
 						item = ItemLook("배경", pick.pickItem());
 						s.setPoint(a - 1000);
+						Coinlbl.setText("" + s.getPoint());
 						pointDown(s);
 						BackWinbtn.setText("");
-						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
+						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈2.gif")));
 						countBack++;
 					} else if (countBack == 1) {
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".png")));
 						countBack++;
 					} else if (countBack == 2) {
-//						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뽑기 기본이미지.gif")));
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 						countBack = 0;
 					}
 				}
 			}
 		});
-		
+
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Charbtn);
@@ -155,7 +156,7 @@ public class StoreWin extends JFrame {
 		contentPane.add(Coinlbl);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
-		
+
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거

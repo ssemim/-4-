@@ -129,11 +129,11 @@ public class PlayFrame extends JFrame {
 		// GUI 셋팅 ============================\ super("Save the Hang Man");
 		start();
 		// 프레임 셋팅
-		setBounds(0, 0, 675, 650);
+		setBounds(0, 0, 567, 487);
 		setLocationRelativeTo(null); // 가운데 정렬
 		setResizable(false); // 창 크기조절 못하도록
 		setBackground(new Color(0, 0, 204));
-		setBounds(0, 0, 780, 650);
+		setBounds(0, 0, 567, 490);
 
 		getContentPane().setLayout(null);
 

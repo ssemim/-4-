@@ -63,7 +63,7 @@ public class SelectgameWin extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		JButton cutbtn = new JButton(""); // 종료하기
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -94,23 +94,24 @@ public class SelectgameWin extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		JButton btnRun = new JButton("HANGMAN");
 		btnRun.setBounds(120, 216, 270, 80);
 		btnRun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new HangMan(s);
+				setVisible(false);
 			}
 		});
-		
+
 		JButton numbtn = new JButton("NUMBER");
 		numbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		numbtn.setBounds(120, 311, 270, 80);
-		
+
 		JButton btnRun_1 = new JButton("FALL");
 		btnRun_1.setBounds(120, 405, 270, 80);
 		contentPane.setLayout(null);
@@ -121,12 +122,13 @@ public class SelectgameWin extends JFrame {
 		contentPane.add(Charpnl);
 		contentPane.add(cutbtn);
 		contentPane.add(numbtn);
-		
+
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setForeground(Color.WHITE);
 		Coinlbl.setBounds(533, 140, 60, 15);
 		contentPane.add(Coinlbl);
-		
+		Coinlbl.setText("" + s.getPoint());
+
 	}
 
 }

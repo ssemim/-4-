@@ -99,6 +99,18 @@ public class LoginWin extends JFrame {
 			}
 		});
 
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(258, 10, 30, 30);
+
 		Container c = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
@@ -109,6 +121,7 @@ public class LoginWin extends JFrame {
 		contentPane.add(PWlbl);
 		contentPane.add(IDField);
 		contentPane.add(PWField);
+		contentPane.add(cutbtn);
 
 		setVisible(true); // 창이 보이게
 	}

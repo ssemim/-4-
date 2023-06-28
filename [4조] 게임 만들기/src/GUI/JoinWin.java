@@ -89,45 +89,59 @@ public class JoinWin extends JFrame {
 		Joinbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (count == 1) {
+					IDlbl.setForeground(Color.WHITE);
 					if (PWField.getText().equals(PWPWField.getText())) {
+						PWlbl.setForeground(Color.WHITE);
+						PWPWlbl.setForeground(Color.WHITE);
+
 						lblNewLabel.setText(" ");
 
 						String id = IDField.getText();
 						String password = PWField.getText();
 						String school = SchoolField.getText();
 
-						int result = login.insert(new Student(id, password, school, 0));
-						if (result == 1) {
-							lblNewLabel.setText("회원가입이 완료되었습니다.");
-							LoginWin LW = new LoginWin();
-							LW.setVisible(true);
-							dispose();
-						} else if (result == -1) {
-							lblNewLabel.setText("회원가입이 실패했습니다.");
-						} else if (result == -2) {
-							lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(8 ~ 20자)</html>");
-							IDlbl.setForeground(Color.RED);
-							IDlbl.setBackground(Color.RED);
+						if (!(school.equals(""))) {
+							Schoollbl.setForeground(Color.WHITE);
+
+							int result = login.insert(new Student(id, password, school, 0));
+							if (result == 1) {
+								lblNewLabel.setText("회원가입이 완료되었습니다.");
+
+								LoginWin LW = new LoginWin();
+								LW.setVisible(true);
+								dispose();
+							}
+							if (result == -1) {
+								lblNewLabel.setText("회원가입이 실패했습니다.");
+							}
+							if (result == -2) {
+								lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(8 ~ 20자)</html>");
+								IDlbl.setForeground(Color.RED);
+							} else {
+								IDlbl.setForeground(Color.WHITE);
+							}
+							if (result == -3) {
+								lblNewLabel.setText("<html>비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)</html>");
+								PWlbl.setForeground(Color.RED);
+								PWPWlbl.setForeground(Color.RED);
+							} else {
+								PWlbl.setForeground(Color.WHITE);
+								PWPWlbl.setForeground(Color.WHITE);
+							}
+
 						} else {
-							lblNewLabel.setText("<html>비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)</html>");
-							IDlbl.setForeground(Color.BLUE);
-							IDlbl.setBackground(Color.BLUE);
-							PWlbl.setForeground(Color.RED);
-							PWlbl.setBackground(Color.RED);
-							PWPWlbl.setForeground(Color.RED);
-							PWPWlbl.setBackground(Color.RED);
+							lblNewLabel.setText("소속된 학교를 입력해주세요");
+							Schoollbl.setForeground(Color.RED);
 						}
+
 					} else {
 						lblNewLabel.setText("비밀번호가 일치하지 않습니다.");
 						PWlbl.setForeground(Color.RED);
-						PWlbl.setBackground(Color.RED);
 						PWPWlbl.setForeground(Color.RED);
-						PWPWlbl.setBackground(Color.RED);
 					}
 				} else {
 					lblNewLabel.setText("중복확인을 해주세요");
 					IDlbl.setForeground(Color.RED);
-					IDlbl.setBackground(Color.RED);
 				}
 			}
 		});
@@ -142,12 +156,14 @@ public class JoinWin extends JFrame {
 					count = 0;
 					lblNewLabel.setText("중복된 아이디가 있습니다.");
 					IDlbl.setForeground(Color.RED);
-					IDlbl.setBackground(Color.RED);
 				} else {
-					count = 1;
-					lblNewLabel.setText("사용 가능한 아이디입니다.");
-					IDlbl.setForeground(Color.BLUE);
-					IDlbl.setBackground(Color.BLUE);
+					if (!(IDField.getText().equals(""))) {
+						count = 1;
+						lblNewLabel.setText("사용 가능한 아이디입니다.");
+						IDlbl.setForeground(Color.WHITE);
+					} else {
+						lblNewLabel.setText("사용 불가능한 아이디입니다.");
+					}
 				}
 			}
 		});
@@ -165,7 +181,7 @@ public class JoinWin extends JFrame {
 		PWPWField.setColumns(10);
 		PWField.setEchoChar('●');
 
-		SchoolField = new JTextField(); // 학교 입력
+		SchoolField = new JTextField(""); // 학교 입력
 		SchoolField.setBounds(83, 304, 165, 33);
 		SchoolField.setColumns(10);
 		PWPWField.setEchoChar('●');
