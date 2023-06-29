@@ -77,11 +77,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jp1.setLayout(gl1);
 
 		for (int i = 0; i < 12; ++i) {
-
 			jbt[i] = new JButton();
-
+			jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/tree.png")));
 			jp1.add(jbt[i]);
-
 		}
 
 		off_button();
@@ -99,7 +97,6 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jp21.add(start);
 
 		jp21.add(end);
-
 	}
 
 	public void start() {
@@ -113,9 +110,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		for (int i = 0; i < 12; ++i) {
 
 			jbt[i].addActionListener(this);
-
 		}
-
 	} // end
 
 	public void actionPerformed(ActionEvent e) {
@@ -137,21 +132,15 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			random(0);
 
 		} else if (e.getSource() == end) {
-
 			System.exit(0);
-
 		}
 
 		for (int i = 0; i < 12; ++i) {
-
 			if (e.getSource() == jbt[i]) {
-
 				random(i);
-
+				jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/tree.png")));
 			}
-
 		}
-
 	} // end
 
 	public void off_button() {// 종료버튼
@@ -219,7 +208,5 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/dudu.png")));
 
 		jlb.setText("점수 : " + count * 30);
-
 	}
-
 } // end
