@@ -296,6 +296,7 @@ public class HangMan extends JFrame {
 							if (userAnswerList.equals(computerAnswerList)) {
 								System.out.println("s");
 								start();
+								cnt++;
 								countField.setText(Integer.toString(cnt));
 								missedField.setText(userMissedList.toString());
 								answeredField.setText(userAnswerList.toString());
@@ -308,7 +309,7 @@ public class HangMan extends JFrame {
 						}
 					}
 				} else {
-					lblNewLabel.setText("목숨을 다하셨습니다.");
+					lblNewLabel.setText("목숨을 다하셨습니다. 획득 코인: " + returnPoint());
 					lblNewLabel.setVisible(true);
 				}
 			}
@@ -328,7 +329,7 @@ public class HangMan extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 14));
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(327, 220, 208, 28);
+		lblNewLabel.setBounds(306, 220, 244, 28);
 		inputedPanel.add(lblNewLabel);
 		lblNewLabel.setVisible(false);
 		setVisible(true);

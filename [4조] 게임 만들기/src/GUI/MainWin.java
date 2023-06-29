@@ -131,12 +131,12 @@ public class MainWin extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 18));
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(531, 181, 99, 20);
-		lblNewLabel.setText("" + s.getPoint());
+		JLabel reCoin = new JLabel("");
+		reCoin.setFont(new Font("굴림", Font.BOLD, 18));
+		reCoin.setForeground(Color.WHITE);
+		reCoin.setHorizontalAlignment(SwingConstants.CENTER);
+		reCoin.setBounds(531, 181, 99, 20);
+		reCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
@@ -148,12 +148,12 @@ public class MainWin extends JFrame {
 		contentPane.add(invenbtn);
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
-		contentPane.add(lblNewLabel);
+		contentPane.add(reCoin);
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
-		lblNewLabel_1.setBounds(502, 181, 20, 20);
-		contentPane.add(lblNewLabel_1);
+		JLabel CoinImLbl = new JLabel("");
+		CoinImLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImLbl.setBounds(502, 181, 20, 20);
+		contentPane.add(CoinImLbl);
 
 	}
 }

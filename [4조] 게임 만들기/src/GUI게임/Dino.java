@@ -19,6 +19,7 @@ import GUI.MainWin;
 import GUI.SelectgameWin;
 import sun.nio.cs.ext.MacArabic;
 import 객체모음.Student;
+import 메소드모음.InsertPoint;
 
 public class Dino extends JFrame implements ActionListener, KeyListener {
 	private static final int WIDTH = 800;
@@ -31,7 +32,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 	private static final int CACTUS_START = WIDTH;
 	private static final int CACTUS_END = -CACTUS_WIDTH;
 	private static final int JUMP_HEIGHT = 100;
-	private static int GRAVITY = 6;
+	private static int GRAVITY = 5;
 	private static final int SCORE_INCREMENT = 100;
 
 	private JLabel dinoLabel;
@@ -149,8 +150,11 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 		JOptionPane.showMessageDialog(this, "Game Over\nScore: " + score, "Game Over", JOptionPane.PLAIN_MESSAGE);
 		int point = s.getPoint();
 		s.setPoint(point + score);
+		InsertPoint.test(s, point + score);
+		score = 0;
 		MainWin ma = new MainWin(s);
-		setVisible(false);
+		ma.setVisible(true);
+		dispose();
 	}
 
 	@Override
