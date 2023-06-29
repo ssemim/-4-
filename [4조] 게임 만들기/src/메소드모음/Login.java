@@ -22,12 +22,10 @@ public class Login {
 
 		try {
 			if (!validateId(student.getId())) {
-				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.(2 ~ 4자)");
 				return -2;
 			}
 
 			if (!validatePassword(student.getPassword())) {
-				System.out.println("비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)");
 				return -3;
 			}
 
@@ -43,12 +41,10 @@ public class Login {
 
 			// 회원 가입 성공 여부 확인
 			if (rowsAffected > 0) {
-				System.out.println("회원 가입이 완료되었습니다.");
 				EquipmentItem.insertBasicInven(student, conn);
 				EquipmentItem.insertBasicEqui(student, conn);
 				return 1;
 			} else {
-				System.out.println("회원 가입에 실패했습니다.");
 				return -1;
 			}
 
@@ -100,7 +96,6 @@ public class Login {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
 		Pattern pattern = Pattern.compile("[A-Za-z0-9]{2,4}");
 		Matcher matcher = pattern.matcher(id);
-		System.out.println("ID : " + id + "  " + matcher.matches());
 		return matcher.matches();
 	}
 
@@ -109,7 +104,6 @@ public class Login {
 		// 영소문자, 대문자, 숫자, 특수문자가 최소 1개 이상 포함되어야 함
 		Pattern pattern = Pattern.compile("[a-zA-Z0-9]*[!@#$%^&*]+{8,20}");
 		Matcher matcher = pattern.matcher(password);
-		System.out.println("PASSWORD : " + password + matcher.matches());
 		return matcher.matches();
 	}
 
@@ -133,10 +127,8 @@ public class Login {
 
 			// 결과 확인
 			if (rs.next()) {
-				System.out.println("중복된 아이디가 있습니다.");
 				return true;
 			} else {
-				System.out.println("사용 가능한 아이디입니다.");
 				return false;
 			}
 		} catch (SQLException e) {

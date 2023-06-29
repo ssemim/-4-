@@ -17,7 +17,6 @@ import javax.swing.border.EmptyBorder;
 import 객체모음.Student;
 import 메소드모음.Login;
 import 유틸.Util;
-import java.awt.Font;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -117,7 +116,7 @@ public class JoinWin extends JFrame {
 								lblNewLabel.setText("회원가입이 실패했습니다.");
 							}
 							if (result == -2) {
-								lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(8 ~ 20자)</html>");
+								lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(2 ~ 4자)</html>");
 								IDlbl.setForeground(Color.RED);
 							} else {
 								IDlbl.setForeground(Color.WHITE);
