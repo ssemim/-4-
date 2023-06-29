@@ -45,10 +45,6 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 
-		SoundButton.test();
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
-
-
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
