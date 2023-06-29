@@ -58,7 +58,7 @@ public class invenWin extends JFrame {
 		ImageIcon[] cIcons = new ImageIcon[cList2.size()];
 		ImageIcon[] cIconsBlock = new ImageIcon[cList2.size()];
 		ImageIcon[] wIcons = new ImageIcon[wList2.size()];
-		ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
+		ImageIcon[] wIconsBlock = new ImageIcon[wList2.size()];
 
 		inven.imageSet(cList, cList2, wList, wList2, cIcons, cIconsBlock, wIcons, wIconsBlock);
 
