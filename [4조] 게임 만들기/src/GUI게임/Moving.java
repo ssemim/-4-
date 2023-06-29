@@ -1,4 +1,5 @@
 package GUI게임;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
@@ -9,15 +10,22 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-public class aa extends JFrame implements Runnable, KeyListener {
+import 객체모음.Student;
+import 메소드모음.InsertPoint;
+
+public class Moving extends JFrame implements Runnable, KeyListener {
 	private BufferedImage bi = null;
 	private ArrayList msList = null;
 	private ArrayList enList = null;
 	private boolean left = false, right = false, up = false, down = false, fire = false;
 	private boolean start = false, end = false;
 	private int w = 300, h = 500, x = 130, y = 450, xw = 20, xh = 20;
+	private double point = 0;
+	private int count = 0;
+	private Student s;
 
-	public aa() {
+	public Moving(Student s) {
+		this.s = s;
 		bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 		msList = new ArrayList();
 		enList = new ArrayList();
@@ -37,6 +45,8 @@ public class aa extends JFrame implements Runnable, KeyListener {
 				Thread.sleep(10);
 
 				if (start) {
+					point += 0.05;
+					System.out.println(point);
 					if (enCnt > 700) {
 						enCreate();
 						enCnt = 0;
@@ -50,6 +60,7 @@ public class aa extends JFrame implements Runnable, KeyListener {
 					keyControl();
 					crashChk();
 				}
+
 				draw();
 			}
 		} catch (Exception e) {
@@ -116,6 +127,13 @@ public class aa extends JFrame implements Runnable, KeyListener {
 		if (end) {
 			gs.drawString("G A M E     O V E R", 100, 250);
 		}
+		if (end && count == 0) {
+			InsertPoint.test(s, (int) (point));
+			InsertPoint.insertGameLog(s, 1, (int) (point));
+			int pi = s.getPoint();
+			s.setPoint(pi + (int) (point));
+			count++;
+		}
 
 		gs.fillRect(x, y, xw, xh);
 
@@ -177,6 +195,8 @@ public class aa extends JFrame implements Runnable, KeyListener {
 			fire = true;
 			break;
 		case KeyEvent.VK_ENTER:
+			point = 0;
+			count = 0;
 			start = true;
 			end = false;
 			break;
@@ -206,10 +226,6 @@ public class aa extends JFrame implements Runnable, KeyListener {
 	public void keyTyped(KeyEvent ke) {
 	}
 
-	public static void main(String[] args) {
-		Thread t = new Thread(new aa());
-		t.start();
-	}
 }
 
 class Ms {

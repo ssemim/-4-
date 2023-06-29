@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import GUI게임.Dino;
 import GUI게임.Dudu;
 import GUI게임.HangMan;
+import GUI게임.Moving;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
@@ -64,8 +65,8 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		runbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Dino d = new Dino(s);
-				dispose();
+				Thread t = new Thread(new Moving(s));
+				t.start();
 			}
 		});
 
