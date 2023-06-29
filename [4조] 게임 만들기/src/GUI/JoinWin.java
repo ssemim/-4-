@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.Login;
+import 유틸.Util;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -212,6 +213,7 @@ public class JoinWin extends JFrame {
 		contentPane.add(PWField);
 		contentPane.add(IDField);
 		contentPane.add(Backbtn);
+		Util.removeAllButtonFocus(contentPane);
 
 	}
 }

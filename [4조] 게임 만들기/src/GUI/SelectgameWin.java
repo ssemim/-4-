@@ -18,6 +18,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class SelectgameWin extends JFrame {
 
@@ -71,6 +72,7 @@ public class SelectgameWin extends JFrame {
 		JButton cutbtn = new JButton(""); // 종료하기
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -141,7 +143,7 @@ public class SelectgameWin extends JFrame {
 		CoinLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
 		CoinLbl.setBounds(511, 140, 20, 20);
 		contentPane.add(CoinLbl);
-
+		Util.removeAllButtonFocus(contentPane);
 	}
 
 }

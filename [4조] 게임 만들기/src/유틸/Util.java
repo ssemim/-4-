@@ -1,7 +1,11 @@
 package 유틸;
 
+import java.awt.Component;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.AbstractButton;
+import javax.swing.JPanel;
 
 public class Util {
 	
@@ -16,4 +20,14 @@ public class Util {
         
         return sb.toString();
     }
+	
+	 public static void removeAllButtonFocus(JPanel panel) {
+	        Component[] components = panel.getComponents();
+	        for (Component component : components) {
+	            if (component instanceof AbstractButton) {
+	                AbstractButton button = (AbstractButton) component;
+	                button.setFocusable(false);
+	            }
+	        }
+	    }
 }
