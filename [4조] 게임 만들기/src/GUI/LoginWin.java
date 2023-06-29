@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,10 +18,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import 메소드모음.Login;
+import 소리모음.BasicMusic;
 import 유틸.Music;
 import 유틸.SoundButton;
 import 유틸.Util;
-import java.awt.Font;
 
 public class LoginWin extends JFrame {
 	private JPanel contentPane;
@@ -109,6 +110,8 @@ public class LoginWin extends JFrame {
 						lblNewLabel.setText("");
 						MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
 						MW.setVisible(true);
+						BasicMusic bm = new BasicMusic();
+						bm.setVisible(false);
 						dispose();
 					} else {
 						lblNewLabel.setText("아이디와 비밀번호가 일치하지 않습니다.");

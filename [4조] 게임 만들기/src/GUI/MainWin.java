@@ -49,7 +49,6 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 
-		System.out.println(s.getPoint());
 	
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
@@ -148,12 +147,13 @@ public class MainWin extends JFrame {
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
 		contentPane.add(ReCoin);
+		
 
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
-		ResourceSoundPack.backgrundsound();
+//		ResourceSoundPack.backgrundsound();
 		Util.removeAllButtonFocus(contentPane);
 		
 	}
