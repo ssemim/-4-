@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import GUI게임.Dino;
 import GUI게임.Dudu;
 import GUI게임.HangMan;
+import GUI게임.RSP;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
@@ -126,6 +127,14 @@ public class SelectgameWin extends JFrame {
 		SoundButton btnRun_1 = new SoundButton(Music.S1);
 		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
 		btnRun_1.setBounds(120, 405, 270, 80);
+		btnRun_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RSP r = new RSP(s);
+				dispose();
+			}
+		});
+		
+		
 		contentPane.setLayout(null);
 		contentPane.add(btnRun);
 		contentPane.add(btnRun_1);

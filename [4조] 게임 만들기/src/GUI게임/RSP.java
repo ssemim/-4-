@@ -13,30 +13,30 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import GUI.MainWin;
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
 
-class RSPGO extends JFrame {
+public class RSP extends JFrame {
 
-	ImageIcon[] gbb = { new ImageIcon(RSPGO.class.getResource("/이미지/gawi.png")),
-			new ImageIcon(RSPGO.class.getResource("/이미지/bawi.png")),
-			new ImageIcon(RSPGO.class.getResource("/이미지/bo.png")) };
+	ImageIcon[] gbb = { new ImageIcon(RSP.class.getResource("/이미지/gawi.png")),
+			new ImageIcon(RSP.class.getResource("/이미지/bawi.png")),
+			new ImageIcon(RSP.class.getResource("/이미지/bo.png")) };
 	JButton[] btn = new JButton[gbb.length];
 
 	JLabel me = new JLabel("  me  ");
 	JLabel com = new JLabel("  com  ");
 	JLabel win = new JLabel("win");
-	ImageIcon backGound = new ImageIcon(RSPGO.class.getResource("/이미지/DG.gif"));
+	ImageIcon backGound = new ImageIcon(RSP.class.getResource("/이미지/DG.gif"));
 	JLabel backGround = new JLabel(backGound);
 	private int life = 5;
-	JLabel GameOver = new JLabel("게임 오버");
 	Student s;
 	private int winCount = 0;
-	boolean keepPlaying = true;
 
+	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
 
-	RSPGO(Student s) {
+	public RSP(Student s) {
 		this.s = s;
 		this.setTitle("가위 바위 보 게임");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +50,19 @@ class RSPGO extends JFrame {
 		WinCount.setFont(new Font("굴림", Font.BOLD, 12));
 		southPanel.add(WinCount);
 
+		Life.setBounds(0, 90, 85, 15);
+		Life.setFont(new Font("굴림", Font.BOLD, 12));
+		centerPanel.add(Life);
+
 		JButton back = new JButton("그만하기");
+		back.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 
 		win.setForeground(Color.BLUE);
 		centerPanel.add(me);
@@ -74,36 +86,15 @@ class RSPGO extends JFrame {
 		this.setSize(800, 600);
 		this.setVisible(true);
 
-		JLabel GameOver = new JLabel("게임 오버");
-		GameOver.setBounds(206, 186, 378, 165);
-		centerPanel.add(GameOver);
-		GameOver.setVisible(false);
-
-		JButton GoMain = new JButton("메인으로 돌아가기");
-		GoMain.setBackground(Color.BLACK);
-		GoMain.setBounds(352, 305, 97, 23);
-		GoMain.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-
-		GameOver.setBounds(206, 186, 378, 165);
-		centerPanel.add(GameOver);
-		GameOver.setVisible(false);
-
-		GameOver.add(GoMain);
-
 	}
 
 	public void draw(Icon m, Icon c, String w) {
 		me.setIcon(m);
 		com.setIcon(c);
 		win.setText(w);
-
+		Life.setText("남은 목숨 : " + life + "");
 		WinCount.setText("받아갈 포인트 : " + winCount * 100 + "");
+
 	}
 
 	class MyActionListener implements ActionListener {
@@ -172,18 +163,10 @@ class RSPGO extends JFrame {
 				InsertPoint.insertGameLog(s, 4, totalPoint);
 				InsertPoint.test(s, totalPoint);
 				s.setPoint(s.getPoint() + totalPoint);
-				life --;
+				life--;
 			}
 
 		}
 	}
-}
 
-public class RSP {
-	public static void main(String[] args) {
-
-		RSPGO rspgo = new RSPGO(new Student("ee", "낙동초", 0));
-		rspgo.getContentPane().setLayout(null);
-
-	}
 }
