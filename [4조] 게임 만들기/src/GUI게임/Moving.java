@@ -24,9 +24,11 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 	private double point = 0;
 	private int count = 0;
 	private Student s;
+	private String[] eq;
 
-	public Moving(Student s) {
+	public Moving(Student s, String[] eq) {
 		this.s = s;
+		this.eq = eq;
 		bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 		msList = new ArrayList();
 		enList = new ArrayList();

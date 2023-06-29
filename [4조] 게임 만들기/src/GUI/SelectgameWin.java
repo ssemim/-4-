@@ -66,7 +66,7 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		poopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(new Moving(s));
+				Thread t = new Thread(new Moving(s, equi));
 				t.start();
 			}
 		});
