@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -15,13 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import dbutil.DBUtil;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
-import java.awt.Font;
 import 유틸.Music;
 import 유틸.SoundButton;
 import 유틸.Util;
@@ -33,6 +34,8 @@ public class StoreWin extends JFrame {
 	private int character = 0;
 	private int item;
 	private final JLabel StoreBackLbl = new JLabel("");
+	private Timer timerC;
+	private Timer timerW;
 
 	/**
 	 * Launch the application.
@@ -114,14 +117,25 @@ public class StoreWin extends JFrame {
 						Charbtn.setText("");
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
 						character++;
+						timerC.start();
 					} else if (character == 1) {
+						timerC.stop();
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
 						character++;
+						timerC.start();
 					} else if (character == 2) {
+						timerC.stop();
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 						character = 0;
 					}
 				}
+			}
+		});
+		
+		timerC = new Timer(1500, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Charbtn.doClick();
 			}
 		});
 
@@ -143,14 +157,25 @@ public class StoreWin extends JFrame {
 						BackWinbtn.setText("");
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈2.gif")));
 						countBack++;
+						timerW.start();
 					} else if (countBack == 1) {
+						timerW.stop();
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".gif")));
 						countBack++;
+						timerW.start();
 					} else if (countBack == 2) {
+						timerW.stop();
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 						countBack = 0;
 					}
 				}
+			}
+		});
+		
+		timerW = new Timer(1500, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BackWinbtn.doClick();
 			}
 		});
 
