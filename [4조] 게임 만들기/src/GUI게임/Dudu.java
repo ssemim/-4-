@@ -78,7 +78,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		for (int i = 0; i < 12; ++i) {
 			jbt[i] = new JButton();
-			jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/tree.png")));
+			jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
+			jbt[i].setBorderPainted(false); // 버튼 테두리 제거
+			jbt[i].setContentAreaFilled(false); // 버튼 테두리 제거
 			jp1.add(jbt[i]);
 		}
 
@@ -115,11 +117,17 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	public void actionPerformed(ActionEvent e) {
 
+		start.setEnabled(false);
 		if (e.getSource() == start) {
 
 			time_jlb.setText("시간 => 0:10");
 
-			jlb.setText("점수 : 0");
+			if (!(count == -1)) {
+				jlb.setText("점수 : 0");
+				InsertPoint.test(s, count * 30);
+				int point = s.getPoint();
+				s.setPoint(point + count * 30);
+			}
 
 			count = -1;
 
@@ -132,13 +140,19 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			random(0);
 
 		} else if (e.getSource() == end) {
-			System.exit(0);
+			InsertPoint.test(s, count * 30);
+			InsertPoint.insertGameLog(s, 3, count * 30);
+			int point = s.getPoint();
+			s.setPoint(point + count * 30);
+			MainWin MW = new MainWin(s);
+			MW.setVisible(true);
+			this.setVisible(false);
 		}
 
 		for (int i = 0; i < 12; ++i) {
 			if (e.getSource() == jbt[i]) {
+				jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
 				random(i);
-				jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/tree.png")));
 			}
 		}
 	} // end
@@ -147,14 +161,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		for (int i = 0; i < 12; ++i) {
 			jbt[i].setEnabled(false);
 		}
-		if (count != -1) {
-			InsertPoint.test(s, count * 30);
-			InsertPoint.insertGameLog(s, 3, count * 30);
-			int point = s.getPoint();
-			s.setPoint(point + count * 30);
-			MainWin MW = new MainWin(s);
-			MW.setVisible(true);
-		}
+
 	} // end
 
 	public void on_button() {// 시작버튼
@@ -179,17 +186,18 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			time--;
 
 			if (time == 0) {
-
 				time_jlb.setText("게임이 끝났습니다.");
 
-				off_button();
-
+//				off_button();
+				start.setEnabled(true);
+				for (int i = 0; i < 12; ++i) {
+					jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
+					jbt[i].setEnabled(false);
+				}
+				randomsu = 0;
 				break;
-
 			}
-
 			time_jlb.setText("시간 => 0:0" + time);
-
 		}
 
 	} // end
@@ -201,11 +209,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		count++;
 
-		jbt[randomsu].setIcon(null);
-
 		randomsu = (int) (Math.random() * 12);
 
-		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/dudu.png")));
+		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/c.png")));
 
 		jlb.setText("점수 : " + count * 30);
 	}

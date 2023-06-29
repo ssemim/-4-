@@ -32,7 +32,7 @@ import 메소드모음.InsertPoint;
 public class HangMan extends JFrame {
 	private JLabel answeredField;
 	private JLabel missedField;
-	private JLabel countLabel;
+	private static JLabel countLabel = new JLabel("개의 철자:");
 	private JPanel inputedPanel = new JPanel();
 	// JLabel을 setIcon()할때마다 다른 패널이 프레임에서 사라지는 문제 때문에 JButton으로 대체한다.
 	// private JButton humanDiePicture = new JButton();
@@ -89,6 +89,7 @@ public class HangMan extends JFrame {
 		for (char c : computerAnswerArr) {
 			computerAnswerList.add(c);
 		}
+		countLabel.setText(computerAnswer.length() + "개의 철자:");
 		System.out.println("정답 : " + computerAnswer);
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
@@ -199,7 +200,6 @@ public class HangMan extends JFrame {
 
 		// 맞는 단어 입력되는 라벨/필드
 		// ----------------------------------------------------------------------------
-		countLabel = new JLabel(computerAnswer.length() + "개의 철자:");
 		countLabel.setBounds(166, 258, 230, 37);
 		inputedPanel.add(countLabel);
 		countLabel.setHorizontalAlignment(SwingConstants.CENTER);
