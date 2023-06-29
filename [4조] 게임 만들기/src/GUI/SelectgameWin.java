@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GUI게임.Dino;
+import GUI게임.Dudu;
 import GUI게임.HangMan;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
@@ -114,6 +115,8 @@ public class SelectgameWin extends JFrame {
 		numbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼숫자.png")));
 		numbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Dudu d = new Dudu(s);
+				dispose();
 			}
 		});
 		numbtn.setBounds(120, 311, 270, 80);

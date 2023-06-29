@@ -30,8 +30,8 @@ import 메소드모음.InsertPoint;
  */
 
 public class HangMan extends JFrame {
-	private JTextField answeredField;
-	private JTextField missedField;
+	private JLabel answeredField;
+	private JLabel missedField;
 	private JLabel countLabel;
 	private JPanel inputedPanel = new JPanel();
 	// JLabel을 setIcon()할때마다 다른 패널이 프레임에서 사라지는 문제 때문에 JButton으로 대체한다.
@@ -206,7 +206,7 @@ public class HangMan extends JFrame {
 		countLabel.setForeground(new Color(255, 204, 0));
 		countLabel.setFont(new Font("Dialog", Font.BOLD, 25));
 
-		answeredField = new JTextField(userAnswerList.toString());
+		answeredField = new JLabel(userAnswerList.toString());
 		answeredField.setFont(new Font("Press Start K", Font.PLAIN, 20));
 		answeredField.setHorizontalAlignment(SwingConstants.CENTER);
 		// answeredField.setText("nullpointerexception");
@@ -214,7 +214,7 @@ public class HangMan extends JFrame {
 		answeredField.setBackground(Color.BLACK);
 		answeredField.setBounds(12, 305, 536, 70);
 		inputedPanel.add(answeredField);
-		answeredField.setColumns(10);
+//		answeredField.setColumns(10);
 		// ----------------------------------------------------------------------------
 
 		// 틀린 단어 입력되는 라벨/필드
@@ -226,7 +226,7 @@ public class HangMan extends JFrame {
 		userHistory.setHorizontalAlignment(SwingConstants.CENTER);
 		userHistory.setFont(new Font("Press Start K", Font.BOLD, 28));
 
-		missedField = new JTextField();
+		missedField = new JLabel();
 		missedField.setFont(new Font("Press Start K", Font.PLAIN, 21));
 		missedField.setHorizontalAlignment(SwingConstants.CENTER);
 		// missedField.setText("dddd");
@@ -234,7 +234,7 @@ public class HangMan extends JFrame {
 		missedField.setBackground(Color.BLACK);
 		missedField.setBounds(136, 388, 412, 60);
 		inputedPanel.add(missedField);
-		missedField.setColumns(10);
+//		missedField.setColumns(10);
 
 		userAnswer = new JTextField();
 		userAnswer.setHorizontalAlignment(SwingConstants.CENTER);
