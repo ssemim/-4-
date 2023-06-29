@@ -111,7 +111,7 @@ public class RankWin extends JFrame {
 		classList = RS.classRangking(s);
 		JPanel AllStudentpanel = new JPanel();
 		AllStudentpanel.setBounds(538, 258, 250, 250);
-		studentAll = RS.studentRangking(allRankLbl.getText());
+		studentAll = RS.gameSelect(gameList.get(allRankLbl.getText()));
 
 		JLabel lblNewLabel_4_2 = new JLabel("");
 		lblNewLabel_4_2.setBounds(30, 120, 180, 30);
@@ -127,26 +127,32 @@ public class RankWin extends JFrame {
 		lblNewLabel_3_2.setForeground(Color.WHITE);
 
 		if (studentAll.size() >= 3) {
-			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
-			if (studentAll.get(0).getPoint() == studentAll.get(1).getPoint()) {
-				lblNewLabel_4_2.setText("1등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
-				if (studentAll.get(1).getPoint() == studentAll.get(2).getPoint()) {
-					lblNewLabel_5_2.setText("1등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
-				}
+			if (studentAll.get(0).getPoint() == studentAll.get(1).getPoint()
+					&& studentAll.get(0).getPoint() == studentAll.get(2).getPoint()) {
+				lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
+				lblNewLabel_4_2.setText("1등 : " + studentAll.get(1).getId() + "  " + studentAll.get(1).getPoint());
+				lblNewLabel_5_2.setText("1등 : " + studentAll.get(2).getId() + "  " + studentAll.get(2).getPoint());
+			} else if (studentAll.get(0).getPoint() == studentAll.get(1).getPoint()) {
+				lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
+				lblNewLabel_4_2.setText("1등 : " + studentAll.get(1).getId() + "  " + studentAll.get(1).getPoint());
+				lblNewLabel_5_2.setText("3등 : " + studentAll.get(2).getId() + "  " + studentAll.get(2).getPoint());
+			} else if (studentAll.get(1).getPoint() == studentAll.get(2).getPoint()) {
+				lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
+				lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + "  " + studentAll.get(1).getPoint());
+				lblNewLabel_5_2.setText("2등 : " + studentAll.get(2).getId() + "  " + studentAll.get(2).getPoint());
 			} else {
-				lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
-				if (studentAll.get(1).getPoint() == studentAll.get(2).getPoint()) {
-					lblNewLabel_5_2.setText("2등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
-				} else {
-					lblNewLabel_5_2.setText("3등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
-				}
+				lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
+				lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + "  " + studentAll.get(1).getPoint());
+				lblNewLabel_5_2.setText("3등 : " + studentAll.get(2).getId() + "  " + studentAll.get(2).getPoint());
 			}
+
 		} else if (studentAll.size() == 2) {
-			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
-			lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
-			lblNewLabel_5_2.setText(" ");
+			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
+			lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + "  " + studentAll.get(1).getPoint());
+			lblNewLabel_5_2.setText("");
+
 		} else {
-			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
+			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + "  " + studentAll.get(0).getPoint());
 			lblNewLabel_4_2.setText("");
 			lblNewLabel_5_2.setText("");
 		}
@@ -284,10 +290,60 @@ public class RankWin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) - 1);
+				String key = null;
+				if (newList != null) {
+					int targetValue = gameList.get(allRankLbl.getText()) - 1; // 찾고자 하는 값
 
-				lblNewLabel_3_2.setText(newList.get(0).getId());
-				lblNewLabel_4_2.setText(newList.get(1).getId());
-				lblNewLabel_5_2.setText(newList.get(2).getId());
+					for (Map.Entry<String, Integer> entry : gameList.entrySet()) {
+						if (entry.getValue() == targetValue) {
+							key = entry.getKey();
+						}
+					}
+					allRankLbl.setText(key);
+
+					if (newList.size() >= 3) {
+						if (newList.get(0).getPoint() == newList.get(1).getPoint()
+								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("1등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("1등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("1등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("3등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("2등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("3등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						}
+
+					} else if (newList.size() == 2) {
+						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+						lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+						lblNewLabel_5_2.setText("");
+
+					} else {
+						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+						lblNewLabel_4_2.setText("");
+						lblNewLabel_5_2.setText("");
+					}
+				}
 			}
 		});
 
@@ -295,10 +351,60 @@ public class RankWin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) + 1);
+				String key = null;
+				if (newList != null) {
+					int targetValue = gameList.get(allRankLbl.getText()) + 1; // 찾고자 하는 값
 
-				lblNewLabel_3_2.setText(newList.get(0).getId());
-				lblNewLabel_4_2.setText(newList.get(1).getId());
-				lblNewLabel_5_2.setText(newList.get(2).getId());
+					for (Map.Entry<String, Integer> entry : gameList.entrySet()) {
+						if (entry.getValue() == targetValue) {
+							key = entry.getKey();
+						}
+					}
+					allRankLbl.setText(key);
+
+					if (newList.size() >= 3) {
+						if (newList.get(0).getPoint() == newList.get(1).getPoint()
+								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("1등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("1등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("1등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("3등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("2등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						} else {
+							lblNewLabel_3_2
+									.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+							lblNewLabel_4_2
+									.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+							lblNewLabel_5_2
+									.setText("3등 : " + newList.get(2).getId() + "  " + newList.get(2).getPoint());
+						}
+
+					} else if (newList.size() == 2) {
+						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+						lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + "  " + newList.get(1).getPoint());
+						lblNewLabel_5_2.setText("");
+
+					} else {
+						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + "  " + newList.get(0).getPoint());
+						lblNewLabel_4_2.setText("");
+						lblNewLabel_5_2.setText("");
+					}
+				}
 			}
 		});
 
