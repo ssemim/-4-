@@ -84,13 +84,13 @@ public class JoinWin extends JFrame {
 		JLabel lblNewLabel = new JLabel(" ");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(17, 358, 259, 68);
+		lblNewLabel.setBounds(38, 364, 240, 68);
 
 		contentPane.add(lblNewLabel);
 
 		JButton Joinbtn = new JButton(""); // 가입버튼
 		Joinbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/가입하기버튼.png")));
-		Joinbtn.setBounds(109, 387, 81, 39);
+		Joinbtn.setBounds(110, 428, 81, 39);
 		// 가입하기버튼을 누르면 LoginWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

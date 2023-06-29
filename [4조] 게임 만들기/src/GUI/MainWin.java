@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,8 +21,8 @@ import 유틸.SoundButton;
 
 public class MainWin extends JFrame {
 
-   private JPanel contentPane;
-   Image image;
+	private JPanel contentPane;
+	Image image;
 
 	/**
 	 * Launch the application.
@@ -47,7 +45,7 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 		SoundButton.test();
-		
+
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
@@ -59,11 +57,11 @@ public class MainWin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-      // 메인창 프레임 설정
-      setTitle("Main"); // 타이틀 이름
-      setResizable(false); // 창의 크기를 변경하지 못하게
-      setLocationRelativeTo(null); // 창이 가운데 나오게
-      getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
+		// 메인창 프레임 설정
+		setTitle("Main"); // 타이틀 이름
+		setResizable(false); // 창의 크기를 변경하지 못하게
+		setLocationRelativeTo(null); // 창이 가운데 나오게
+		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		SoundButton Gamebtn = new SoundButton(Music.S1); // 게임 버튼
@@ -112,46 +110,46 @@ public class MainWin extends JFrame {
 			}
 		});
 
-      JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
-      EquipmentItem.equipmentItem(equipmentName, Charpanel);
-      Charpanel.setBounds(502, 211, 150, 200);
-      contentPane.setLayout(null);
+		JPanel Charpanel = new JPanel(); // 캐릭터 이미지가 나오는 Panel
+		EquipmentItem.equipmentItem(equipmentName, Charpanel);
+		Charpanel.setBounds(502, 211, 150, 200);
+		contentPane.setLayout(null);
 
-      JButton cutbtn = new JButton(); // 종료버튼
-      cutbtn.setBackground(Color.BLACK);
-      cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-      cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
-      cutbtn.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-            System.exit(0);
-         }
-      });
+				System.exit(0);
+			}
+		});
 
-      JLabel ReCoin = new JLabel("");
-      ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
-      ReCoin.setForeground(Color.WHITE);
-      ReCoin.setHorizontalAlignment(SwingConstants.LEFT);
-      ReCoin.setBounds(522, 181, 130, 20);
-      ReCoin.setText("" + s.getPoint());
+		JLabel ReCoin = new JLabel("");
+		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
+		ReCoin.setForeground(Color.WHITE);
+		ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
+		ReCoin.setBounds(522, 181, 99, 20);
+		ReCoin.setText("" + s.getPoint());
 
-      cutbtn.setLocation(758, 10);
-      cutbtn.setSize(30, 30);
+		cutbtn.setLocation(758, 10);
+		cutbtn.setSize(30, 30);
 
-      contentPane.setLayout(null);
-      contentPane.add(cutbtn);
-      contentPane.add(Storebtn);
-      contentPane.add(rankbtn);
-      contentPane.add(invenbtn);
-      contentPane.add(Charpanel);
-      contentPane.add(Gamebtn);
-      contentPane.add(ReCoin);
+		contentPane.setLayout(null);
+		contentPane.add(cutbtn);
+		contentPane.add(Storebtn);
+		contentPane.add(rankbtn);
+		contentPane.add(invenbtn);
+		contentPane.add(Charpanel);
+		contentPane.add(Gamebtn);
+		contentPane.add(ReCoin);
 
-      JLabel CoinImgLbl = new JLabel("");
-      CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
-      CoinImgLbl.setBounds(502, 181, 20, 20);
-      contentPane.add(CoinImgLbl);
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(502, 181, 20, 20);
+		contentPane.add(CoinImgLbl);
 
-   }
+	}
 }

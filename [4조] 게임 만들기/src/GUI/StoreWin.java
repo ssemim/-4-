@@ -102,7 +102,7 @@ public class StoreWin extends JFrame {
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (s.getPoint() >= 1000) {
+				if (s.getPoint() >= 1000 || character < 0) {
 					if (character == 0) {
 						int point = s.getPoint();
 						PickItem pick = new PickItem(s, "캐릭터");
