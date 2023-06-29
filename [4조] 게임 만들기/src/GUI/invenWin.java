@@ -147,15 +147,15 @@ public class invenWin extends JFrame {
 		SoundButton changeCbtn = new SoundButton(Music.S1);
 		changeCbtn.setBorderPainted(false); // 버튼 테두리 제거
 		changeCbtn.setContentAreaFilled(false); // 버튼 안 투명화
-		changeCbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
-		changeCbtn.setBounds(132, 441, 50, 50);
+		changeCbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/변경버튼.png")));
+		changeCbtn.setBounds(112, 441, 100, 50);
 		contentPane.add(changeCbtn);
 
 		SoundButton changeWbtn = new SoundButton(Music.S1);
 		changeWbtn.setBorderPainted(false); // 버튼 테두리 제거
 		changeWbtn.setContentAreaFilled(false); // 버튼 안 투명화
-		changeWbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
-		changeWbtn.setBounds(411, 441, 50, 50);
+		changeWbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/변경버튼.png")));
+		changeWbtn.setBounds(384, 441, 100, 50);
 		contentPane.add(changeWbtn);
 
 		JLabel CoinLbl = new JLabel("");

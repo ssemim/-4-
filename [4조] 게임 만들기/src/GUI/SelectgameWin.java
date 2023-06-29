@@ -12,14 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import GUI게임.Dino;
 import GUI게임.Dudu;
 import GUI게임.HangMan;
+import GUI게임.Moving;
+import GUI게임.RSP;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
 import 유틸.SoundButton;
-import 유틸.Util;
 
 public class SelectgameWin extends JFrame {
 
@@ -65,15 +65,14 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		poopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Dino d = new Dino(s);
-				dispose();
+				Thread t = new Thread(new Moving(s));
+				t.start();
 			}
 		});
 
 		JButton cutbtn = new JButton(""); // 종료하기
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -86,13 +85,13 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(514, 191, 150, 200);
+		Charpnl.setBounds(524, 191, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
-		Backbtn.setBounds(748, 550, 40, 40);
+		Backbtn.setBounds(624, 115, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -126,6 +125,16 @@ public class SelectgameWin extends JFrame {
 		SoundButton rspBtn = new SoundButton(Music.S1);
 		rspBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼가위바위보.png")));
 		rspBtn.setBounds(120, 405, 270, 80);
+
+		SoundButton btnRun_1 = new SoundButton(Music.S1);
+		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
+		btnRun_1.setBounds(120, 405, 270, 80);
+		btnRun_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RSP r = new RSP(s);
+				dispose();
+			}
+		});
 		contentPane.setLayout(null);
 		contentPane.add(hmBtn);
 		contentPane.add(rspBtn);
