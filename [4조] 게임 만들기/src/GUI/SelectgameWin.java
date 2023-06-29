@@ -59,11 +59,11 @@ public class SelectgameWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
-		SoundButton runbtn = new SoundButton(Music.S1);
-		runbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼달리기.png")));
-		runbtn.setBounds(120, 122, 270, 80);
+		SoundButton poopBtn = new SoundButton(Music.S1);
+		poopBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
+		poopBtn.setBounds(120, 122, 270, 80);
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
-		runbtn.addActionListener(new ActionListener() {
+		poopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dino d = new Dino(s);
 				dispose();
@@ -102,10 +102,10 @@ public class SelectgameWin extends JFrame {
 			}
 		});
 
-		SoundButton btnRun = new SoundButton(Music.S1);
-		btnRun.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼행맨.png")));
-		btnRun.setBounds(120, 216, 270, 80);
-		btnRun.addActionListener(new ActionListener() {
+		SoundButton hmBtn = new SoundButton(Music.S1);
+		hmBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼행맨.png")));
+		hmBtn.setBounds(120, 216, 270, 80);
+		hmBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new HangMan(s);
@@ -113,27 +113,27 @@ public class SelectgameWin extends JFrame {
 			}
 		});
 
-		SoundButton numbtn = new SoundButton(Music.S1);
-		numbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼숫자.png")));
-		numbtn.addActionListener(new ActionListener() {
+		SoundButton whackBtn = new SoundButton(Music.S1);
+		whackBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
+		whackBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Dudu d = new Dudu(s);
 				dispose();
 			}
 		});
-		numbtn.setBounds(120, 311, 270, 80);
+		whackBtn.setBounds(120, 311, 270, 80);
 
-		SoundButton btnRun_1 = new SoundButton(Music.S1);
-		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
-		btnRun_1.setBounds(120, 405, 270, 80);
+		SoundButton rspBtn = new SoundButton(Music.S1);
+		rspBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼가위바위보.png")));
+		rspBtn.setBounds(120, 405, 270, 80);
 		contentPane.setLayout(null);
-		contentPane.add(btnRun);
-		contentPane.add(btnRun_1);
-		contentPane.add(runbtn);
+		contentPane.add(hmBtn);
+		contentPane.add(rspBtn);
+		contentPane.add(poopBtn);
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 		contentPane.add(cutbtn);
-		contentPane.add(numbtn);
+		contentPane.add(whackBtn);
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));

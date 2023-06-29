@@ -20,7 +20,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private JLabel jlb = new JLabel("점수 : 0");
 
-	private JLabel time_jlb = new JLabel("시간 => 0:10");
+	private JLabel time_jlb = new JLabel("Time - 0:10");
 
 	private BorderLayout bl = new BorderLayout(10, 10);
 
@@ -41,6 +41,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	private int count = -1;
 
 	private Student s;
+	
+	JButton Backbtn = new JButton(); // 뒤로가기 버튼 
 
 	public Dudu(Student s) {
 		this.s = s;
@@ -69,6 +71,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		Container con = this.getContentPane();
 
 		con.setLayout(bl);
+		time_jlb.setHorizontalAlignment(SwingConstants.LEFT);
+		time_jlb.setFont(new Font("굴림", Font.BOLD, 12));
 
 		con.add("North", time_jlb);
 
@@ -89,6 +93,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		con.add("South", jp2);
 
 		jp2.setLayout(gl2);
+		jlb.setHorizontalAlignment(SwingConstants.CENTER);
+		jlb.setFont(new Font("굴림", Font.BOLD, 12));
 
 		jp2.add(jlb);
 
@@ -99,6 +105,17 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jp21.add(start);
 
 		jp21.add(end);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(Dudu.class.getResource("/이미지/뒤로가기버튼.png")));
+		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
+		jp21.add(Backbtn);
 
 	}
 
