@@ -31,7 +31,7 @@ public class StoreWin extends JFrame {
 	private int countBack = 0;
 	private int character = 0;
 	private int item;
-	private final JLabel BackgroundLbl = new JLabel("");
+	private final JLabel StoreBackLbl = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -178,9 +178,9 @@ public class StoreWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(601, 187, 20, 20);
 		contentPane.add(CoinImgLbl);
-		BackgroundLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
-		BackgroundLbl.setBounds(0, 0, 794, 571);
-		contentPane.add(BackgroundLbl);
+		StoreBackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
+		StoreBackLbl.setBounds(0, 0, 800, 600);
+		contentPane.add(StoreBackLbl);
 	}
 
 	// 아이템 이미지를 가져오기 위한 것

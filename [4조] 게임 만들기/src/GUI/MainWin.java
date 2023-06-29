@@ -132,8 +132,8 @@ public class MainWin extends JFrame {
       JLabel ReCoin = new JLabel("");
       ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
       ReCoin.setForeground(Color.WHITE);
-      ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
-      ReCoin.setBounds(522, 181, 99, 20);
+      ReCoin.setHorizontalAlignment(SwingConstants.LEFT);
+      ReCoin.setBounds(522, 181, 130, 20);
       ReCoin.setText("" + s.getPoint());
 
       cutbtn.setLocation(758, 10);

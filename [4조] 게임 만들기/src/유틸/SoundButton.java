@@ -19,7 +19,7 @@ public class SoundButton extends JButton {
         
         path = null;
         if(i == Music.S1) {
-        	path = "/소리모음/test.wav";
+        	path = "/소리모음/btnS5.wav";
         }
         
         addMouseListener(new MouseAdapter() {

@@ -83,13 +83,13 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(511, 170, 150, 200);
+		Charpnl.setBounds(514, 191, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
-		Backbtn.setBounds(624, 115, 40, 40);
+		Backbtn.setBounds(748, 550, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -133,14 +133,14 @@ public class SelectgameWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(536, 140, 86, 20);
+		Coinlbl.setBounds(534, 161, 130, 20);
 		contentPane.add(Coinlbl);
 		Coinlbl.setText("" + s.getPoint());
 
-		JLabel CoinLbl = new JLabel("");
-		CoinLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
-		CoinLbl.setBounds(511, 140, 20, 20);
-		contentPane.add(CoinLbl);
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(514, 161, 20, 20);
+		contentPane.add(CoinImgLbl);
 
 	}
 

@@ -83,13 +83,13 @@ public class invenWin extends JFrame {
       Backbtn.setBorderPainted(false); // 버튼 테두리 제거
       Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
       Backbtn.setBackground(Color.BLACK);
-      Backbtn.setBounds(710, 182, 40, 40);
+      Backbtn.setBounds(748, 550, 40, 40);
       // 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
       JLabel Coinlbl = new JLabel("1.000");
       Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
       Coinlbl.setForeground(Color.WHITE);
-      Coinlbl.setBounds(630, 202, 60, 20);
+      Coinlbl.setBounds(622, 202, 130, 20);
       contentPane.setLayout(null);
       contentPane.setLayout(null);
       contentPane.add(Coinlbl);
@@ -98,7 +98,7 @@ public class invenWin extends JFrame {
       Coinlbl.setText("" + s.getPoint());
 
       JLabel cLbl = new JLabel("");
-      cLbl.setBounds(77, 231, 158, 200);
+      cLbl.setBounds(77, 231, 150, 200);
       cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
       contentPane.add(cLbl);
 
@@ -118,7 +118,7 @@ public class invenWin extends JFrame {
       contentPane.add(cBtnRight);
 
       JLabel wLbl = new JLabel("");
-      wLbl.setBounds(360, 231, 158, 200);
+      wLbl.setBounds(360, 231, 150, 200);
       wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
       contentPane.add(wLbl);
 
@@ -138,11 +138,17 @@ public class invenWin extends JFrame {
       contentPane.add(wBtnRight);
 
       SoundButton changeCbtn = new SoundButton(Music.S1);
-      changeCbtn.setBounds(108, 470, 97, 23);
+      changeCbtn.setBorderPainted(false); // 버튼 테두리 제거
+      changeCbtn.setContentAreaFilled(false); // 버튼 안 투명화
+      changeCbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
+      changeCbtn.setBounds(132, 441, 50, 50);
       contentPane.add(changeCbtn);
 
       SoundButton changeWbtn = new SoundButton(Music.S1);
-      changeWbtn.setBounds(383, 470, 97, 23);
+      changeWbtn.setBorderPainted(false); // 버튼 테두리 제거
+      changeWbtn.setContentAreaFilled(false); // 버튼 안 투명화
+      changeWbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
+      changeWbtn.setBounds(411, 441, 50, 50);
       contentPane.add(changeWbtn);
 
       JButton cutbtn = new JButton(""); // 종료버튼
@@ -156,6 +162,16 @@ public class invenWin extends JFrame {
       CoinLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/코인이미지.png")));
       CoinLbl.setBounds(600, 202, 20, 20);
       contentPane.add(CoinLbl);
+      
+      JLabel invenTitLbl = new JLabel("");
+      invenTitLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/인벤타이틀.png")));
+      invenTitLbl.setBounds(0, 0, 350, 100);
+      contentPane.add(invenTitLbl);
+      
+      JLabel invenBackLbl = new JLabel("");
+      invenBackLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/인벤배경.gif")));
+      invenBackLbl.setBounds(0, 0, 800, 600);
+      contentPane.add(invenBackLbl);
 
       Backbtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
