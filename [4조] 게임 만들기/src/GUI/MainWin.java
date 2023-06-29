@@ -5,7 +5,11 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,9 +49,11 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 
-
 		SoundButton.test();
 
+		// 사운드 삽입
+
+		Main_Sound("Sounds/Welcome.wav");
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
@@ -153,6 +159,28 @@ public class MainWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
+
+	}
+
+	private void Main_Sound(String file) {
+		
+	try {	
+		AudioInputStream ais = 
+				
+		AudioSystem.getAudioInputStream(new FileInputStream(file))):
+					
+		clip = AudioSystem.getClip();
+		clip.open(ais);
+		Clip.start();
+	}catch(Exception e) {e.printStackTrace();}
+	
+	
+	}
+
+	public static void Stop_Main_Sound() {
+
+		clip.stop();
+		clip.close();
 
 	}
 }
