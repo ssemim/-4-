@@ -30,7 +30,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 	private static final int CACTUS_START = WIDTH;
 	private static final int CACTUS_END = -CACTUS_WIDTH;
 	private static final int JUMP_HEIGHT = 100;
-	private static int GRAVITY = 6;
+	private static int GRAVITY = 5;
 	private static final int SCORE_INCREMENT = 100;
 	private static Timer timer = null;
 	private JLabel dinoLabel;
@@ -86,7 +86,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 		gamePanel.add(dinoLabel);
 
 		cactusLabel = new JLabel(new ImageIcon(SelectgameWin.class.getResource("/이미지/tree.png")));
-		cactusLabel.setBounds(cactusX, cactusY, CACTUS_WIDTH, CACTUS_HEIGHT);
+		cactusLabel.setBounds(cactusX, cactusY, 30, 30);
 		gamePanel.add(cactusLabel);
 
 		setVisible(true);
