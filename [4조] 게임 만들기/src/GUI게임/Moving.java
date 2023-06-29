@@ -33,7 +33,7 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		this.setSize(w, h);
 		this.setTitle("Shooting Game");
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null); // 창이 가운데 나오게
 		this.getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
