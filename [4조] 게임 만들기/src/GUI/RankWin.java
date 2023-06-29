@@ -197,10 +197,12 @@ public class RankWin extends JFrame {
 			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getName());
 			if (school.get(0).getName() == school.get(1).getName()) {
 				lblNewLabel_4.setText("1등 : " + school.get(1).getName() + " " + school.get(1).getName());
+				if (school.get(1).getName() == school.get(2).getName()) {
+					lblNewLabel_5.setText("1등 : " + school.get(2).getName() + " " + school.get(1).getName());
+				}
 			} else {
 				lblNewLabel_4.setText("2등 : " + school.get(1).getName() + " " + school.get(1).getName());
 				if (school.get(1).getName() == school.get(2).getName()) {
-					lblNewLabel_4.setText("2등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
 					lblNewLabel_5.setText("2등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
 				} else {
 					lblNewLabel_5.setText("3등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
@@ -286,11 +288,13 @@ public class RankWin extends JFrame {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
 						if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
 							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
+							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
+								lblNewLabel_5_2
+										.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+							}
 						} else {
 							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
 							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_4_2
-										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 								lblNewLabel_5_2
 										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 							} else {
@@ -331,11 +335,13 @@ public class RankWin extends JFrame {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
 						if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
 							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
+							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
+								lblNewLabel_5_2
+										.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+							}
 						} else {
 							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
 							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_4_2
-										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 								lblNewLabel_5_2
 										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 							} else {
