@@ -45,186 +45,189 @@ public class invenWin extends JFrame {
 //      });
 //   }
 
-
 	public invenWin(Student s, String[] equipmentName) {
 		inven = new Inventory(s);
 		EquipmentItem e = new EquipmentItem();
 		List<Boolean> cList = inven.ItemAcquisition("캐릭터");
 		List<Boolean> wList = inven.ItemAcquisition("배경");
 
-      List<Integer> cList2 = new PickItem(s, "캐릭터").random();
-      List<Integer> wList2 = new PickItem(s, "배경").random();
+		List<Integer> cList2 = new PickItem(s, "캐릭터").random();
+		List<Integer> wList2 = new PickItem(s, "배경").random();
 
-      ImageIcon[] cIcons = new ImageIcon[cList2.size()];
-      ImageIcon[] cIconsBlock = new ImageIcon[cList2.size()];
-      ImageIcon[] wIcons = new ImageIcon[wList2.size()];
-      ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
+		ImageIcon[] cIcons = new ImageIcon[cList2.size()];
+		ImageIcon[] cIconsBlock = new ImageIcon[cList2.size()];
+		ImageIcon[] wIcons = new ImageIcon[wList2.size()];
+		ImageIcon[] wIconsBlock = new ImageIcon[cList2.size()];
 
-      inven.imageSet(cList, cList2, wList, wList2, cIcons, cIconsBlock, wIcons, wIconsBlock);
+		inven.imageSet(cList, cList2, wList, wList2, cIcons, cIconsBlock, wIcons, wIconsBlock);
 
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setBounds(100, 100, 800, 600);
-      setUndecorated(true); // 창 프레임 없애기
-      contentPane = new JPanel();
-      contentPane.setBackground(Color.BLACK);
-      contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-      setContentPane(contentPane);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		setUndecorated(true); // 창 프레임 없애기
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 
-      // 공룡게임 프레임 설정
-      setTitle("인벤토리"); // 타이틀 이름
-      setResizable(false); // 창의 크기를 변경하지 못하게
-      setLocationRelativeTo(null);
+		// 공룡게임 프레임 설정
+		setTitle("인벤토리"); // 타이틀 이름
+		setResizable(false); // 창의 크기를 변경하지 못하게
+		setLocationRelativeTo(null);
 
-      JPanel Charpnl = new JPanel();
-      iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
-      Charpnl.setBounds(600, 231, 150, 200);
+		JPanel Charpnl = new JPanel();
+		iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
+		Charpnl.setBounds(600, 231, 150, 200);
 
-      JButton Backbtn = new JButton();
-      Backbtn.setBorderPainted(false); // 버튼 테두리 제거
-      Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
-      Backbtn.setBackground(Color.BLACK);
-      Backbtn.setBounds(710, 182, 40, 40);
-      // 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
+		JButton Backbtn = new JButton();
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBounds(710, 182, 40, 40);
+		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
-      JLabel Coinlbl = new JLabel("1.000");
-      Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
-      Coinlbl.setForeground(Color.WHITE);
-      Coinlbl.setBounds(630, 202, 60, 20);
-      contentPane.setLayout(null);
-      contentPane.setLayout(null);
-      contentPane.add(Coinlbl);
-      contentPane.add(Backbtn);
-      contentPane.add(Charpnl);
-      Coinlbl.setText("" + s.getPoint());
+		JLabel Coinlbl = new JLabel("1.000");
+		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
+		Coinlbl.setForeground(Color.WHITE);
+		Coinlbl.setBounds(630, 202, 60, 20);
+		contentPane.setLayout(null);
+		contentPane.setLayout(null);
+		contentPane.add(Coinlbl);
+		contentPane.add(Backbtn);
+		contentPane.add(Charpnl);
+		Coinlbl.setText("" + s.getPoint());
 
-      JLabel cLbl = new JLabel("");
-      cLbl.setBounds(77, 231, 158, 200);
-      cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
-      contentPane.add(cLbl);
+		JLabel cLbl = new JLabel("");
+		cLbl.setBounds(77, 231, 158, 200);
+		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
+		contentPane.add(cLbl);
 
-      SoundButton cBtnLeft = new SoundButton(Music.S1);
-      cBtnLeft.setBackground(Color.BLACK);
-      cBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
-      cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
-      cBtnLeft.setEnabled(false);
-      cBtnLeft.setBounds(35, 307, 30, 50);
-      contentPane.add(cBtnLeft);
+		SoundButton cBtnLeft = new SoundButton(Music.S1);
+		cBtnLeft.setBackground(Color.BLACK);
+		cBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
+		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		cBtnLeft.setEnabled(false);
+		cBtnLeft.setBounds(35, 307, 30, 50);
+		contentPane.add(cBtnLeft);
 
-      SoundButton cBtnRight = new SoundButton(Music.S1);
-      cBtnRight.setBackground(Color.BLACK);
-      cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
-      cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
-      cBtnRight.setBounds(247, 307, 30, 50);
-      contentPane.add(cBtnRight);
+		SoundButton cBtnRight = new SoundButton(Music.S1);
+		cBtnRight.setBackground(Color.BLACK);
+		cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
+		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		cBtnRight.setBounds(247, 307, 30, 50);
+		contentPane.add(cBtnRight);
 
-      JLabel wLbl = new JLabel("");
-      wLbl.setBounds(360, 231, 158, 200);
-      wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
-      contentPane.add(wLbl);
+		JLabel wLbl = new JLabel("");
+		wLbl.setBounds(360, 231, 158, 200);
+		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
+		contentPane.add(wLbl);
 
-      SoundButton wBtnLeft = new SoundButton(Music.S1);
-      wBtnLeft.setBackground(Color.BLACK);
-      wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
-      wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
-      wBtnLeft.setBounds(318, 307, 30, 50);
-      wBtnLeft.setEnabled(false);
-      contentPane.add(wBtnLeft);
+		SoundButton wBtnLeft = new SoundButton(Music.S1);
+		wBtnLeft.setBackground(Color.BLACK);
+		wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
+		wBtnLeft.setBounds(318, 307, 30, 50);
+		wBtnLeft.setEnabled(false);
+		contentPane.add(wBtnLeft);
 
-      SoundButton wBtnRight = new SoundButton(Music.S1);
-      wBtnRight.setBackground(Color.BLACK);
-      wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
-      wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
-      wBtnRight.setBounds(530, 307, 30, 50);
-      contentPane.add(wBtnRight);
+		SoundButton wBtnRight = new SoundButton(Music.S1);
+		wBtnRight.setBackground(Color.BLACK);
+		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
+		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
+		wBtnRight.setBounds(530, 307, 30, 50);
+		contentPane.add(wBtnRight);
 
-      SoundButton changeCbtn = new SoundButton(Music.S1);
-      changeCbtn.setBounds(108, 470, 97, 23);
-      contentPane.add(changeCbtn);
+		SoundButton changeCbtn = new SoundButton(Music.S1);
+		changeCbtn.setBounds(108, 470, 97, 23);
+		contentPane.add(changeCbtn);
 
-      SoundButton changeWbtn = new SoundButton(Music.S1);
-      changeWbtn.setBounds(383, 470, 97, 23);
-      contentPane.add(changeWbtn);
+		SoundButton changeWbtn = new SoundButton(Music.S1);
+		changeWbtn.setBounds(383, 470, 97, 23);
+		contentPane.add(changeWbtn);
 
-      JButton cutbtn = new JButton(""); // 종료버튼
-      cutbtn.setBackground(Color.BLACK);
-      cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-      cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
-      cutbtn.setBounds(758, 10, 30, 30);
-      contentPane.add(cutbtn);
-      
-      JLabel CoinLbl = new JLabel("");
-      CoinLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/코인이미지.png")));
-      CoinLbl.setBounds(600, 202, 20, 20);
-      contentPane.add(CoinLbl);
+		JButton cutbtn = new JButton(""); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setBounds(758, 10, 30, 30);
+		contentPane.add(cutbtn);
 
-      Backbtn.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            MainWin MW = new MainWin(s);
-            MW.setVisible(true);
-            dispose();
-         }
-      });
+		JLabel CoinLbl = new JLabel("");
+		CoinLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/코인이미지.png")));
+		CoinLbl.setBounds(600, 202, 20, 20);
+		contentPane.add(CoinLbl);
 
-      cutbtn.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-         }
-      });
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 
-      cCount = 0;
-      wCount = 0;
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 
-      changeCbtn.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent arg0) {
-        	 iarr = e.changeC(Charpnl, cCount, iarr, s);
-            revalidate();
-            repaint();
-         }
-      });
+		cCount = 0;
+		wCount = 0;
 
-      changeWbtn.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent arg0) {
-        	 iarr = e.changeW(Charpnl, wCount, iarr, s);
-            revalidate();
-            repaint();
-         }
-      });
+		changeCbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iarr = e.changeC(Charpnl, cCount, iarr, s);
+				revalidate();
+				repaint();
+			}
+		});
 
-      cBtnLeft.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock, changeCbtn);
-            revalidate();
-            repaint();
-         }
-      });
-      cBtnRight.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock, changeCbtn);
-            revalidate();
-            repaint();
+		changeWbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iarr = e.changeW(Charpnl, wCount, iarr, s);
+				revalidate();
+				repaint();
+			}
+		});
 
-         }
-      });
-      wBtnLeft.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock, changeWbtn);
-            revalidate();
-            repaint();
-         }
-      });
+		cBtnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock,
+						changeCbtn);
+				revalidate();
+				repaint();
+			}
+		});
+		cBtnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock,
+						changeCbtn);
+				revalidate();
+				repaint();
 
-      wBtnRight.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock, changeWbtn);
-            revalidate();
-            repaint();
-         }
-      });
+			}
+		});
+		wBtnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock,
+						changeWbtn);
+				revalidate();
+				repaint();
+			}
+		});
 
-   }
+		wBtnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock,
+						changeWbtn);
+				revalidate();
+				repaint();
+			}
+		});
+
+	}
 }

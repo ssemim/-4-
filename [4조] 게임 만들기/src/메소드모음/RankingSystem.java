@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dbutil.DBUtil;
 import 객체모음.School;
@@ -51,7 +53,6 @@ public class RankingSystem {
 			DBUtil.close(conn);
 		}
 
-		System.out.println("학교" + list.toString());
 		return list;
 	}
 
@@ -104,7 +105,17 @@ public class RankingSystem {
 	 * @param 게임 no
 	 * @return 학생리스트
 	 */
-	public List<Student> studentRangking(int gameNo) {
+	public List<Student> studentRangking(String game) {
+
+		int gameNo = 0;
+		if (game.equals("RUN")) {
+			gameNo = 1;
+		} else if (game.equals("HANGMAN")) {
+			gameNo = 2;
+		} else if (game.equals("NUMBER")) {
+			gameNo = 3;
+		}
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -132,8 +143,63 @@ public class RankingSystem {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-
 		return list;
 	}
 
+	public String gameSelect(String gamename, int plma) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		Map<Integer, String> game = new HashMap<Integer, String>();
+		game.put(1, "RUN");
+		game.put(2, "HANGMAN");
+		game.put(3, "NUMBER");
+
+		int index = 0;
+
+		if (gamename.equals("RUN")) {
+			index = 1;
+		} else if (gamename.equals("HANGMAN")) {
+			index = 2;
+		} else if (gamename.equals("NUMBER")) {
+			index = 3;
+		}
+
+		String sql = "SELECT * FROM (select * from gamelog A where gameNo = ? order by no) B\r\n"
+				+ "WHERE gameNo = ? ORDER BY point DESC\r\n" + "LIMIT 3;";
+		List<Integer> gamelist = new ArrayList<>();
+
+		try {
+			conn = DBUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, index);
+			stmt.setInt(2, index);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				gamelist.add(rs.getInt("gameNo"));
+			}
+
+			if ((index + plma) > 0 && (index + plma) <= gamelist.size()) {
+				return game.get(index + plma);
+			} else if ((index + plma) > 0) {
+				return game.get(index);
+			} else if ((index + plma) <= gamelist.size()) {
+				return game.get(index);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+		return null;
+	}
+
+//	public static void main(String[] args) {
+//		RankingSystem game = new RankingSystem();
+//		System.out.println(game.gameSelect("HANGMAN", 1));
+//	}
 }

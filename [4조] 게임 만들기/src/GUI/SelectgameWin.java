@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import GUI게임.HangMan;
 import GUI게임.Dino;
+import GUI게임.HangMan;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;

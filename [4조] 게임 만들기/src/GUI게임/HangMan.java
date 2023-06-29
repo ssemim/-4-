@@ -179,6 +179,7 @@ public class HangMan extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				InsertPoint.test(s, returnPoint());
+				InsertPoint.insertGameLog(s, 2, returnPoint());
 				int pi = s.getPoint();
 				s.setPoint(pi + pointAll);
 				pointAll = 0;

@@ -83,7 +83,7 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 		Loginbtn.setBounds(158, 137, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
@@ -101,7 +101,7 @@ public class LoginWin extends JFrame {
 
 			}
 		});
-		
+
 //		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 //		Loginbtn.setBounds(158, 137, 80, 40);
 //		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));

@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
-import 메소드모음.InsertPoint;
 import 메소드모음.Login;
 
 public class JoinWin extends JFrame {

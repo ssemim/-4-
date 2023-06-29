@@ -28,4 +28,27 @@ public class InsertPoint {
 		}
 		return -1;
 	}
+
+	public static void insertGameLog(Student s, int gameNo, int point) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		String sql = "insert into gamelog(studentId, gameNo, `point`) values(?,?,?);";
+
+		try {
+			conn = DBUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, s.getId());
+			stmt.setInt(2, gameNo);
+			stmt.setInt(3, point);
+
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+	}
 }
