@@ -15,7 +15,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
+import 메소드모음.InsertPoint;
 import 메소드모음.Login;
+import java.awt.Font;
 
 public class JoinWin extends JFrame {
 	Login login = new Login();
@@ -59,32 +61,36 @@ public class JoinWin extends JFrame {
 		setLocationRelativeTo(null); // 창이 가운데 나오게
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 		JLabel IDlbl = new JLabel("ID"); // ID
+		IDlbl.setFont(new Font("굴림", Font.BOLD, 12));
 		IDlbl.setForeground(Color.WHITE);
 		IDlbl.setBackground(Color.WHITE);
-		IDlbl.setBounds(45, 113, 11, 15);
+		IDlbl.setBounds(46, 139, 26, 15);
 		JLabel PWlbl = new JLabel("PW"); // PW
+		PWlbl.setFont(new Font("굴림", Font.BOLD, 12));
 		PWlbl.setForeground(Color.WHITE);
 		PWlbl.setBackground(Color.WHITE);
-		PWlbl.setBounds(38, 180, 18, 15);
+		PWlbl.setBounds(39, 206, 33, 15);
 		JLabel PWPWlbl = new JLabel("PW"); // PW 중복확인
+		PWPWlbl.setFont(new Font("굴림", Font.BOLD, 12));
 		PWPWlbl.setForeground(Color.WHITE);
 		PWPWlbl.setBackground(Color.WHITE);
-		PWPWlbl.setBounds(38, 244, 18, 15);
-		JLabel Schoollbl = new JLabel("School"); // 학교
+		PWPWlbl.setBounds(39, 270, 33, 15);
+		JLabel Schoollbl = new JLabel("Group"); // 학교
+		Schoollbl.setFont(new Font("굴림", Font.BOLD, 12));
 		Schoollbl.setForeground(Color.WHITE);
 		Schoollbl.setBackground(Color.WHITE);
-		Schoollbl.setBounds(17, 313, 39, 15);
+		Schoollbl.setBounds(28, 339, 54, 15);
 
 		JLabel lblNewLabel = new JLabel(" ");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(17, 358, 259, 68);
+		lblNewLabel.setBounds(38, 364, 240, 68);
 
 		contentPane.add(lblNewLabel);
 
 		JButton Joinbtn = new JButton(""); // 가입버튼
 		Joinbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/가입하기버튼.png")));
-		Joinbtn.setBounds(106, 436, 81, 39);
+		Joinbtn.setBounds(110, 428, 81, 39);
 		// 가입하기버튼을 누르면 LoginWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,7 +153,7 @@ public class JoinWin extends JFrame {
 		});
 		JButton Overlapbtn = new JButton(""); // ID 중복확인 버튼
 		Overlapbtn.setIcon(new ImageIcon(JoinWin.class.getResource("/이미지/중복확인버튼.png")));
-		Overlapbtn.setBounds(196, 62, 80, 30);
+		Overlapbtn.setBounds(169, 90, 80, 30);
 
 		Overlapbtn.addActionListener(new ActionListener() {
 			@Override
@@ -180,24 +186,37 @@ public class JoinWin extends JFrame {
 			}
 		});
 
-		Backbtn.setLocation(248, 10);
+		Backbtn.setLocation(248, 450);
 		Backbtn.setSize(40, 40);
 
 		IDField = new JTextField(); // ID 입력
-		IDField.setBounds(83, 104, 165, 33);
+		IDField.setBounds(84, 130, 165, 33);
 		IDField.setColumns(10);
 
 		PWField = new JPasswordField(); // PW 입력
-		PWField.setBounds(83, 171, 165, 33);
+		PWField.setBounds(84, 197, 165, 33);
 		PWField.setColumns(10);
 
 		PWPWField = new JPasswordField(); // PW 중복입력
-		PWPWField.setBounds(83, 235, 165, 33);
+		PWPWField.setBounds(84, 261, 165, 33);
 		PWPWField.setColumns(10);
 		PWField.setEchoChar('●');
 
+		JButton cutbtn = new JButton(); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		cutbtn.setBounds(258, 10, 30, 30);
+		contentPane.add(cutbtn);
+		
 		SchoolField = new JTextField(""); // 학교 입력
-		SchoolField.setBounds(83, 304, 165, 33);
+		SchoolField.setBounds(84, 330, 165, 33);
 		SchoolField.setColumns(10);
 		PWPWField.setEchoChar('●');
 		contentPane.setLayout(null);
@@ -212,6 +231,6 @@ public class JoinWin extends JFrame {
 		contentPane.add(PWField);
 		contentPane.add(IDField);
 		contentPane.add(Backbtn);
-
+		
 	}
 }

@@ -20,7 +20,6 @@ public class UserImageOutput {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement("select point from student where id = ?;");
 			stmt.setString(1, id);
-
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {

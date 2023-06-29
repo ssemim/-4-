@@ -90,7 +90,7 @@ public class RankWin extends JFrame {
 
 		JLabel allRankLbl = new JLabel("RUN");
 		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		allRankLbl.setBounds(60, 30, 111, 35);
+		allRankLbl.setBounds(75, 26, 111, 35);
 		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		allRankLbl.setForeground(Color.WHITE);
 
