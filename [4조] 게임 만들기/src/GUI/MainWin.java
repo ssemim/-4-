@@ -1,29 +1,23 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import java.awt.Font;
+import 유틸.Music;
+import 유틸.SoundButton;
 
 public class MainWin extends JFrame {
 
@@ -50,6 +44,8 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
+		SoundButton.test();
+
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
@@ -68,7 +64,7 @@ public class MainWin extends JFrame {
 		getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
-		JButton Gamebtn = new JButton(); // 게임 버튼
+		SoundButton Gamebtn = new SoundButton(Music.S1); // 게임 버튼
 		Gamebtn.setBounds(129, 111, 240, 80);
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
 		Gamebtn.addActionListener(new ActionListener() {
@@ -79,7 +75,7 @@ public class MainWin extends JFrame {
 			}
 		});
 
-		JButton invenbtn = new JButton(); // 인벤 버튼
+		SoundButton invenbtn = new SoundButton(Music.S1); // 인벤 버튼
 		invenbtn.setBounds(129, 222, 240, 80);
 		invenbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/인벤토리버튼.png")));
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
@@ -91,7 +87,7 @@ public class MainWin extends JFrame {
 			}
 		});
 
-		JButton rankbtn = new JButton(); // 랭킹 버튼
+		SoundButton rankbtn = new SoundButton(Music.S1); // 랭킹 버튼
 		rankbtn.setBounds(129, 331, 240, 80);
 		rankbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/랭킹버튼.png")));
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
@@ -102,7 +98,7 @@ public class MainWin extends JFrame {
 				dispose();
 			}
 		});
-		JButton Storebtn = new JButton(); // 상점 버튼
+		SoundButton Storebtn = new SoundButton(Music.S1); // 상점 버튼
 		Storebtn.setBounds(129, 443, 240, 80);
 		Storebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/상점버튼.png")));
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
@@ -130,13 +126,12 @@ public class MainWin extends JFrame {
 				System.exit(0);
 			}
 		});
-
-		JLabel reCoin = new JLabel("");
-		reCoin.setFont(new Font("굴림", Font.BOLD, 18));
-		reCoin.setForeground(Color.WHITE);
-		reCoin.setHorizontalAlignment(SwingConstants.CENTER);
-		reCoin.setBounds(531, 181, 99, 20);
-		reCoin.setText("" + s.getPoint());
+		JLabel ReCoin = new JLabel("");
+		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
+		ReCoin.setForeground(Color.WHITE);
+		ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
+		ReCoin.setBounds(522, 181, 99, 20);
+		ReCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
 		cutbtn.setSize(30, 30);
@@ -148,12 +143,12 @@ public class MainWin extends JFrame {
 		contentPane.add(invenbtn);
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
-		contentPane.add(reCoin);
+		contentPane.add(ReCoin);
 
-		JLabel CoinImLbl = new JLabel("");
-		CoinImLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
-		CoinImLbl.setBounds(502, 181, 20, 20);
-		contentPane.add(CoinImLbl);
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(502, 181, 20, 20);
+		contentPane.add(CoinImgLbl);
 
 	}
 }

@@ -72,7 +72,7 @@ public class LoginWin extends JFrame {
 		PWlbl.setBounds(44, 89, 22, 15);
 		PWlbl.setForeground(Color.WHITE);
 
-		JButton Joinbtn = new JButton(); // 가입하기 버튼
+		SoundButton Joinbtn = new SoundButton(Music.S1); // 가입하기 버튼
 		Joinbtn.setBounds(59, 137, 80, 40);
 		Joinbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/가입하기버튼.png")));
 		// 가입하기버튼을 누르면 JoinWin으로 이동하는 액션리스너
@@ -83,6 +83,7 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
+
 		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 		Loginbtn.setBounds(158, 137, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
@@ -100,6 +101,24 @@ public class LoginWin extends JFrame {
 
 			}
 		});
+
+//		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
+//		Loginbtn.setBounds(158, 137, 80, 40);
+//		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
+//		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
+//		Loginbtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				Login login = new Login();
+//				if (login.login(IDField.getText(), PWField.getText()) != null) {
+//					MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
+//					MW.setVisible(true);
+//					dispose();
+//				} else {
+//					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
+//				}
+//
+//			}
+//		});
 
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
