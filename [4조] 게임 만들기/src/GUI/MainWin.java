@@ -16,9 +16,12 @@ import javax.swing.border.EmptyBorder;
 
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
+
 import 유틸.Music;
 import 유틸.SoundButton;
 import 유틸.Util;
+import 유틸.ResourceSoundPack;
+
 
 public class MainWin extends JFrame {
 
@@ -47,6 +50,7 @@ public class MainWin extends JFrame {
 	public MainWin(Student s) {
 
 		System.out.println(s.getPoint());
+	
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -150,6 +154,7 @@ public class MainWin extends JFrame {
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
 		Util.removeAllButtonFocus(contentPane);
+		
 	}
 
 }
