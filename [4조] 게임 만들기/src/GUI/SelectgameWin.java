@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import GUI게임.Dino;
 import GUI게임.Dudu;
 import GUI게임.HangMan;
 import GUI게임.Moving;
@@ -86,7 +85,7 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(511, 170, 150, 200);
+		Charpnl.setBounds(524, 191, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
