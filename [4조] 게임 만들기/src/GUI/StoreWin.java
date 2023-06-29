@@ -34,7 +34,8 @@ public class StoreWin extends JFrame {
 	private int character = 0;
 	private int item;
 	private final JLabel StoreBackLbl = new JLabel("");
-	private Timer timer;
+	private Timer timerC;
+	private Timer timerW;
 
 	/**
 	 * Launch the application.
@@ -116,13 +117,14 @@ public class StoreWin extends JFrame {
 						Charbtn.setText("");
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈.gif")));
 						character++;
-						timer.start();
+						timerC.start();
 					} else if (character == 1) {
-						timer.stop();
+						timerC.stop();
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터" + item + ".gif")));
 						character++;
-						timer.start();
+						timerC.start();
 					} else if (character == 2) {
+						timerC.stop();
 						Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
 						character = 0;
 					}
@@ -130,11 +132,10 @@ public class StoreWin extends JFrame {
 			}
 		});
 		
-		timer = new Timer(1500, new ActionListener() {
+		timerC = new Timer(1500, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Charbtn.doClick();
-				timer.stop();
 			}
 		});
 
@@ -156,14 +157,25 @@ public class StoreWin extends JFrame {
 						BackWinbtn.setText("");
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상자오픈2.gif")));
 						countBack++;
+						timerW.start();
 					} else if (countBack == 1) {
+						timerW.stop();
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경" + item + ".gif")));
 						countBack++;
+						timerW.start();
 					} else if (countBack == 2) {
+						timerW.stop();
 						BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
 						countBack = 0;
 					}
 				}
+			}
+		});
+		
+		timerW = new Timer(1500, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BackWinbtn.doClick();
 			}
 		});
 
