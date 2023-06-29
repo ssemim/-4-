@@ -11,14 +11,13 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import GUI.MainWin;
 import GUI.SelectgameWin;
-import sun.nio.cs.ext.MacArabic;
 import 객체모음.Student;
+import 메소드모음.InsertPoint;
 
 public class Dino extends JFrame implements ActionListener, KeyListener {
 	private static final int WIDTH = 800;
@@ -33,7 +32,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 	private static final int JUMP_HEIGHT = 100;
 	private static int GRAVITY = 6;
 	private static final int SCORE_INCREMENT = 100;
-
+	private static Timer timer = null;
 	private JLabel dinoLabel;
 	private JLabel cactusLabel;
 	private JPanel gamePanel;
@@ -80,7 +79,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 		};
 		gamePanel.setLayout(null);
 		gamePanel.setBackground(Color.WHITE);
-		add(gamePanel);
+		getContentPane().add(gamePanel);
 
 		dinoLabel = new JLabel(new ImageIcon(SelectgameWin.class.getResource("/이미지/dino.png")));
 		dinoLabel.setBounds(dinoX, dinoY, DINO_WIDTH, DINO_HEIGHT);
@@ -91,7 +90,7 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 		gamePanel.add(cactusLabel);
 
 		setVisible(true);
-		Timer timer = new Timer(10, this);
+		timer = new Timer(10, this);
 		timer.start();
 	}
 
@@ -146,11 +145,16 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 	}
 
 	private void gameOver() {
-		JOptionPane.showMessageDialog(this, "Game Over\nScore: " + score, "Game Over", JOptionPane.PLAIN_MESSAGE);
+//		JOptionPane.showMessageDialog(this, "Game Over\nScore: " + score, "Game Over", JOptionPane.PLAIN_MESSAGE);
+		timer.stop();
+		InsertPoint.insertGameLog(s, 1, score);
+		InsertPoint.test(s, score);
 		int point = s.getPoint();
 		s.setPoint(point + score);
-		MainWin ma = new MainWin(s);
-		setVisible(false);
+		score = 0;
+		MainWin MW = new MainWin(s);
+		MW.setVisible(true);
+//		dispose(); // 현재의 Dino 프레임을 닫음
 	}
 
 	@Override
@@ -174,5 +178,4 @@ public class Dino extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
-
 }
