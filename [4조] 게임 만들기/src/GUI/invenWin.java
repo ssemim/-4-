@@ -246,7 +246,7 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
-		
+
 		Util.removeAllButtonFocus(contentPane);
 
 	}

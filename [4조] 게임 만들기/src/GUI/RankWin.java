@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +24,7 @@ import 유틸.Util;
 public class RankWin extends JFrame {
 
 	private JPanel contentPane;
-
+	public static Map<String, Integer> gameList = new HashMap<String, Integer>();
 	/**
 	 * Launch the application.
 	 */
@@ -44,6 +46,11 @@ public class RankWin extends JFrame {
 	 * Create the frame.
 	 */
 	public RankWin(Student s) {
+		gameList.put("똥 피하기", 1);
+		gameList.put("행맨", 2);
+		gameList.put("두더지 잡기", 3);
+		gameList.put("가위바위보", 4);
+
 		RankingSystem RS = new RankingSystem();
 		List<Student> classList = null;
 		List<School> school = null;
@@ -90,9 +97,9 @@ public class RankWin extends JFrame {
 		cutbtn.setBounds(755, 13, 30, 30);
 		contentPane.add(cutbtn);
 
-		JLabel allRankLbl = new JLabel("RUN");
+		JLabel allRankLbl = new JLabel("똥 피하기");
 		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		allRankLbl.setBounds(75, 26, 111, 35);
+		allRankLbl.setBounds(64, 26, 122, 35);
 		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		allRankLbl.setForeground(Color.WHITE);
 
@@ -260,10 +267,6 @@ public class RankWin extends JFrame {
 		JButton btnNewButton_1 = new JButton(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setBorderPainted(false); // 버튼 테두리 제거
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton_1.setBounds(198, 26, 40, 35);
 		AllStudentpanel.add(btnNewButton_1);
 
@@ -277,97 +280,25 @@ public class RankWin extends JFrame {
 		AllStudentpanel.add(lblNewLabel_5_2);
 		AllStudentpanel.add(allRankLbl);
 
-		btnNewButton_1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String newGame = RS.gameSelect(allRankLbl.getText(), 1);
-				if (newGame == null) {
-					System.out.println("마우스 비활성화");
-				} else {
-					if (newGame == "NUMBER") {
-						btnNewButton_1.setBorderPainted(false);
-						btnNewButton_1.setContentAreaFilled(false);
-						btnNewButton_1.setFocusPainted(false);
-					}
-
-					allRankLbl.setText(newGame);
-
-					List<Student> newList = RS.studentRangking(newGame);
-
-					System.out.println(newGame + "  " + newList.toString() + "    " + newList.size());
-
-					if (newList.size() >= 3) {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						if (newList.get(0).getPoint() == newList.get(1).getPoint()
-								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
-							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							lblNewLabel_5_2.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						}
-						if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
-							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-						}
-						if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							lblNewLabel_5_2.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						} else {
-							lblNewLabel_5_2.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						}
-					} else if (newList.size() == 2) {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-						lblNewLabel_5_2.setText("");
-					} else {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						lblNewLabel_4_2.setText("");
-						lblNewLabel_5_2.setText("");
-					}
-				}
-			}
-		});
-
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newGame = RS.gameSelect(allRankLbl.getText(), -1);
-				if (newGame == null) {
-					System.out.println("마우스 비활성화");
-				} else {
-					if (newGame == "RUN") {
-						btnNewButton.setBorderPainted(false);
-						btnNewButton.setContentAreaFilled(false);
-						btnNewButton.setFocusPainted(false);
-					}
-					allRankLbl.setText(newGame);
+				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) - 1);
 
-					List<Student> newList = RS.studentRangking(newGame);
+				lblNewLabel_3_2.setText(newList.get(0).getId());
+				lblNewLabel_4_2.setText(newList.get(1).getId());
+				lblNewLabel_5_2.setText(newList.get(2).getId());
+			}
+		});
 
-					System.out.println(newGame + "  " + newList.toString() + "    " + newList.size());
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) + 1);
 
-					if (newList.size() >= 3) {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						if (newList.get(0).getPoint() == newList.get(1).getPoint()
-								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
-							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							lblNewLabel_5_2.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						} else if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
-							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-						} else if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							lblNewLabel_5_2.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						} else {
-							lblNewLabel_5_2.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-						}
-					} else if (newList.size() == 2) {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-						lblNewLabel_5_2.setText("");
-					} else {
-						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						lblNewLabel_4_2.setText("");
-						lblNewLabel_5_2.setText("");
-					}
-
-				}
+				lblNewLabel_3_2.setText(newList.get(0).getId());
+				lblNewLabel_4_2.setText(newList.get(1).getId());
+				lblNewLabel_5_2.setText(newList.get(2).getId());
 			}
 		});
 
