@@ -6,10 +6,12 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
+import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -49,11 +51,7 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 
-		SoundButton.test();
-
-		// 사운드 삽입
-
-		Main_Sound("Sounds/Welcome.wav");
+		
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
@@ -162,25 +160,4 @@ public class MainWin extends JFrame {
 
 	}
 
-	private void Main_Sound(String file) {
-		
-	try {	
-		AudioInputStream ais = 
-				
-		AudioSystem.getAudioInputStream(new FileInputStream(file))):
-					
-		clip = AudioSystem.getClip();
-		clip.open(ais);
-		Clip.start();
-	}catch(Exception e) {e.printStackTrace();}
-	
-	
-	}
-
-	public static void Stop_Main_Sound() {
-
-		clip.stop();
-		clip.close();
-
-	}
 }
