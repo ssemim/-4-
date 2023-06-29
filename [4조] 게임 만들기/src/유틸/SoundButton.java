@@ -19,7 +19,8 @@ public class SoundButton extends JButton {
         
         str = null;
         if(i == Music.S1) {
-        	str = "/소리모음/test.wav";
+        	str = "/소리모음/btnS5.wav";
+//        	str = "/소리모음/test.wav";
         }
         
         addMouseListener(new MouseAdapter() {
@@ -38,7 +39,6 @@ public class SoundButton extends JButton {
             clip.open(audioStream);
             clip.start();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
-            ex.printStackTrace();
         }
     }
 }

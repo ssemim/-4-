@@ -24,6 +24,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class MainWin extends JFrame {
 
@@ -50,8 +51,6 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
-
-		
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
@@ -133,12 +132,11 @@ public class MainWin extends JFrame {
 				System.exit(0);
 			}
 		});
-
 		JLabel ReCoin = new JLabel("");
 		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
 		ReCoin.setForeground(Color.WHITE);
-		ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
-		ReCoin.setBounds(522, 181, 99, 20);
+		ReCoin.setHorizontalAlignment(SwingConstants.LEFT);
+		ReCoin.setBounds(532, 181, 120, 20);
 		ReCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
@@ -157,7 +155,7 @@ public class MainWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
-
+		Util.removeAllButtonFocus(contentPane);
 	}
 
 }

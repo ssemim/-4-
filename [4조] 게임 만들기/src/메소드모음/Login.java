@@ -22,7 +22,7 @@ public class Login {
 
 		try {
 			if (!validateId(student.getId())) {
-				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.(8 ~ 15자)");
+				System.out.println("아이디는 영소문자, 대문자, 숫자로만 구성되어야 합니다.(2 ~ 4자)");
 				return -2;
 			}
 
@@ -98,7 +98,7 @@ public class Login {
 
 	public static boolean validateId(String id) {
 		// 영소문자, 대문자, 숫자로만 구성되어야 함
-		Pattern pattern = Pattern.compile("[A-Za-z0-9]{8,15}");
+		Pattern pattern = Pattern.compile("[A-Za-z0-9]{2,4}");
 		Matcher matcher = pattern.matcher(id);
 		System.out.println("ID : " + id + "  " + matcher.matches());
 		return matcher.matches();
