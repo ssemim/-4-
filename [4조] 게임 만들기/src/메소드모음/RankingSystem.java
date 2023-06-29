@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import GUI.RankWin;
 import dbutil.DBUtil;
 import 객체모음.School;
 import 객체모음.Student;
@@ -108,12 +107,14 @@ public class RankingSystem {
 	public List<Student> studentRangking(String game) {
 
 		int gameNo = 0;
-		if (game.equals("RUN")) {
+		if (game.equals("똥 피하기")) {
 			gameNo = 1;
-		} else if (game.equals("HANGMAN")) {
+		} else if (game.equals("행맨")) {
 			gameNo = 2;
-		} else if (game.equals("NUMBER")) {
+		} else if (game.equals("두더지 잡기")) {
 			gameNo = 3;
+		} else if (game.equals("가위바위보")) {
+			gameNo = 4;
 		}
 
 		Connection conn = null;
@@ -145,59 +146,51 @@ public class RankingSystem {
 		return list;
 	}
 
-	public String gameSelect(String gamename, int plma) {
+	public List<Student> gameSelect(int gameName) {
+		RankWin.gameList.put("똥 피하기", 1);
+		RankWin.gameList.put("행맨", 2);
+		RankWin.gameList.put("두더지 잡기", 3);
+		RankWin.gameList.put("가위바위보", 4);
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		Map<Integer, String> game = new HashMap<Integer, String>();
-		game.put(1, "RUN");
-		game.put(2, "HANGMAN");
-		game.put(3, "NUMBER");
-
-		int index = 0;
-
-		if (gamename.equals("RUN")) {
-			index = 1;
-		} else if (gamename.equals("HANGMAN")) {
-			index = 2;
-		} else if (gamename.equals("NUMBER")) {
-			index = 3;
-		}
+		List<Student> list = new ArrayList<Student>();
 
 		String sql = "select * from (SELECT * FROM gamelog A where gameNo = ? order by no) B\r\n"
 				+ "order by point desc limit 3;";
-		List<Integer> gamelist = new ArrayList<>();
 
-		try {
-			conn = DBUtil.getConnection();
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, index);
-			rs = stmt.executeQuery();
+		if (gameName > 0 && RankWin.gameList.size() >= gameName) {
+			try {
+				conn = DBUtil.getConnection();
+				stmt = conn.prepareStatement(sql);
 
-			while (rs.next()) {
-				gamelist.add(rs.getInt("gameNo"));
+				stmt.setInt(1, gameName);
+				rs = stmt.executeQuery();
+
+				while (rs.next()) {
+					String id = rs.getString("studentId");
+					int point = rs.getInt("point");
+
+					list.add(new Student(id, point));
+				}
+
+				return list;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBUtil.close(rs);
+				DBUtil.close(stmt);
+				DBUtil.close(conn);
 			}
-
-			if ((index + plma) > 0 && (index + plma) <= gamelist.size()) {
-				return game.get(index + plma);
-			} else if ((index + plma) > 0) {
-				return game.get(index);
-			} else if ((index + plma) <= gamelist.size()) {
-				return game.get(index);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
 		}
+
 		return null;
 	}
 
 //	public static void main(String[] args) {
 //		RankingSystem game = new RankingSystem();
-//		System.out.println(game.gameSelect("HANGMAN", 1));
+//		System.out.println(game.gameSelect(5));
 //	}
 }
