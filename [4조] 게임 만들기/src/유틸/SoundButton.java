@@ -38,6 +38,7 @@ public class SoundButton extends JButton {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
+            clip.stop();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
         }
     }
