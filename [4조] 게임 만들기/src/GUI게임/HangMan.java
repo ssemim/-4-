@@ -138,7 +138,7 @@ public class HangMan extends JFrame {
 		}
 	}
 
-	public HangMan(Student s) { // PlayPanel의 메인패널. 가장 큰 패널.
+	public HangMan(Student s, String[] eq) { // PlayPanel의 메인패널. 가장 큰 패널.
 
 		pointAll = 0;
 
@@ -185,9 +185,9 @@ public class HangMan extends JFrame {
 				s.setPoint(pi + pointAll);
 				pointAll = 0;
 				cnt = 30;
-				MainWin MW = new MainWin(s);
-				MW.setVisible(true);
-				dispose();
+				SelectgameWin d = new SelectgameWin(s, eq);
+				d.setVisible(true);
+				setVisible(false);
 			}
 		});
 		Backbtn.setLocation(510, 10);

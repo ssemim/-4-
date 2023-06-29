@@ -7,6 +7,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import GUI.MainWin;
+import GUI.SelectgameWin;
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
 
@@ -42,14 +43,17 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private Student s;
 
-	public Dudu(Student s) {
+	private String[] equi;
+
+	public Dudu(Student s, String[] equi) {
 		this.s = s;
+		this.equi = equi;
 		this.init();
 
 		this.start();
 
 		super.setSize(500, 500);
-
+		setUndecorated(true); // ㅊ ㅍㄹㅇ ㅇㅇㄱ
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
 		int xpos = (int) (screen.getWidth() / 2 - super.getWidth() / 2);
@@ -144,8 +148,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			InsertPoint.insertGameLog(s, 3, count * 30);
 			int point = s.getPoint();
 			s.setPoint(point + count * 30);
-			MainWin MW = new MainWin(s);
-			MW.setVisible(true);
+			SelectgameWin s = new SelectgameWin(this.s, equi);
+			s.setVisible(true);
 			this.setVisible(false);
 		}
 

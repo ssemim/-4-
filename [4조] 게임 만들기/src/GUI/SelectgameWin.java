@@ -65,7 +65,7 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		runbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(new Moving(s));
+				Thread t = new Thread(new Moving(s, equipmentName));
 				t.start();
 			}
 		});
@@ -107,7 +107,7 @@ public class SelectgameWin extends JFrame {
 		btnRun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new HangMan(s);
+				new HangMan(s, equipmentName);
 				setVisible(false);
 			}
 		});
@@ -116,7 +116,7 @@ public class SelectgameWin extends JFrame {
 		numbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼숫자.png")));
 		numbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Dudu d = new Dudu(s);
+				Dudu d = new Dudu(s, equipmentName);
 				dispose();
 			}
 		});
