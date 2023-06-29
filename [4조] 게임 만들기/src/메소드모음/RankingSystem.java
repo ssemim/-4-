@@ -123,16 +123,15 @@ public class RankingSystem {
 
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "SELECT studentId , gameNo, MAX(point) AS max_score\r\n" + " FROM gamelog\r\n"
-					+ "			WHERE gameNo IN (1, 2, 3)\r\n"
-					+ "			GROUP BY studentId, gameNo having gameNo = ? order by max_score desc";
+			String sql = "select * from (SELECT * FROM gamelog A where gameNo = ? order by no) B\r\n"
+					+ "order by point desc limit 3;";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, gameNo);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				String parseId = rs.getString("studentId");
-				int point = rs.getInt("max_score");
+				int point = rs.getInt("point");
 
 				list.add(new Student(parseId, point));
 			}
@@ -166,15 +165,14 @@ public class RankingSystem {
 			index = 3;
 		}
 
-		String sql = "SELECT * FROM (select * from gamelog A where gameNo = ? order by no) B\r\n"
-				+ "WHERE gameNo = ? ORDER BY point DESC\r\n" + "LIMIT 3;";
+		String sql = "select * from (SELECT * FROM gamelog A where gameNo = ? order by no) B\r\n"
+				+ "order by point desc limit 3;";
 		List<Integer> gamelist = new ArrayList<>();
 
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, index);
-			stmt.setInt(2, index);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {

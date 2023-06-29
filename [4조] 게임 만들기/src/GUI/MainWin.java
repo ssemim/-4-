@@ -44,7 +44,6 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
-		SoundButton.test();
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();

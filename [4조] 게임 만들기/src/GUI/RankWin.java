@@ -121,10 +121,12 @@ public class RankWin extends JFrame {
 			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
 			if (studentAll.get(0).getPoint() == studentAll.get(1).getPoint()) {
 				lblNewLabel_4_2.setText("1등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
+				if (studentAll.get(1).getPoint() == studentAll.get(2).getPoint()) {
+					lblNewLabel_5_2.setText("1등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
+				}
 			} else {
 				lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
 				if (studentAll.get(1).getPoint() == studentAll.get(2).getPoint()) {
-					lblNewLabel_4_2.setText("2등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
 					lblNewLabel_5_2.setText("2등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
 				} else {
 					lblNewLabel_5_2.setText("3등 : " + studentAll.get(2).getId() + " " + studentAll.get(2).getPoint());
@@ -133,8 +135,11 @@ public class RankWin extends JFrame {
 		} else if (studentAll.size() == 2) {
 			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
 			lblNewLabel_4_2.setText("2등 : " + studentAll.get(1).getId() + " " + studentAll.get(1).getPoint());
+			lblNewLabel_5_2.setText(" ");
 		} else {
 			lblNewLabel_3_2.setText("1등 : " + studentAll.get(0).getId() + " " + studentAll.get(0).getPoint());
+			lblNewLabel_4_2.setText("");
+			lblNewLabel_5_2.setText("");
 		}
 
 		JLabel lblNewLabel_1 = new JLabel("길드내 랭킹");
@@ -159,10 +164,12 @@ public class RankWin extends JFrame {
 			lblNewLabel_3_1.setText("1등 : " + classList.get(0).getId() + " " + classList.get(0).getPoint());
 			if (classList.get(0).getPoint() == classList.get(1).getPoint()) {
 				lblNewLabel_4_1.setText("1등 : " + classList.get(1).getId() + " " + classList.get(1).getPoint());
+				if (classList.get(1).getPoint() == classList.get(2).getPoint()) {
+					lblNewLabel_5_1.setText("1등 : " + classList.get(2).getPoint() + " " + classList.get(1).getPoint());
+				}
 			} else {
 				lblNewLabel_4_1.setText("2등 : " + classList.get(1).getId() + " " + classList.get(1).getPoint());
 				if (classList.get(1).getPoint() == classList.get(2).getPoint()) {
-					lblNewLabel_4_1.setText("2등 : " + classList.get(2).getId() + " " + classList.get(2).getPoint());
 					lblNewLabel_5_1.setText("2등 : " + classList.get(2).getId() + " " + classList.get(2).getPoint());
 				} else {
 					lblNewLabel_5_1.setText("3등 : " + classList.get(2).getId() + " " + classList.get(2).getPoint());
@@ -284,23 +291,24 @@ public class RankWin extends JFrame {
 					allRankLbl.setText(newGame);
 
 					List<Student> newList = RS.studentRangking(newGame);
+
+					System.out.println(newGame + "  " + newList.toString() + "    " + newList.size());
+
 					if (newList.size() >= 3) {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
+						if (newList.get(0).getPoint() == newList.get(1).getPoint()
+								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
+							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
+							lblNewLabel_5_2.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+						}
 						if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
 							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_5_2
-										.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							}
-						} else {
+						}
+						if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
 							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_5_2
-										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							} else {
-								lblNewLabel_5_2
-										.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							}
+							lblNewLabel_5_2.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+						} else {
+							lblNewLabel_5_2.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 						}
 					} else if (newList.size() == 2) {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
@@ -331,23 +339,21 @@ public class RankWin extends JFrame {
 
 					List<Student> newList = RS.studentRangking(newGame);
 
+					System.out.println(newGame + "  " + newList.toString() + "    " + newList.size());
+
 					if (newList.size() >= 3) {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
-						if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
+						if (newList.get(0).getPoint() == newList.get(1).getPoint()
+								&& newList.get(0).getPoint() == newList.get(2).getPoint()) {
 							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_5_2
-										.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							}
-						} else {
+							lblNewLabel_5_2.setText("1등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+						} else if (newList.get(0).getPoint() == newList.get(1).getPoint()) {
+							lblNewLabel_4_2.setText("1등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
+						} else if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
 							lblNewLabel_4_2.setText("2등 : " + newList.get(1).getId() + " " + newList.get(1).getPoint());
-							if (newList.get(1).getPoint() == newList.get(2).getPoint()) {
-								lblNewLabel_5_2
-										.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							} else {
-								lblNewLabel_5_2
-										.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
-							}
+							lblNewLabel_5_2.setText("2등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
+						} else {
+							lblNewLabel_5_2.setText("3등 : " + newList.get(2).getId() + " " + newList.get(2).getPoint());
 						}
 					} else if (newList.size() == 2) {
 						lblNewLabel_3_2.setText("1등 : " + newList.get(0).getId() + " " + newList.get(0).getPoint());
@@ -358,6 +364,7 @@ public class RankWin extends JFrame {
 						lblNewLabel_4_2.setText("");
 						lblNewLabel_5_2.setText("");
 					}
+
 				}
 			}
 		});
