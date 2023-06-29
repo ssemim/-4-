@@ -102,7 +102,7 @@ public class ResourceSoundPack {
 	
 	public static void backgrundsound() {
 		try {
-			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/beep.wav"); // 배경음 사운드 파일 경로 설정
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/PP.wav"); // 배경음 사운드 파일 경로 설정
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 
             BackgrundSoundClip = AudioSystem.getClip();
