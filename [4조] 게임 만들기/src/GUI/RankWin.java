@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import 객체모음.School;
 import 객체모음.Student;
 import 메소드모음.RankingSystem;
+import 유틸.Util;
 
 public class RankWin extends JFrame {
 
@@ -78,6 +79,7 @@ public class RankWin extends JFrame {
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -90,7 +92,7 @@ public class RankWin extends JFrame {
 
 		JLabel allRankLbl = new JLabel("RUN");
 		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		allRankLbl.setBounds(60, 30, 111, 35);
+		allRankLbl.setBounds(75, 26, 111, 35);
 		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		allRankLbl.setForeground(Color.WHITE);
 
@@ -380,5 +382,6 @@ public class RankWin extends JFrame {
 		RankMainLabel.setIcon(new ImageIcon(RankWin.class.getResource("/이미지/게임결과타이틀.png")));
 		RankMainLabel.setBounds(148, 72, 500, 150);
 		contentPane.add(RankMainLabel);
+		Util.removeAllButtonFocus(contentPane);
 	}
 }

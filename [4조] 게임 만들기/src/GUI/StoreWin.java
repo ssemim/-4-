@@ -24,6 +24,7 @@ import 메소드모음.PickItem;
 import java.awt.Font;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class StoreWin extends JFrame {
 
@@ -31,7 +32,7 @@ public class StoreWin extends JFrame {
 	private int countBack = 0;
 	private int character = 0;
 	private int item;
-	private final JLabel BackgroundLbl = new JLabel("");
+	private final JLabel StoreBackLbl = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -53,7 +54,7 @@ public class StoreWin extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreWin(Student s, String[] equipmentName) {
-
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -71,7 +72,7 @@ public class StoreWin extends JFrame {
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
-		Backbtn.setBounds(711, 167, 40, 40);
+		Backbtn.setBounds(742, 550, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,7 +87,7 @@ public class StoreWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(631, 187, 80, 20);
+		Coinlbl.setBounds(631, 187, 120, 20);
 		Coinlbl.setText("" + s.getPoint());
 
 		JPanel Charpnl = new JPanel();
@@ -178,9 +179,10 @@ public class StoreWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(601, 187, 20, 20);
 		contentPane.add(CoinImgLbl);
-		BackgroundLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
-		BackgroundLbl.setBounds(0, 0, 794, 571);
-		contentPane.add(BackgroundLbl);
+		Util.removeAllButtonFocus(contentPane);
+		StoreBackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
+		StoreBackLbl.setBounds(0, 0, 800, 600);
+		contentPane.add(StoreBackLbl);
 	}
 
 	// 아이템 이미지를 가져오기 위한 것

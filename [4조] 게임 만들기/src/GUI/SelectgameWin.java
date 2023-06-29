@@ -125,6 +125,12 @@ public class SelectgameWin extends JFrame {
 		SoundButton btnRun_1 = new SoundButton(Music.S1);
 		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
 		btnRun_1.setBounds(120, 405, 270, 80);
+		btnRun_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RSP r = new RSP(s);
+				dispose();
+			}
+		});
 		contentPane.setLayout(null);
 		contentPane.add(btnRun);
 		contentPane.add(btnRun_1);
@@ -137,14 +143,14 @@ public class SelectgameWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(536, 140, 86, 20);
+		Coinlbl.setBounds(534, 161, 130, 20);
 		contentPane.add(Coinlbl);
 		Coinlbl.setText("" + s.getPoint());
 
-		JLabel CoinLbl = new JLabel("");
-		CoinLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
-		CoinLbl.setBounds(511, 140, 20, 20);
-		contentPane.add(CoinLbl);
+		JLabel CoinImgLbl = new JLabel("");
+		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
+		CoinImgLbl.setBounds(514, 161, 20, 20);
+		contentPane.add(CoinImgLbl);
 
 	}
 

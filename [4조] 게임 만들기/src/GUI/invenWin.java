@@ -19,6 +19,7 @@ import 메소드모음.Inventory;
 import 메소드모음.PickItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class invenWin extends JFrame {
 
@@ -82,13 +83,13 @@ public class invenWin extends JFrame {
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBackground(Color.BLACK);
-		Backbtn.setBounds(710, 182, 40, 40);
+		Backbtn.setBounds(748, 550, 40, 40);
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(630, 202, 60, 20);
+		Coinlbl.setBounds(630, 202, 120, 20);
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Coinlbl);
@@ -137,24 +138,41 @@ public class invenWin extends JFrame {
 		contentPane.add(wBtnRight);
 
 		SoundButton changeCbtn = new SoundButton(Music.S1);
-		changeCbtn.setBounds(108, 470, 97, 23);
+		changeCbtn.setBorderPainted(false); // 버튼 테두리 제거
+		changeCbtn.setContentAreaFilled(false); // 버튼 안 투명화
+		changeCbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
+		changeCbtn.setBounds(132, 441, 50, 50);
 		contentPane.add(changeCbtn);
 
 		SoundButton changeWbtn = new SoundButton(Music.S1);
-		changeWbtn.setBounds(383, 470, 97, 23);
+		changeWbtn.setBorderPainted(false); // 버튼 테두리 제거
+		changeWbtn.setContentAreaFilled(false); // 버튼 안 투명화
+		changeWbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/확인버튼.png")));
+		changeWbtn.setBounds(411, 441, 50, 50);
 		contentPane.add(changeWbtn);
-
-		JButton cutbtn = new JButton(""); // 종료버튼
-		cutbtn.setBackground(Color.BLACK);
-		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
-		cutbtn.setBounds(758, 10, 30, 30);
-		contentPane.add(cutbtn);
 
 		JLabel CoinLbl = new JLabel("");
 		CoinLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/코인이미지.png")));
 		CoinLbl.setBounds(600, 202, 20, 20);
 		contentPane.add(CoinLbl);
+
+		JLabel invenTitLbl = new JLabel("");
+		invenTitLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/인벤타이틀.png")));
+		invenTitLbl.setBounds(0, 0, 350, 100);
+		contentPane.add(invenTitLbl);
+
+		JLabel invenBackLbl = new JLabel("");
+		invenBackLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/인벤배경.gif")));
+		invenBackLbl.setBounds(0, 0, 800, 600);
+		contentPane.add(invenBackLbl);
+
+		JButton cutbtn = new JButton(""); // 종료버튼
+		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
+		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setBounds(758, 10, 30, 30);
+		contentPane.add(cutbtn);
 
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -228,6 +246,8 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
+		
+		Util.removeAllButtonFocus(contentPane);
 
 	}
 }
