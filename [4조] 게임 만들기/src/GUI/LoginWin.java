@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import 메소드모음.Login;
@@ -45,7 +46,7 @@ public class LoginWin extends JFrame {
 	 */
 	public LoginWin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 200); // 프레임 크기
+		setBounds(100, 100, 300, 230); // 프레임 크기
 		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
@@ -73,7 +74,7 @@ public class LoginWin extends JFrame {
 		PWlbl.setForeground(Color.WHITE);
 
 		SoundButton Joinbtn = new SoundButton(Music.S1); // 가입하기 버튼
-		Joinbtn.setBounds(59, 137, 80, 40);
+		Joinbtn.setBounds(57, 162, 80, 40);
 		Joinbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/가입하기버튼.png")));
 		// 가입하기버튼을 누르면 JoinWin으로 이동하는 액션리스너
 		Joinbtn.addActionListener(new ActionListener() {
@@ -84,19 +85,31 @@ public class LoginWin extends JFrame {
 			}
 		});
 
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(12, 122, 276, 30);
+		contentPane.add(lblNewLabel);
+
 		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
-		Loginbtn.setBounds(158, 137, 80, 40);
+		Loginbtn.setBounds(156, 162, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
-				if (login.login(IDField.getText(), PWField.getText()) != null) {
-					MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
-					MW.setVisible(true);
-					dispose();
+				// 존재하는 아이디인지 확인하기
+				if (login.duplication(IDField.getText())) {
+					if (login.login(IDField.getText(), PWField.getText()) != null) {
+						lblNewLabel.setText("");
+						MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
+						MW.setVisible(true);
+						dispose();
+					} else {
+						lblNewLabel.setText("아이디와 비밀번호가 일치하지 않습니다.");
+					}
 				} else {
-					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
+					lblNewLabel.setText("존재하지 않는 아이디 입니다.");
 				}
 
 			}
