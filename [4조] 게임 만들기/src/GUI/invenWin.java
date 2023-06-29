@@ -77,7 +77,7 @@ public class invenWin extends JFrame {
 
 		JPanel Charpnl = new JPanel();
 		iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(600, 231, 150, 200);
+		Charpnl.setBounds(600, 232, 150, 200);
 
 		JButton Backbtn = new JButton(); 
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
@@ -105,7 +105,7 @@ public class invenWin extends JFrame {
 		Coinlbl.setText("" + s.getPoint());
 
 		JLabel cLbl = new JLabel("");
-		cLbl.setBounds(77, 231, 158, 200);
+		cLbl.setBounds(82, 230, 150, 200);
 		cLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/캐릭터1.gif")));
 		contentPane.add(cLbl);
 
@@ -125,7 +125,7 @@ public class invenWin extends JFrame {
 		contentPane.add(cBtnRight);
 
 		JLabel wLbl = new JLabel("");
-		wLbl.setBounds(360, 231, 158, 200);
+		wLbl.setBounds(363, 231, 150, 200);
 		wLbl.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/배경1.gif")));
 		contentPane.add(wLbl);
 
@@ -148,14 +148,14 @@ public class invenWin extends JFrame {
 		changeCbtn.setBorderPainted(false); // 버튼 테두리 제거
 		changeCbtn.setContentAreaFilled(false); // 버튼 안 투명화
 		changeCbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/변경버튼.png")));
-		changeCbtn.setBounds(112, 441, 100, 50);
+		changeCbtn.setBounds(106, 441, 100, 50);
 		contentPane.add(changeCbtn);
 
 		SoundButton changeWbtn = new SoundButton(Music.S1);
 		changeWbtn.setBorderPainted(false); // 버튼 테두리 제거
 		changeWbtn.setContentAreaFilled(false); // 버튼 안 투명화
 		changeWbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/변경버튼.png")));
-		changeWbtn.setBounds(384, 441, 100, 50);
+		changeWbtn.setBounds(386, 441, 100, 50);
 		contentPane.add(changeWbtn);
 
 		JLabel CoinLbl = new JLabel("");

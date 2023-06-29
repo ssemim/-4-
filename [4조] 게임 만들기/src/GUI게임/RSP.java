@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GUI.MainWin;
+import GUI.SelectgameWin;
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
 
@@ -35,9 +35,13 @@ public class RSP extends JFrame {
 
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
+	private String[] equi;
 
-	public RSP(Student s) {
+	public RSP(Student s,String[] equipmentName) {
 		this.s = s;
+		equi = equipmentName;
+		setUndecorated(true); // 창 프레임 없애기
+		
 		this.setTitle("가위 바위 보 게임");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -58,8 +62,8 @@ public class RSP extends JFrame {
 		back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin(s);
-				MW.setVisible(true);
+				SelectgameWin sw = new SelectgameWin(s, equi);
+				sw.setVisible(true);
 				dispose();
 			}
 		});
@@ -85,6 +89,8 @@ public class RSP extends JFrame {
 		southPanel.add(back);
 		this.setSize(800, 600);
 		this.setVisible(true);
+		setResizable(false); // 창의 크기를 변경하지 못하게
+		setLocationRelativeTo(null); // 창이 가운데 나오게
 
 	}
 
@@ -168,5 +174,6 @@ public class RSP extends JFrame {
 
 		}
 	}
+	
 
 }

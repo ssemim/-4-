@@ -24,7 +24,7 @@ import 유틸.SoundButton;
 public class SelectgameWin extends JFrame {
 
 	private JPanel contentPane;
-
+	private String[] equi;
 	/**
 	 * Launch the application.
 	 */
@@ -45,6 +45,7 @@ public class SelectgameWin extends JFrame {
 	 * Create the frame.
 	 */
 	public SelectgameWin(Student s, String[] equipmentName) {
+		this.equi = equipmentName;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setUndecorated(true); // 창 프레임 없애기
@@ -85,19 +86,18 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(524, 191, 150, 200);
+		Charpnl.setBounds(502, 211, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/뒤로가기버튼.png")));
-		Backbtn.setBounds(624, 115, 40, 40);
+		Backbtn.setBounds(748, 550, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
-				dispose();
 			}
 		});
 
@@ -107,8 +107,8 @@ public class SelectgameWin extends JFrame {
 		hmBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new HangMan(s);
-				setVisible(false);
+				new HangMan(s, equi);
+				dispose();
 			}
 		});
 
@@ -116,25 +116,22 @@ public class SelectgameWin extends JFrame {
 		whackBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
 		whackBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Dudu d = new Dudu(s);
+				Dudu d = new Dudu(s, equi);
 				dispose();
 			}
 		});
 		whackBtn.setBounds(120, 311, 270, 80);
 
 		SoundButton rspBtn = new SoundButton(Music.S1);
-		rspBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼가위바위보.png")));
-		rspBtn.setBounds(120, 405, 270, 80);
-
-		SoundButton btnRun_1 = new SoundButton(Music.S1);
-		btnRun_1.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼똥피하기.png")));
-		btnRun_1.setBounds(120, 405, 270, 80);
-		btnRun_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RSP r = new RSP(s);
+		rspBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RSP rsp = new RSP(s, equi);
 				dispose();
 			}
 		});
+		rspBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼가위바위보.png")));
+		rspBtn.setBounds(120, 405, 270, 80);
+
 		contentPane.setLayout(null);
 		contentPane.add(hmBtn);
 		contentPane.add(rspBtn);
@@ -147,13 +144,13 @@ public class SelectgameWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(534, 161, 130, 20);
+		Coinlbl.setBounds(534, 181, 120, 20);
 		contentPane.add(Coinlbl);
 		Coinlbl.setText("" + s.getPoint());
 
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
-		CoinImgLbl.setBounds(514, 161, 20, 20);
+		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
 
 	}

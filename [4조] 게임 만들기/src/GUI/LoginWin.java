@@ -141,7 +141,6 @@ public class LoginWin extends JFrame {
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
-		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override

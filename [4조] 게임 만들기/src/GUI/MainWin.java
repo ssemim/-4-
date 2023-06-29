@@ -14,13 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import GUI게임.RSP;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
-
 import 유틸.Music;
+import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
-import 유틸.ResourceSoundPack;
 
 
 public class MainWin extends JFrame {
@@ -75,7 +75,7 @@ public class MainWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				SelectgameWin SlecW = new SelectgameWin(s, equipmentName);
 				SlecW.setVisible(true);
-				dispose();
+				setVisible(false);
 			}
 		});
 
@@ -126,15 +126,15 @@ public class MainWin extends JFrame {
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				System.exit(0);
 			}
 		});
+		
 		JLabel ReCoin = new JLabel("");
 		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
 		ReCoin.setForeground(Color.WHITE);
 		ReCoin.setHorizontalAlignment(SwingConstants.LEFT);
-		ReCoin.setBounds(532, 181, 120, 20);
+		ReCoin.setBounds(534, 181, 120, 20);
 		ReCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);
