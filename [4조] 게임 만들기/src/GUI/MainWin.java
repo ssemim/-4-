@@ -44,7 +44,6 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
-		SoundButton.test();
 
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
@@ -126,12 +125,11 @@ public class MainWin extends JFrame {
 				System.exit(0);
 			}
 		});
-
 		JLabel ReCoin = new JLabel("");
 		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
 		ReCoin.setForeground(Color.WHITE);
-		ReCoin.setHorizontalAlignment(SwingConstants.CENTER);
-		ReCoin.setBounds(522, 181, 99, 20);
+		ReCoin.setHorizontalAlignment(SwingConstants.LEFT);
+		ReCoin.setBounds(532, 181, 120, 20);
 		ReCoin.setText("" + s.getPoint());
 
 		cutbtn.setLocation(758, 10);

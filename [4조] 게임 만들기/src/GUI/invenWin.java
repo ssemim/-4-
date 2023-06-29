@@ -82,13 +82,13 @@ public class invenWin extends JFrame {
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBackground(Color.BLACK);
-		Backbtn.setBounds(710, 182, 40, 40);
+		Backbtn.setBounds(748, 550, 40, 40);
 		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(630, 202, 60, 20);
+		Coinlbl.setBounds(630, 202, 120, 20);
 		contentPane.setLayout(null);
 		contentPane.setLayout(null);
 		contentPane.add(Coinlbl);

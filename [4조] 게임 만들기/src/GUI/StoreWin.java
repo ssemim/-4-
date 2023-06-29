@@ -71,7 +71,7 @@ public class StoreWin extends JFrame {
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/뒤로가기버튼.png")));
-		Backbtn.setBounds(711, 167, 40, 40);
+		Backbtn.setBounds(742, 550, 40, 40);
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,7 +86,7 @@ public class StoreWin extends JFrame {
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		Coinlbl.setForeground(Color.WHITE);
-		Coinlbl.setBounds(631, 187, 80, 20);
+		Coinlbl.setBounds(631, 187, 120, 20);
 		Coinlbl.setText("" + s.getPoint());
 
 		JPanel Charpnl = new JPanel();
@@ -102,7 +102,7 @@ public class StoreWin extends JFrame {
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (s.getPoint() >= 1000 || character < 0) {
+				if (s.getPoint() >= 1000 || character > 0) {
 					if (character == 0) {
 						int point = s.getPoint();
 						PickItem pick = new PickItem(s, "캐릭터");
@@ -131,7 +131,7 @@ public class StoreWin extends JFrame {
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (s.getPoint() >= 1000) {
+				if (s.getPoint() >= 1000 || countBack > 0) {
 					if (countBack == 0) {
 						int a = s.getPoint();
 						PickItem pick = new PickItem(s, "배경");
@@ -173,7 +173,7 @@ public class StoreWin extends JFrame {
 		});
 		cutbtn.setBounds(752, 10, 30, 30);
 		contentPane.add(cutbtn);
-		
+
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(601, 187, 20, 20);

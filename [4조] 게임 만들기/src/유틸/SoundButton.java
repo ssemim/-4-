@@ -13,13 +13,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 
 public class SoundButton extends JButton {
-	private static String path;
+	private String str;
     public SoundButton(int i) {
         super();
         
-        path = null;
+        str = null;
         if(i == Music.S1) {
-        	path = "/소리모음/btnS5.wav";
+        	str = "/소리모음/btnS5.wav";
+//        	str = "/소리모음/test.wav";
         }
         
         addMouseListener(new MouseAdapter() {
@@ -32,29 +33,12 @@ public class SoundButton extends JButton {
 
     private void playSound() {
         try {
-        	URL url = SoundButton.class.getResource(path);
+        	URL url = SoundButton.class.getResource(str);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
-//            무한반복 하는법
-//            clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    public static void test() {
-        try {
-        	URL url = SoundButton.class.getResource(path);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(url);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-//            무한반복 하는법
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
-            ex.printStackTrace();
         }
     }
 }
