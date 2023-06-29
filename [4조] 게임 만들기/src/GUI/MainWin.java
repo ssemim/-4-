@@ -153,6 +153,7 @@ public class MainWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
+		ResourceSoundPack.backgrundsound();
 		Util.removeAllButtonFocus(contentPane);
 		
 	}
