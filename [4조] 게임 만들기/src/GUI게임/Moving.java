@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
@@ -227,7 +228,6 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 
 	public void keyTyped(KeyEvent ke) {
 	}
-
 }
 
 class Ms {
