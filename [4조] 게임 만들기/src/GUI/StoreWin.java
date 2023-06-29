@@ -24,6 +24,7 @@ import 메소드모음.PickItem;
 import java.awt.Font;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class StoreWin extends JFrame {
 
@@ -53,7 +54,7 @@ public class StoreWin extends JFrame {
 	 * Create the frame.
 	 */
 	public StoreWin(Student s, String[] equipmentName) {
-
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -178,6 +179,7 @@ public class StoreWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(601, 187, 20, 20);
 		contentPane.add(CoinImgLbl);
+		Util.removeAllButtonFocus(contentPane);
 		StoreBackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
 		StoreBackLbl.setBounds(0, 0, 800, 600);
 		contentPane.add(StoreBackLbl);

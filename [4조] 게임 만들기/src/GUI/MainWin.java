@@ -18,6 +18,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class MainWin extends JFrame {
 
@@ -44,7 +45,6 @@ public class MainWin extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWin(Student s) {
-
 		System.out.println(s.getPoint());
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
@@ -148,6 +148,6 @@ public class MainWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
-
+		Util.removeAllButtonFocus(contentPane);
 	}
 }

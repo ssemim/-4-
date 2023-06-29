@@ -19,6 +19,7 @@ import 메소드모음.Inventory;
 import 메소드모음.PickItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class invenWin extends JFrame {
 
@@ -168,6 +169,7 @@ public class invenWin extends JFrame {
 		JButton cutbtn = new JButton(""); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
@@ -244,6 +246,8 @@ public class invenWin extends JFrame {
 				repaint();
 			}
 		});
+		
+		Util.removeAllButtonFocus(contentPane);
 
 	}
 }

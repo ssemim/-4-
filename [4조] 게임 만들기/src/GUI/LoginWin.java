@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import 메소드모음.Login;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 import java.awt.Font;
 
 public class LoginWin extends JFrame {
@@ -87,6 +88,7 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
+		
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -139,6 +141,7 @@ public class LoginWin extends JFrame {
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -161,5 +164,6 @@ public class LoginWin extends JFrame {
 		contentPane.add(cutbtn);
 
 		setVisible(true); // 창이 보이게
+		Util.removeAllButtonFocus(contentPane);
 	}
 }
