@@ -24,6 +24,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
 import 유틸.Music;
+import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
 
@@ -107,7 +108,9 @@ public class StoreWin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000 || character > 0) {
+					
 					if (character == 0) {
+						ResourceSoundPack.PickSound();
 						int point = s.getPoint();
 						PickItem pick = new PickItem(s, "캐릭터");
 						item = ItemLook("캐릭터", pick.pickItem());
@@ -147,7 +150,9 @@ public class StoreWin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000 || countBack > 0) {
+					
 					if (countBack == 0) {
+						ResourceSoundPack.PickSound();
 						int a = s.getPoint();
 						PickItem pick = new PickItem(s, "배경");
 						item = ItemLook("배경", pick.pickItem());
