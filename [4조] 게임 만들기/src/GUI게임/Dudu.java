@@ -54,9 +54,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	private int count = -1;
 
 	private Student s;
-	
+
 	private String[] equi;
-	
+
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
 		this.equi = equi;
@@ -131,8 +131,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		end.setBorderPainted(false); // 버튼 테두리 제거
 
 		jp21.add(end);
-		
-		JButton Backbtn = new JButton(); // 뒤로가기 버튼 
+
+		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(Dudu.class.getResource("/이미지/뒤로가기버튼.png")));
@@ -189,10 +189,12 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			random(0);
 
 		} else if (e.getSource() == end) {
-			InsertPoint.test(s, count * 30);
-			InsertPoint.insertGameLog(s, 3, count * 30);
-			int point = s.getPoint();
-			s.setPoint(point + count * 30);
+			if (count != -1) {
+				InsertPoint.test(s, count * 30);
+				InsertPoint.insertGameLog(s, 3, count * 30);
+				int point = s.getPoint();
+				s.setPoint(point + count * 30);
+			}
 			SelectgameWin s = new SelectgameWin(this.s, equi);
 			s.setVisible(true);
 			this.setVisible(false);

@@ -5,12 +5,15 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import GUI.SelectgameWin;
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
 
@@ -36,7 +39,6 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		this.setSize(w, h);
 		this.setTitle("Shooting Game");
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null); // 창이 가운데 나오게
 		this.getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
@@ -137,7 +139,11 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 			InsertPoint.insertGameLog(s, 1, (int) (point));
 			int pi = s.getPoint();
 			s.setPoint(pi + (int) (point));
+			int a = pi + (int) (point);
+			String b = String.valueOf(a);
+			SelectgameWin.setCoinlbl(b);
 			count++;
+
 		}
 
 		gs.fillRect(x, y, xw, xh);
