@@ -115,16 +115,16 @@ public class SelectgameWin extends JFrame {
 			}
 		});
 
-		SoundButton whackBtn = new SoundButton(Music.S1);
-		whackBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
-		whackBtn.addActionListener(new ActionListener() {
+		SoundButton duduBtn = new SoundButton(Music.S1);
+		duduBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
+		duduBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ResourceSoundPack.InsideclickSound(); 
 				Dudu d = new Dudu(s, equi);
 				dispose();
 			}
 		});
-		whackBtn.setBounds(120, 311, 270, 80);
+		duduBtn.setBounds(120, 311, 270, 80);
 
 		SoundButton rspBtn = new SoundButton(Music.S1);
 		rspBtn.addActionListener(new ActionListener() {
@@ -144,7 +144,7 @@ public class SelectgameWin extends JFrame {
 		contentPane.add(Backbtn);
 		contentPane.add(Charpnl);
 		contentPane.add(cutbtn);
-		contentPane.add(whackBtn);
+		contentPane.add(duduBtn);
 
 		JLabel Coinlbl = new JLabel("1.000");
 		Coinlbl.setFont(new Font("굴림", Font.BOLD, 18));

@@ -73,7 +73,7 @@ public class RSP extends JFrame {
 				dispose();
 			}
 		});
-
+		
 		win.setForeground(Color.BLUE);
 		centerPanel.add(me);
 		centerPanel.add(com);
