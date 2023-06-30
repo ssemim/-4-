@@ -19,6 +19,7 @@ import GUI게임.RSP;
 import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
+import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 
 public class SelectgameWin extends JFrame {
@@ -66,6 +67,7 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		poopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				Thread t = new Thread(new Moving(s, equi));
 				t.start();
 			}
@@ -107,6 +109,7 @@ public class SelectgameWin extends JFrame {
 		hmBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				new HangMan(s, equi);
 				dispose();
 			}
@@ -116,6 +119,7 @@ public class SelectgameWin extends JFrame {
 		whackBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
 		whackBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ResourceSoundPack.InsideclickSound(); 
 				Dudu d = new Dudu(s, equi);
 				dispose();
 			}
@@ -125,6 +129,7 @@ public class SelectgameWin extends JFrame {
 		SoundButton rspBtn = new SoundButton(Music.S1);
 		rspBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ResourceSoundPack.InsideclickSound(); 
 				RSP rsp = new RSP(s, equi);
 				dispose();
 			}

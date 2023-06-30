@@ -70,8 +70,11 @@ public class MainWin extends JFrame {
 		SoundButton Gamebtn = new SoundButton(Music.S1); // 게임 버튼
 		Gamebtn.setBounds(129, 111, 240, 80);
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
+		
+		
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				SelectgameWin SlecW = new SelectgameWin(s, equipmentName);
 				SlecW.setVisible(true);
 				setVisible(false);
@@ -84,6 +87,7 @@ public class MainWin extends JFrame {
 		// 인벤토리버튼을 누르면 invenWin으로 이동하는 액션리스너
 		invenbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				invenWin IW = new invenWin(s, equipmentName);
 				IW.setVisible(true);
 				dispose();
@@ -96,6 +100,7 @@ public class MainWin extends JFrame {
 		// 랭킹버튼을 누르면 RankWin으로 이동하는 액션리스너
 		rankbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				RankWin RW = new RankWin(s);
 				RW.setVisible(true);
 				dispose();
@@ -107,6 +112,7 @@ public class MainWin extends JFrame {
 		// 상점버튼을 누르면 StoreWin으로 이동하는 액션리스너
 		Storebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				StoreWin StoreW = new StoreWin(s, equipmentName);
 				StoreW.setVisible(true);
 				dispose();
@@ -125,6 +131,7 @@ public class MainWin extends JFrame {
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.btnSound();
 				System.exit(0);
 			}
 		});
