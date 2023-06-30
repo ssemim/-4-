@@ -23,6 +23,10 @@ public class SoundButton extends JButton {
 //        	str = "/소리모음/test.wav";
         }
         
+        if(i == Music.S2) {
+        	str = "";
+        }
+        
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
