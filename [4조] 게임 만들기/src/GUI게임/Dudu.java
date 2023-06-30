@@ -265,8 +265,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		randomsu = (int) (Math.random() * 12);
 		
-		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0]+".gif")));
-
+		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
+		
 		jlb.setText("점수 : " + count * 30);
 	}
 } // end
