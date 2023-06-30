@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,9 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.sun.javafx.collections.MappingChange.Map;
+
 import GUI.MainWin;
 import GUI.SelectgameWin;
 import 객체모음.Student;
+import 메소드모음.DuduLog;
 import 메소드모음.InsertPoint;
 import java.awt.Color;
 
@@ -56,6 +61,12 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	private Student s;
 
 	private String[] equi;
+	
+	public static List<Integer> list = new ArrayList<Integer>();
+
+	private int countAll = 0;
+	
+	private DuduLog DL = new DuduLog();
 
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
@@ -140,6 +151,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectgameWin SW = new SelectgameWin(s, equi);
+				DL.insertDudu(s, countAll, count, list);
 				SW.setVisible(true);
 				dispose();
 			}
@@ -192,6 +204,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			if (count != -1) {
 				InsertPoint.test(s, count * 30);
 				InsertPoint.insertGameLog(s, 3, count * 30);
+				DL.insertDudu(s, countAll, count, list);
 				int point = s.getPoint();
 				s.setPoint(point + count * 30);
 			}
@@ -203,7 +216,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		for (int i = 0; i < 12; ++i) {
 			if (e.getSource() == jbt[i]) {
 				jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
-				random(i);
+				int j = random(i);
+				countAll++;
+				list.add(j);
 			}
 		}
 	} // end
@@ -237,6 +252,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			time--;
 
 			if (time == 0) {
+				System.out.println(list.toString());
+				System.out.println(countAll);
 				time_jlb.setText("게임이 끝났습니다.");
 
 //				off_button();
@@ -253,10 +270,10 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	} // end
 
-	public void random(int i) {
+	public int random(int i) {
 
 		if (i != randomsu)
-			return;
+			return i;
 
 		count++;
 
@@ -265,5 +282,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/c.png")));
 
 		jlb.setText("점수 : " + count * 30);
+		
+		return randomsu;
 	}
 } // end
