@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import GUI.SelectgameWin;
@@ -28,6 +29,7 @@ public class RSP extends JFrame {
 	JLabel com = new JLabel("  com  ");
 	JLabel win = new JLabel("win");
 	ImageIcon backGound = new ImageIcon(RSP.class.getResource("/이미지/DG.gif"));
+	ImageIcon Over = new ImageIcon(RSP.class.getResource("/이미지/Over.png"));
 	JLabel backGround = new JLabel(backGound);
 	private int life = 5;
 	Student s;
@@ -35,6 +37,9 @@ public class RSP extends JFrame {
 
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
+	JLabel GameOver = new JLabel(Over);
+	
+	
 	private String[] equi;
 
 	public RSP(Student s,String[] equipmentName) {
@@ -46,7 +51,10 @@ public class RSP extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel southPanel = new JPanel();
-		southPanel.add(backGround);
+		southPanel.add(backGround,JLayeredPane.DEFAULT_LAYER);
+		backGround.add(GameOver,JLayeredPane.POPUP_LAYER);
+		GameOver.setBounds(400, 80, 300, 200);
+		GameOver.setVisible(false);
 
 		JPanel centerPanel = new JPanel();
 
@@ -163,6 +171,7 @@ public class RSP extends JFrame {
 				}
 			}
 			if (life == 0) {
+				GameOver.setVisible(true);
 				System.out.println("게임종료");
 				int totalPoint = (winCount * 100);
 //				남은목숨 출력만 만들기

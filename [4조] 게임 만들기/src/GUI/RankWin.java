@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import 객체모음.School;
 import 객체모음.Student;
 import 메소드모음.RankingSystem;
+import 유틸.ResourceSoundPack;
 import 유틸.Util;
 
 public class RankWin extends JFrame {
@@ -289,6 +290,7 @@ public class RankWin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) - 1);
 				String key = null;
 				if (newList != null) {
@@ -350,6 +352,7 @@ public class RankWin extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) + 1);
 				String key = null;
 				if (newList != null) {
