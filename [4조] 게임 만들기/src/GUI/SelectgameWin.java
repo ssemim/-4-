@@ -20,6 +20,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 유틸.Music;
 import 유틸.SoundButton;
+import 유틸.Util;
 
 public class SelectgameWin extends JFrame {
 
@@ -152,7 +153,7 @@ public class SelectgameWin extends JFrame {
 		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
 		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
-
+		Util.removeAllButtonFocus(contentPane);
 	}
 
 }
