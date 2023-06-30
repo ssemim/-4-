@@ -77,7 +77,7 @@ public class SelectgameWin extends JFrame {
 		// 게임하기버튼을 누르면 SelectgameWin으로 이동하는 액션리스너
 		poopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				Thread t = new Thread(new Moving(s, equi));
 				t.start();
 			}
@@ -98,7 +98,7 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(544, 211, 150, 200);
+		Charpnl.setBounds(502, 211, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
@@ -110,6 +110,7 @@ public class SelectgameWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
+				dispose();
 			}
 		});
 
@@ -119,8 +120,9 @@ public class SelectgameWin extends JFrame {
 		hmBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				new HangMan(s, equi);
+				setVisible(false);
 				dispose();
 			}
 		});
@@ -129,7 +131,7 @@ public class SelectgameWin extends JFrame {
 		duduBtn.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/셀렉버튼두더지.png")));
 		duduBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				Dudu d = new Dudu(s, equi);
 				dispose();
 			}
@@ -139,7 +141,7 @@ public class SelectgameWin extends JFrame {
 		SoundButton rspBtn = new SoundButton(Music.S1);
 		rspBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				RSP rsp = new RSP(s, equi);
 				dispose();
 			}
@@ -159,13 +161,13 @@ public class SelectgameWin extends JFrame {
 		coinlbl = new JLabel("1.000");
 		coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		coinlbl.setForeground(Color.WHITE);
-		coinlbl.setBounds(576, 181, 120, 20);
+		coinlbl.setBounds(534, 181, 120, 20);
 		contentPane.add(coinlbl);
 		coinlbl.setText("" + s.getPoint());
 
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
-		CoinImgLbl.setBounds(544, 181, 20, 20);
+		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
 
 		JButton Explanation1 = new JButton("");

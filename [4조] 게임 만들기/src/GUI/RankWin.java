@@ -47,9 +47,9 @@ public class RankWin extends JFrame {
 	 * Create the frame.
 	 */
 	public RankWin(Student s) {
-		gameList.put("똥 피하기", 1);
+		gameList.put("POOP", 1);
 		gameList.put("행맨", 2);
-		gameList.put("두더지", 3);
+		gameList.put("Whack", 3);
 		gameList.put("R.S.P", 4);
 
 		RankingSystem RS = new RankingSystem();
@@ -98,7 +98,7 @@ public class RankWin extends JFrame {
 		cutbtn.setBounds(755, 13, 30, 30);
 		contentPane.add(cutbtn);
 
-		JLabel allRankLbl = new JLabel("똥 피하기");
+		JLabel allRankLbl = new JLabel("POOP");
 		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		allRankLbl.setBounds(47, 35, 158, 35);
 		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));

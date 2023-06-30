@@ -1,6 +1,7 @@
 package GUI게임;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -26,7 +27,6 @@ import GUI.SelectgameWin;
 import 객체모음.Student;
 import 메소드모음.DuduLog;
 import 메소드모음.InsertPoint;
-import java.awt.Color;
 
 public class Dudu extends JFrame implements ActionListener, Runnable {
 
@@ -68,6 +68,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	
 	private DuduLog DL = new DuduLog();
 
+	private String[] equipmentName;
+
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
 		this.equi = equi;
@@ -75,7 +77,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		this.start();
 
-		super.setSize(500, 500);
+		super.setSize(600, 686);
 		setUndecorated(true); // 창 프레임 없애기
 		getContentPane().setBackground(Color.BLACK);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -256,7 +258,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 				System.out.println(countAll);
 				time_jlb.setText("게임이 끝났습니다.");
 
-//				off_button();
+//            off_button();
 				start.setEnabled(true);
 				for (int i = 0; i < 12; ++i) {
 					jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
@@ -279,7 +281,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		randomsu = (int) (Math.random() * 12);
 
-		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/c.png")));
+		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
 
 		jlb.setText("점수 : " + count * 30);
 		
