@@ -9,15 +9,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
 
 public class Moving extends JFrame implements Runnable, KeyListener {
 	private BufferedImage bi = null;
-	private ArrayList msList = null;
-	private ArrayList enList = null;
+	private ArrayList<Ms> msList = null;
+	private ArrayList<Enemy1> enList = null;
 	private boolean left = false, right = false, up = false, down = false, fire = false;
 	private boolean start = false, end = false;
 	private int w = 300, h = 500, x = 130, y = 450, xw = 20, xh = 20;
@@ -30,8 +29,8 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		this.s = s;
 		this.eq = eq;
 		bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-		msList = new ArrayList();
-		enList = new ArrayList();
+		msList = new ArrayList<>();
+		enList = new ArrayList<>();
 		this.addKeyListener(this);
 		this.setSize(w, h);
 		this.setTitle("Shooting Game");
@@ -39,7 +38,6 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null); // 창이 가운데 나오게
-		this.getContentPane().setLayout(null); // 레이아웃을 내맘대로 설정가능하게 해줌.
 	}
 
 	public void run() {
@@ -95,9 +93,9 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		Graphics g = this.getGraphics();
 		Polygon p = null;
 		for (int i = 0; i < msList.size(); i++) {
-			Ms m = (Ms) msList.get(i);
+			Ms m = msList.get(i);
 			for (int j = 0; j < enList.size(); j++) {
-				Enemy1 e = (Enemy1) enList.get(j);
+				Enemy1 e = enList.get(j);
 				int[] xpoints = { m.x, (m.x + m.w), (m.x + m.w), m.x };
 				int[] ypoints = { m.y, m.y, (m.y + m.h), (m.y + m.h) };
 				p = new Polygon(xpoints, ypoints, 4);
@@ -108,7 +106,7 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 			}
 		}
 		for (int i = 0; i < enList.size(); i++) {
-			Enemy1 e = (Enemy1) enList.get(i);
+			Enemy1 e = enList.get(i);
 			int[] xpoints = { x, (x + xw), (x + xw), x };
 			int[] ypoints = { y, y, (y + xh), (y + xh) };
 			p = new Polygon(xpoints, ypoints, 4);
@@ -143,7 +141,7 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		gs.fillRect(x, y, xw, xh);
 
 		for (int i = 0; i < msList.size(); i++) {
-			Ms m = (Ms) msList.get(i);
+			Ms m = msList.get(i);
 			gs.setColor(Color.blue);
 			gs.drawOval(m.x, m.y, m.w, m.h);
 			if (m.y < 0)
@@ -152,7 +150,7 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		}
 		gs.setColor(Color.black);
 		for (int i = 0; i < enList.size(); i++) {
-			Enemy1 e = (Enemy1) enList.get(i);
+			Enemy1 e = enList.get(i);
 			gs.fillRect(e.x, e.y, e.w, e.h);
 			if (e.y > h)
 				enList.remove(i);
@@ -172,14 +170,10 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 			if (right)
 				x += 3;
 		}
-		if (25 < y) {
-//			if (up)
-//				y -= 3;
-		}
-		if (h > y + xh) {
-//			if (down)
-//				y += 3;
-		}
+		// 주석 처리된 부분
+		/*
+		 * if (25 < y) { if (up) y -= 3; } if (h > y + xh) { if (down) y += 3; }
+		 */
 	}
 
 	public void keyPressed(KeyEvent ke) {
@@ -190,12 +184,11 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		case KeyEvent.VK_RIGHT:
 			right = true;
 			break;
-		case KeyEvent.VK_UP:
-			up = true;
-			break;
-		case KeyEvent.VK_DOWN:
-			down = true;
-			break;
+		// 주석 처리된 부분
+		/*
+		 * case KeyEvent.VK_UP: up = true; break; case KeyEvent.VK_DOWN: down = true;
+		 * break;
+		 */
 		case KeyEvent.VK_A:
 			fire = true;
 			break;
@@ -216,12 +209,11 @@ public class Moving extends JFrame implements Runnable, KeyListener {
 		case KeyEvent.VK_RIGHT:
 			right = false;
 			break;
-		case KeyEvent.VK_UP:
-			up = false;
-			break;
-		case KeyEvent.VK_DOWN:
-			down = false;
-			break;
+		// 주석 처리된 부분
+		/*
+		 * case KeyEvent.VK_UP: up = false; break; case KeyEvent.VK_DOWN: down = false;
+		 * break;
+		 */
 		case KeyEvent.VK_A:
 			fire = false;
 			break;
