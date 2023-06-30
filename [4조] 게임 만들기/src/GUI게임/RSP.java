@@ -44,11 +44,14 @@ public class RSP extends JFrame {
 		
 		this.setTitle("가위 바위 보 게임");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBackground(Color.BLACK);
 
 		JPanel southPanel = new JPanel();
 		southPanel.add(backGround);
+		setBackground(Color.BLACK);
 
 		JPanel centerPanel = new JPanel();
+		setBackground(Color.BLACK);
 
 		WinCount.setBounds(800, 40, 85, 15);
 		WinCount.setFont(new Font("굴림", Font.BOLD, 12));
@@ -58,7 +61,10 @@ public class RSP extends JFrame {
 		Life.setFont(new Font("굴림", Font.BOLD, 12));
 		centerPanel.add(Life);
 
-		JButton back = new JButton("그만하기");
+		JButton back = new JButton();
+		back.setBorderPainted(false);
+		back.setBackground(Color.WHITE);
+		back.setIcon(new ImageIcon(RSP.class.getResource("/이미지/뒤로가기버튼.png")));
 		back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,6 +94,7 @@ public class RSP extends JFrame {
 		centerPanel.add(backGround);
 		southPanel.add(back);
 		this.setSize(800, 600);
+		setBackground(Color.BLACK);
 		this.setVisible(true);
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
