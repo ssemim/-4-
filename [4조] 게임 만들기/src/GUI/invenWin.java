@@ -80,12 +80,12 @@ public class invenWin extends JFrame {
 		iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(600, 232, 150, 200);
 
-		JButton Backbtn = new JButton();
-		Backbtn.setBackground(Color.BLACK);
+		JButton Backbtn = new JButton(); 
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
-		Backbtn.setIcon(new ImageIcon(RankWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBounds(748, 550, 40, 40);
-		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
@@ -181,6 +181,14 @@ public class invenWin extends JFrame {
 		cutbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
+
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 
 		cutbtn.addActionListener(new ActionListener() {
 			@Override

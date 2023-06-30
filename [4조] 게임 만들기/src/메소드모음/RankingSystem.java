@@ -107,11 +107,11 @@ public class RankingSystem {
 	public List<Student> studentRangking(String game) {
 
 		int gameNo = 0;
-		if (game.equals("똥 피하기")) {
+		if (game.equals("POOP")) {
 			gameNo = 1;
 		} else if (game.equals("행맨")) {
 			gameNo = 2;
-		} else if (game.equals("두더지")) {
+		} else if (game.equals("Whack")) {
 			gameNo = 3;
 		} else if (game.equals("R.S.P")) {
 			gameNo = 4;
@@ -147,9 +147,9 @@ public class RankingSystem {
 	}
 
 	public List<Student> gameSelect(int gameName) {
-		RankWin.gameList.put("똥 피하기", 1);
+		RankWin.gameList.put("POOP", 1);
 		RankWin.gameList.put("행맨", 2);
-		RankWin.gameList.put("두더지", 3);
+		RankWin.gameList.put("Whack", 3);
 		RankWin.gameList.put("R.S.P", 4);
 
 		Connection conn = null;

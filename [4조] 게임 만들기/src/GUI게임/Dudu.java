@@ -1,6 +1,7 @@
 package GUI게임;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,12 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import GUI.MainWin;
 import GUI.SelectgameWin;
 import 객체모음.Student;
-import 메소드모음.EquipmentItem;
 import 메소드모음.InsertPoint;
-import java.awt.Color;
 
 public class Dudu extends JFrame implements ActionListener, Runnable {
 
@@ -242,7 +240,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			if (time == 0) {
 				time_jlb.setText("게임이 끝났습니다.");
 
-//				off_button();
+//            off_button();
 				start.setEnabled(true);
 				for (int i = 0; i < 12; ++i) {
 					jbt[i].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/d.png")));
@@ -264,9 +262,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		count++;
 
 		randomsu = (int) (Math.random() * 12);
-		
+
 		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
-		
+
 		jlb.setText("점수 : " + count * 30);
 	}
 } // end

@@ -117,8 +117,28 @@ public class EquipmentItem {
 
    }
 
+<<<<<<< HEAD
+	public static int[] equipmentCharacter(String[] arr, JLabel lbl) {
+
+		lbl.setLayout(null);
+
+		JLabel clbl = new JLabel();
+		ImageIcon cicon = new ImageIcon(invenWin.class.getResource("/이미지/" + arr[0] + ".gif"));
+		clbl.setIcon(cicon);
+		clbl.setBounds(0, 0, 150, 200);
+		lbl.add(clbl, JLayeredPane.PALETTE_LAYER);
+		int i1 = Integer.valueOf(Util.extractNumbers(arr[0]));
+		int[] iarr = { i1 };
+		return iarr;
+
+	}
+
+	public static void insertBasicInven(Student s, Connection conn) throws SQLException {
+		PreparedStatement stmt = null;
+=======
    public static void insertBasicInven(Student s, Connection conn) throws SQLException {
       PreparedStatement stmt = null;
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
       try {
          String sql = "INSERT INTO `team4`.`inventory` (`studentId`, `itemNo`) " + "VALUES (?, '1'), (?, '2');";
