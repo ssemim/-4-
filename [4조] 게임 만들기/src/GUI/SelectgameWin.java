@@ -121,6 +121,7 @@ public class SelectgameWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ResourceSoundPack.InsideclickSound(); 
 				new HangMan(s, equi);
+				setVisible(false);
 				dispose();
 			}
 		});
