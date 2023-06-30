@@ -25,7 +25,6 @@ public class RSP extends JFrame {
 			new ImageIcon(RSP.class.getResource("/이미지/bo.png")) };
 	JButton[] btn = new JButton[gbb.length]; // 가위바위보 버튼 배열
 
-<<<<<<< HEAD
 	ImageIcon WIN = new ImageIcon(RSP.class.getResource("/이미지/WIN.png")); // 이겼을떄
 	ImageIcon LOSE = new ImageIcon(RSP.class.getResource("/이미지/lose.png")); // 졌을때
 	ImageIcon TIE = new ImageIcon(RSP.class.getResource("/이미지/Tie.png")); // 비겼을때
@@ -40,13 +39,7 @@ public class RSP extends JFrame {
 
 	ImageIcon backGound = new ImageIcon(RSP.class.getResource("/이미지/DG.gif")); // 뒷배경
 	ImageIcon Over = new ImageIcon(RSP.class.getResource("/이미지/Over.png")); // 게임 오버 이미지
-=======
-	JLabel me = new JLabel("  me  ");
-	JLabel com = new JLabel("  com  ");
-	JLabel win = new JLabel("win");
-	ImageIcon backGound = new ImageIcon(RSP.class.getResource("/이미지/DG.gif"));
-	ImageIcon Over = new ImageIcon(RSP.class.getResource("/이미지/Over.png"));
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
+
 	JLabel backGround = new JLabel(backGound);
 
 	private int life = 5;
@@ -57,12 +50,7 @@ public class RSP extends JFrame {
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
 	JLabel GameOver = new JLabel(Over);
-<<<<<<< HEAD
 
-=======
-	
-	
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 	private String[] equi;
 
 	public RSP(Student s, String[] equipmentName) {
@@ -77,26 +65,23 @@ public class RSP extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBackground(Color.BLACK);
 
-<<<<<<< HEAD
 		JPanel DrawingPanel = new JPanel(); // 버튼 클릭시 가위바위보가 그려지는 판넬
-=======
+
 		JPanel southPanel = new JPanel();
 		southPanel.add(backGround);
 		setBackground(Color.BLACK);
-		southPanel.add(backGround,JLayeredPane.DEFAULT_LAYER);
-		backGround.add(GameOver,JLayeredPane.POPUP_LAYER);
+		southPanel.add(backGround, JLayeredPane.DEFAULT_LAYER);
+		backGround.add(GameOver, JLayeredPane.POPUP_LAYER);
 		GameOver.setBounds(400, 80, 300, 200);
 		GameOver.setVisible(false);
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
-<<<<<<< HEAD
 		WinCount.setBounds(800, 40, 85, 15); // 이긴 횟수(받아갈 포인트)가 카운트 되는 라벨
-=======
+
 		JPanel centerPanel = new JPanel();
 		setBackground(Color.BLACK);
 
 		WinCount.setBounds(800, 40, 85, 15);
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
+
 		WinCount.setFont(new Font("굴림", Font.BOLD, 12));
 		// southPanel.add(WinCount);
 
@@ -104,11 +89,8 @@ public class RSP extends JFrame {
 		Life.setFont(new Font("굴림", Font.BOLD, 12));
 		// centerPanel.add(Life);
 
-<<<<<<< HEAD
 		JButton back = new JButton(); // 뒤로 가기 버튼
-=======
-		JButton back = new JButton();
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
+
 		back.setBorderPainted(false);
 		back.setBackground(Color.WHITE);
 		back.setIcon(new ImageIcon(RSP.class.getResource("/이미지/뒤로가기버튼.png")));
@@ -120,7 +102,7 @@ public class RSP extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		win.setForeground(Color.BLUE);
 
 		DrawingPanel.add(meIcon);
