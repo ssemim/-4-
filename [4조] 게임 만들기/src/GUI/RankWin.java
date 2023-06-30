@@ -48,8 +48,8 @@ public class RankWin extends JFrame {
 	public RankWin(Student s) {
 		gameList.put("똥 피하기", 1);
 		gameList.put("행맨", 2);
-		gameList.put("두더지 잡기", 3);
-		gameList.put("가위바위보", 4);
+		gameList.put("두더지", 3);
+		gameList.put("R.S.P", 4);
 
 		RankingSystem RS = new RankingSystem();
 		List<Student> classList = null;
@@ -216,15 +216,15 @@ public class RankWin extends JFrame {
 		lblNewLabel_5.setForeground(Color.WHITE);
 
 		if (school.size() >= 3) {
-			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getName());
-			if (school.get(0).getName() == school.get(1).getName()) {
-				lblNewLabel_4.setText("1등 : " + school.get(1).getName() + " " + school.get(1).getName());
-				if (school.get(1).getName() == school.get(2).getName()) {
-					lblNewLabel_5.setText("1등 : " + school.get(2).getName() + " " + school.get(1).getName());
+			lblNewLabel_3.setText("1등 : " + school.get(0).getName() + " " + school.get(0).getPointAll());
+			if (school.get(0).getPointAll() == school.get(1).getPointAll()) {
+				lblNewLabel_4.setText("1등 : " + school.get(1).getName() + " " + school.get(1).getPointAll());
+				if (school.get(2).getPointAll() == school.get(1).getPointAll()) {
+					lblNewLabel_5.setText("1등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
 				}
 			} else {
-				lblNewLabel_4.setText("2등 : " + school.get(1).getName() + " " + school.get(1).getName());
-				if (school.get(1).getName() == school.get(2).getName()) {
+				lblNewLabel_4.setText("2등 : " + school.get(1).getName() + " " + school.get(1).getPointAll());
+				if (school.get(1).getPointAll() == school.get(2).getPointAll()) {
 					lblNewLabel_5.setText("2등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
 				} else {
 					lblNewLabel_5.setText("3등 : " + school.get(2).getName() + " " + school.get(2).getPointAll());
