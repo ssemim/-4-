@@ -82,6 +82,7 @@ public class invenWin extends JFrame {
 
 		JButton Backbtn = new JButton(); 
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setContentAreaFilled(false); // 버튼 배경 투명화
 		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBounds(748, 550, 40, 40);
