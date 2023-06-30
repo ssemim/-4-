@@ -54,9 +54,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	private int count = -1;
 
 	private Student s;
-	
+
 	private String[] equi;
-	
+
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
 		this.equi = equi;
@@ -79,6 +79,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		super.setVisible(true);
 
+		jp1.setBackground(new Color(255, 0, 0, 0));
+
 	}
 
 	public void init() {
@@ -86,6 +88,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		Container con = this.getContentPane();
 
 		con.setLayout(bl);
+		time_jlb.setForeground(Color.WHITE);
 		time_jlb.setHorizontalAlignment(SwingConstants.LEFT);
 		time_jlb.setFont(new Font("굴림", Font.BOLD, 12));
 
@@ -124,8 +127,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jp21.add(start);
 
 		jp21.add(end);
-		
-		JButton Backbtn = new JButton(); // 뒤로가기 버튼 
+
+		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
 		Backbtn.setIcon(new ImageIcon(Dudu.class.getResource("/이미지/뒤로가기버튼.png")));
