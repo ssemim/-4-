@@ -110,6 +110,7 @@ public class SelectgameWin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
+				dispose();
 			}
 		});
 

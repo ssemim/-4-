@@ -80,12 +80,12 @@ public class invenWin extends JFrame {
 		iarr = EquipmentItem.equipmentItem(equipmentName, Charpnl);
 		Charpnl.setBounds(600, 232, 150, 200);
 
-		JButton Backbtn = new JButton(); 
-		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
-		Backbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/뒤로가기버튼.png")));
+		JButton Backbtn = new JButton();
 		Backbtn.setBackground(Color.BLACK);
+		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setIcon(new ImageIcon(RankWin.class.getResource("/이미지/뒤로가기버튼.png")));
 		Backbtn.setBounds(748, 550, 40, 40);
-		// 뒤로가기 버튼을 누르면 MainWin으로 돌아가는 버튼
+		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainWin MW = new MainWin(s);
@@ -178,17 +178,9 @@ public class invenWin extends JFrame {
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
 		cutbtn.setFocusable(false); // 종료버튼 포커스 제거
-		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
-
-		Backbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin(s);
-				MW.setVisible(true);
-				dispose();
-			}
-		});
 
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -202,7 +194,7 @@ public class invenWin extends JFrame {
 
 		changeCbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				iarr = e.changeC(Charpnl, cCount, iarr, s);
 				revalidate();
 				repaint();
@@ -211,7 +203,7 @@ public class invenWin extends JFrame {
 
 		changeWbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				iarr = e.changeW(Charpnl, wCount, iarr, s);
 				revalidate();
 				repaint();
@@ -221,7 +213,7 @@ public class invenWin extends JFrame {
 		cBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				cCount = inven.cBtnLeft(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock,
 						changeCbtn);
 				revalidate();
@@ -231,7 +223,7 @@ public class invenWin extends JFrame {
 		cBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				cCount = inven.cBtnRight(cCount, cLbl, cBtnRight, cBtnLeft, cList, cList2, cIcons, cIconsBlock,
 						changeCbtn);
 				revalidate();
@@ -242,7 +234,7 @@ public class invenWin extends JFrame {
 		wBtnLeft.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				wCount = inven.wBtnLeft(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock,
 						changeWbtn);
 				revalidate();
@@ -253,7 +245,7 @@ public class invenWin extends JFrame {
 		wBtnRight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ResourceSoundPack.InsideclickSound(); 
+				ResourceSoundPack.InsideclickSound();
 				wCount = inven.wBtnRight(wCount, wLbl, wBtnRight, wBtnLeft, wList, wList2, wIcons, wIconsBlock,
 						changeWbtn);
 				revalidate();

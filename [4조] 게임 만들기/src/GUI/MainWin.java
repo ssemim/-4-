@@ -22,7 +22,6 @@ import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
 
-
 public class MainWin extends JFrame {
 
 	private JPanel contentPane;
@@ -49,7 +48,6 @@ public class MainWin extends JFrame {
 	 */
 	public MainWin(Student s) {
 
-	
 		EquipmentItem e = new EquipmentItem();
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,8 +68,7 @@ public class MainWin extends JFrame {
 		SoundButton Gamebtn = new SoundButton(Music.S1); // 게임 버튼
 		Gamebtn.setBounds(129, 111, 240, 80);
 		Gamebtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/게임하기버튼.png")));
-		
-		
+
 		Gamebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResourceSoundPack.btnSound();
@@ -90,6 +87,7 @@ public class MainWin extends JFrame {
 				ResourceSoundPack.btnSound();
 				invenWin IW = new invenWin(s, equipmentName);
 				IW.setVisible(true);
+				setVisible(false);
 				dispose();
 			}
 		});
@@ -103,6 +101,7 @@ public class MainWin extends JFrame {
 				ResourceSoundPack.btnSound();
 				RankWin RW = new RankWin(s);
 				RW.setVisible(true);
+				setVisible(false);
 				dispose();
 			}
 		});
@@ -115,6 +114,7 @@ public class MainWin extends JFrame {
 				ResourceSoundPack.btnSound();
 				StoreWin StoreW = new StoreWin(s, equipmentName);
 				StoreW.setVisible(true);
+				setVisible(false);
 				dispose();
 			}
 		});
@@ -135,7 +135,7 @@ public class MainWin extends JFrame {
 				System.exit(0);
 			}
 		});
-		
+
 		JLabel ReCoin = new JLabel("");
 		ReCoin.setFont(new Font("굴림", Font.BOLD, 18));
 		ReCoin.setForeground(Color.WHITE);
@@ -154,7 +154,6 @@ public class MainWin extends JFrame {
 		contentPane.add(Charpanel);
 		contentPane.add(Gamebtn);
 		contentPane.add(ReCoin);
-		
 
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/코인이미지.png")));
@@ -162,7 +161,7 @@ public class MainWin extends JFrame {
 		contentPane.add(CoinImgLbl);
 //		ResourceSoundPack.backgrundsound();
 		Util.removeAllButtonFocus(contentPane);
-		
+
 	}
 
 }
