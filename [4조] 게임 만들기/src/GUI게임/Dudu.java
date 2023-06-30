@@ -79,8 +79,6 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		super.setVisible(true);
 
-		jp1.setBackground(new Color(255, 0, 0, 0));
-
 	}
 
 	public void init() {
@@ -183,10 +181,12 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 			random(0);
 
 		} else if (e.getSource() == end) {
-			InsertPoint.test(s, count * 30);
-			InsertPoint.insertGameLog(s, 3, count * 30);
-			int point = s.getPoint();
-			s.setPoint(point + count * 30);
+			if (count != -1) {
+				InsertPoint.test(s, count * 30);
+				InsertPoint.insertGameLog(s, 3, count * 30);
+				int point = s.getPoint();
+				s.setPoint(point + count * 30);
+			}
 			SelectgameWin s = new SelectgameWin(this.s, equi);
 			s.setVisible(true);
 			this.setVisible(false);
