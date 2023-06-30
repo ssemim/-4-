@@ -31,6 +31,11 @@ public class RSP extends JFrame {
 	ImageIcon ME = new ImageIcon(RSP.class.getResource("/이미지/나.png")); // 나
 	ImageIcon COM = new ImageIcon(RSP.class.getResource("/이미지/콤.png")); // 컴퓨터
 
+	ImageIcon HEART = new ImageIcon(RSP.class.getResource("/이미지/heart.png")); // 컴퓨터
+	ImageIcon POINT = new ImageIcon(RSP.class.getResource("/이미지/RSPPoint.png")); // 포인트
+
+	JLabel[] heart = new JLabel[5];
+
 	JLabel me = new JLabel("");
 	JLabel meIcon = new JLabel(ME);
 	JLabel com = new JLabel("");
@@ -41,6 +46,7 @@ public class RSP extends JFrame {
 	ImageIcon Over = new ImageIcon(RSP.class.getResource("/이미지/Over.png")); // 게임 오버 이미지
 
 	JLabel backGround = new JLabel(backGound);
+	JLabel HowMuch = new JLabel(POINT);
 
 	private int life = 5;
 	private int winCount = 0;
@@ -48,7 +54,7 @@ public class RSP extends JFrame {
 	Student s;
 
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
-	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
+	JLabel WinCount = new JLabel("" + winCount + "");
 	JLabel GameOver = new JLabel(Over);
 
 	private String[] equi;
@@ -67,27 +73,15 @@ public class RSP extends JFrame {
 
 		JPanel DrawingPanel = new JPanel(); // 버튼 클릭시 가위바위보가 그려지는 판넬
 
-		JPanel southPanel = new JPanel();
-		southPanel.add(backGround);
-		setBackground(Color.BLACK);
-		southPanel.add(backGround, JLayeredPane.DEFAULT_LAYER);
 		backGround.add(GameOver, JLayeredPane.POPUP_LAYER);
 		GameOver.setBounds(400, 80, 300, 200);
 		GameOver.setVisible(false);
 
 		WinCount.setBounds(800, 40, 85, 15); // 이긴 횟수(받아갈 포인트)가 카운트 되는 라벨
-
-		JPanel centerPanel = new JPanel();
-		setBackground(Color.BLACK);
-
-		WinCount.setBounds(800, 40, 85, 15);
-
-		WinCount.setFont(new Font("굴림", Font.BOLD, 12));
-		// southPanel.add(WinCount);
+		WinCount.setFont(new Font("굴림", Font.BOLD, 24));
 
 		Life.setBounds(0, 90, 85, 15); // 남은 목숨이 카운트 되는 라벨
 		Life.setFont(new Font("굴림", Font.BOLD, 12));
-		// centerPanel.add(Life);
 
 		JButton back = new JButton(); // 뒤로 가기 버튼
 		back.setBorderPainted(false); // 버튼 테두리 없애기
@@ -120,6 +114,15 @@ public class RSP extends JFrame {
 
 		}
 
+		for (int i = 0; i < 5; i++) { // 하트
+			heart[i] = new JLabel();
+			heart[i].setIcon(HEART);
+			backGround.add(heart[i]);
+
+			heart[i].setBounds(10, 40 + (30 * i), 30, 50);
+
+		}
+
 		DrawingPanel.setBounds(150, 20, 800, 150);
 		ButtonPanel.setBounds(100, 450, 800, 150);
 		backGround.setBounds(0, 0, 800, 600);
@@ -130,7 +133,7 @@ public class RSP extends JFrame {
 		EquipmentItem.equipmentCharacter(equipmentName, Charlbl);
 
 		backGround.add(GameOver, JLayeredPane.POPUP_LAYER);
-		GameOver.setBounds(350, 80, 300, 200);
+		GameOver.setBounds(350, 90, 300, 200);
 		GameOver.setVisible(false); // 배경과 그 위에 게임오버 이미지
 
 		backGround.add(back);
@@ -139,12 +142,19 @@ public class RSP extends JFrame {
 		backGround.add(Charlbl);
 		Charlbl.setBounds(30, 30, 150, 200);
 
+		backGround.add(HowMuch);
+		HowMuch.setBounds(350, 180, 300, 200);
+		HowMuch.setVisible(false);
+
+		backGround.add(WinCount, JLayeredPane.POPUP_LAYER);
+		WinCount.setBounds(370, 180, 300, 200);
+		WinCount.setVisible(false);
+
 		this.setLayout(null);
 		this.add(ButtonPanel, JLayeredPane.POPUP_LAYER);
 		this.add(DrawingPanel, JLayeredPane.POPUP_LAYER);
 		this.add(backGround, JLayeredPane.DEFAULT_LAYER);
 		this.setSize(800, 600);
-		setBackground(Color.BLACK);
 		this.setVisible(true);
 		setResizable(false); // 창의 크기를 변경하지 못하게
 		setLocationRelativeTo(null); // 창이 가운데 나오게
@@ -156,7 +166,6 @@ public class RSP extends JFrame {
 		com.setIcon(c);
 		win.setIcon(w);
 		Life.setText("남은 목숨 : " + life + "");
-		WinCount.setText("받아갈 포인트 : " + winCount * 100 + "");
 
 		revalidate();
 		repaint();
@@ -222,7 +231,20 @@ public class RSP extends JFrame {
 						return;
 				}
 			}
+			if (life == 4) {
+				heart[4].setVisible(false);
+			} else if (life == 3) {
+				heart[3].setVisible(false);
+			} else if (life == 2) {
+				heart[2].setVisible(false);
+			} else if (life == 1) {
+				heart[1].setVisible(false);
+			}
+
 			if (life == 0) {
+				heart[0].setVisible(false);
+				WinCount.setVisible(true);
+				HowMuch.setVisible(true);
 				GameOver.setVisible(true);
 				System.out.println("게임종료");
 				int totalPoint = (winCount * 100);
@@ -231,6 +253,9 @@ public class RSP extends JFrame {
 				InsertPoint.test(s, totalPoint);
 				s.setPoint(s.getPoint() + totalPoint);
 				life--;
+				btn[0].setEnabled(false);
+				btn[1].setEnabled(false);
+				btn[2].setEnabled(false);
 			}
 
 		}
