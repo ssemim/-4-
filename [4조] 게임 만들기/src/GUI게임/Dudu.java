@@ -27,9 +27,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private JButton jbt[] = new JButton[12];
 
-	private JButton start = new JButton("시작");
+	private JButton start = new JButton("START");
 
-	private JButton end = new JButton("종료");
+	private JButton end = new JButton("END");
 
 	private JLabel jlb = new JLabel("점수 : 0");
 
@@ -86,6 +86,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		Container con = this.getContentPane();
 
 		con.setLayout(bl);
+		time_jlb.setForeground(Color.WHITE);
 		time_jlb.setHorizontalAlignment(SwingConstants.LEFT);
 		time_jlb.setFont(new Font("굴림", Font.BOLD, 12));
 
@@ -112,7 +113,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jlb.setForeground(Color.WHITE);
 		jlb.setBackground(Color.BLACK);
 		jlb.setHorizontalAlignment(SwingConstants.CENTER);
-		jlb.setFont(new Font("굴림", Font.BOLD, 12));
+		jlb.setFont(new Font("굴림", Font.BOLD, 20));
 
 		jp2.add(jlb);
 		jp21.setBackground(Color.BLACK);
@@ -120,8 +121,14 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		jp2.add(jp21);
 
 		jp21.setLayout(fl21);
+		start.setForeground(Color.WHITE);
+		start.setFont(new Font("굴림", Font.BOLD, 17));
 
 		jp21.add(start);
+		end.setForeground(Color.WHITE);
+		end.setFont(new Font("굴림", Font.BOLD, 17));
+		end.setBackground(Color.BLACK);
+		end.setBorderPainted(false); // 버튼 테두리 제거
 
 		jp21.add(end);
 		
@@ -144,6 +151,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 	public void start() {
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		start.setBackground(Color.BLACK);
+		start.setBorderPainted(false); // 버튼 테두리 제거
 
 		start.addActionListener(this);
 
