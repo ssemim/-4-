@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import GUI.MainWin;
 import GUI.SelectgameWin;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.InsertPoint;
 
 /*
@@ -332,6 +333,12 @@ public class HangMan extends JFrame {
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setBounds(306, 220, 244, 28);
 		inputedPanel.add(lblNewLabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(87, 35, 150, 200);
+		EquipmentItem.equipmentItem(equi, panel);
+		inputedPanel.add(panel);
+
 		lblNewLabel.setVisible(false);
 		setVisible(true);
 //		new PlayMusic("Blues.wav"); // 음악 재생 

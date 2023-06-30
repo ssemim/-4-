@@ -21,13 +21,22 @@ import javax.swing.SwingConstants;
 
 import GUI.SelectgameWin;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.InsertPoint;
 
 public class Dudu extends JFrame implements ActionListener {
 
 	private JButton jbt[] = new JButton[12];
+<<<<<<< HEAD
 	private JButton start = new JButton("시작");
 	private JButton end = new JButton("종료");
+=======
+
+	private JButton start = new JButton("START");
+
+	private JButton end = new JButton("END");
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 	private JLabel jlb = new JLabel("점수 : 0");
 	private JLabel time_jlb = new JLabel("Time - 0:10");
 	private BorderLayout bl = new BorderLayout(10, 10);
@@ -40,17 +49,32 @@ public class Dudu extends JFrame implements ActionListener {
 	private int randomsu = 0;
 	private int count = -1;
 	private Student s;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 	private String[] equi;
+<<<<<<< HEAD
 	private int time = 0;
 	private int countAll = 0;
+=======
+
+	private String[] equipmentName;
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
 		this.equi = equi;
 		this.init();
 		this.start();
+<<<<<<< HEAD
 		super.setSize(500, 500);
 		setUndecorated(true);
+=======
+
+		super.setSize(600, 686);
+		setUndecorated(true); // 창 프레임 없애기
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		getContentPane().setBackground(Color.BLACK);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int xpos = (int) (screen.getWidth() / 2 - super.getWidth() / 2);
@@ -63,6 +87,7 @@ public class Dudu extends JFrame implements ActionListener {
 	public void init() {
 		Container con = this.getContentPane();
 		con.setLayout(bl);
+		time_jlb.setForeground(Color.WHITE);
 		time_jlb.setHorizontalAlignment(SwingConstants.LEFT);
 		time_jlb.setFont(new Font("굴림", Font.BOLD, 12));
 		con.add("North", time_jlb);
@@ -82,14 +107,38 @@ public class Dudu extends JFrame implements ActionListener {
 		jlb.setForeground(Color.WHITE);
 		jlb.setBackground(Color.BLACK);
 		jlb.setHorizontalAlignment(SwingConstants.CENTER);
+<<<<<<< HEAD
 		jlb.setFont(new Font("굴림", Font.BOLD, 12));
+=======
+		jlb.setFont(new Font("굴림", Font.BOLD, 20));
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		jp2.add(jlb);
 		jp21.setBackground(Color.BLACK);
 		jp2.add(jp21);
 		jp21.setLayout(fl21);
+<<<<<<< HEAD
+=======
+		start.setForeground(Color.WHITE);
+		start.setFont(new Font("굴림", Font.BOLD, 17));
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		jp21.add(start);
+<<<<<<< HEAD
+=======
+		end.setForeground(Color.WHITE);
+		end.setFont(new Font("굴림", Font.BOLD, 17));
+		end.setBackground(Color.BLACK);
+		end.setBorderPainted(false); // 버튼 테두리 제거
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		jp21.add(end);
+<<<<<<< HEAD
 		JButton Backbtn = new JButton();
+=======
+
+		JButton Backbtn = new JButton(); // 뒤로가기 버튼
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false);
 		Backbtn.setIcon(new ImageIcon(Dudu.class.getResource("/이미지/뒤로가기버튼.png")));
@@ -106,6 +155,12 @@ public class Dudu extends JFrame implements ActionListener {
 
 	public void start() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+<<<<<<< HEAD
+=======
+		start.setBackground(Color.BLACK);
+		start.setBorderPainted(false); // 버튼 테두리 제거
+
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		start.addActionListener(this);
 		end.addActionListener(this);
 		for (int i = 0; i < 12; ++i) {
@@ -149,10 +204,12 @@ public class Dudu extends JFrame implements ActionListener {
 				}
 			}, 1000, 1000);
 		} else if (e.getSource() == end) {
-			InsertPoint.test(s, count * 30);
-			InsertPoint.insertGameLog(s, 3, count * 30);
-			int point = s.getPoint();
-			s.setPoint(point + count * 30);
+			if (count != -1) {
+				InsertPoint.test(s, count * 30);
+				InsertPoint.insertGameLog(s, 3, count * 30);
+				int point = s.getPoint();
+				s.setPoint(point + count * 30);
+			}
 			SelectgameWin s = new SelectgameWin(this.s, equi);
 			s.setVisible(true);
 			this.setVisible(false);
@@ -183,7 +240,13 @@ public class Dudu extends JFrame implements ActionListener {
 			return;
 		count++;
 		randomsu = (int) (Math.random() * 12);
+<<<<<<< HEAD
 		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/c.png")));
+=======
+		
+		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
+		
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 		jlb.setText("점수 : " + count * 30);
 	}
 }
