@@ -98,7 +98,7 @@ public class SelectgameWin extends JFrame {
 
 		JPanel Charpnl = new JPanel(); // 캐릭터 패널
 		EquipmentItem.equipmentItem(equipmentName, Charpnl);
-		Charpnl.setBounds(544, 211, 150, 200);
+		Charpnl.setBounds(502, 211, 150, 200);
 
 		JButton Backbtn = new JButton(""); // 뒤로가기버튼(이미지처리할거임)
 		Backbtn.setBackground(Color.BLACK);
@@ -161,13 +161,13 @@ public class SelectgameWin extends JFrame {
 		coinlbl = new JLabel("1.000");
 		coinlbl.setFont(new Font("굴림", Font.BOLD, 18));
 		coinlbl.setForeground(Color.WHITE);
-		coinlbl.setBounds(576, 181, 120, 20);
+		coinlbl.setBounds(534, 181, 120, 20);
 		contentPane.add(coinlbl);
 		coinlbl.setText("" + s.getPoint());
 
 		JLabel CoinImgLbl = new JLabel("");
 		CoinImgLbl.setIcon(new ImageIcon(SelectgameWin.class.getResource("/이미지/코인이미지.png")));
-		CoinImgLbl.setBounds(544, 181, 20, 20);
+		CoinImgLbl.setBounds(502, 181, 20, 20);
 		contentPane.add(CoinImgLbl);
 
 		JButton Explanation1 = new JButton("");

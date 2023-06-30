@@ -58,6 +58,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private String[] equi;
 
+	private String[] equipmentName;
+
 	public Dudu(Student s, String[] equi) {
 		this.s = s;
 		this.equi = equi;
@@ -262,10 +264,9 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		count++;
 
 		randomsu = (int) (Math.random() * 12);
-
+		
 		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
-		System.out.println(equi[0]);
-
+		
 		jlb.setText("점수 : " + count * 30);
 	}
 } // end
