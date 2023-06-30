@@ -274,13 +274,13 @@ public class RankWin extends JFrame {
 		JButton btnNewButton_1 = new JButton(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setBorderPainted(false); // 버튼 테두리 제거
-		btnNewButton_1.setBounds(202, 32, 40, 35);
+		btnNewButton_1.setBounds(202, 32, 40, 40);
 		AllStudentpanel.add(btnNewButton_1);
 
 		JButton btnNewButton = new JButton(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setBorderPainted(false); // 버튼 테두리 제거
-		btnNewButton.setBounds(8, 33, 40, 35);
+		btnNewButton.setBounds(8, 33, 40, 40);
 		AllStudentpanel.add(btnNewButton);
 		AllStudentpanel.add(lblNewLabel_3_2);
 		AllStudentpanel.add(lblNewLabel_4_2);

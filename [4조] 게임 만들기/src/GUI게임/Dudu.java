@@ -136,6 +136,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		JButton Backbtn = new JButton(); // 뒤로가기 버튼
 		Backbtn.setBackground(Color.BLACK);
 		Backbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Backbtn.setContentAreaFilled(false); // 버튼 내부를 투명하게
 		Backbtn.setIcon(new ImageIcon(Dudu.class.getResource("/이미지/뒤로가기버튼.png")));
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {

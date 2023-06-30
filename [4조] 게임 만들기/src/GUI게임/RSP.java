@@ -90,9 +90,9 @@ public class RSP extends JFrame {
 		// centerPanel.add(Life);
 
 		JButton back = new JButton(); // 뒤로 가기 버튼
-
-		back.setBorderPainted(false);
-		back.setBackground(Color.WHITE);
+		back.setBorderPainted(false); // 버튼 테두리 없애기
+		back.setContentAreaFilled(false); // 버튼 내부를 투명하게
+		back.setBackground(Color.WHITE); 
 		back.setIcon(new ImageIcon(RSP.class.getResource("/이미지/뒤로가기버튼.png")));
 		back.addActionListener(new ActionListener() {
 			@Override

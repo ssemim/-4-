@@ -117,7 +117,6 @@ public class EquipmentItem {
 
    }
 
-<<<<<<< HEAD
 	public static int[] equipmentCharacter(String[] arr, JLabel lbl) {
 
 		lbl.setLayout(null);
@@ -135,10 +134,6 @@ public class EquipmentItem {
 
 	public static void insertBasicInven(Student s, Connection conn) throws SQLException {
 		PreparedStatement stmt = null;
-=======
-   public static void insertBasicInven(Student s, Connection conn) throws SQLException {
-      PreparedStatement stmt = null;
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
       try {
          String sql = "INSERT INTO `team4`.`inventory` (`studentId`, `itemNo`) " + "VALUES (?, '1'), (?, '2');";
