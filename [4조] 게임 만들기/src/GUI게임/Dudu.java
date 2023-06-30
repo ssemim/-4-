@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import GUI.MainWin;
 import GUI.SelectgameWin;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.InsertPoint;
 import java.awt.Color;
 
@@ -64,7 +65,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		this.start();
 
-		super.setSize(500, 500);
+		super.setSize(600, 686);
 		setUndecorated(true); // 창 프레임 없애기
 		getContentPane().setBackground(Color.BLACK);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -262,7 +263,8 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 		randomsu = (int) (Math.random() * 12);
 
-		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/c.png")));
+		jbt[randomsu].setIcon(new ImageIcon(Dudu.class.getResource("/이미지/" + equi[0] + ".gif")));
+		System.out.println(equi[0]);
 
 		jlb.setText("점수 : " + count * 30);
 	}
