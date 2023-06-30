@@ -38,21 +38,20 @@ public class RSP extends JFrame {
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
 	JLabel GameOver = new JLabel(Over);
-	
-	
+
 	private String[] equi;
 
-	public RSP(Student s,String[] equipmentName) {
+	public RSP(Student s, String[] equipmentName) {
 		this.s = s;
 		equi = equipmentName;
 		setUndecorated(true); // 창 프레임 없애기
-		
+
 		this.setTitle("가위 바위 보 게임");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel southPanel = new JPanel();
-		southPanel.add(backGround,JLayeredPane.DEFAULT_LAYER);
-		backGround.add(GameOver,JLayeredPane.POPUP_LAYER);
+		southPanel.add(backGround, JLayeredPane.DEFAULT_LAYER);
+		backGround.add(GameOver, JLayeredPane.POPUP_LAYER);
 		GameOver.setBounds(400, 80, 300, 200);
 		GameOver.setVisible(false);
 
@@ -133,7 +132,7 @@ public class RSP extends JFrame {
 						w = "  내가 이김";
 
 						winCount++;
-						System.out.println("여기 작동됌?");
+
 						draw(gbb[0], gbb[n], w);
 					}
 				} else if (btn[1] == b) {
@@ -183,6 +182,5 @@ public class RSP extends JFrame {
 
 		}
 	}
-	
 
 }
