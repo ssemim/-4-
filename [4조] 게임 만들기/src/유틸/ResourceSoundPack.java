@@ -15,7 +15,7 @@ public class ResourceSoundPack {
 	static Clip BackgrundSoundClip;
 	static Clip BtnSoundClip;
 	static Clip PickSoundClip;
-
+	static Clip MiniBtnSoundClip;
 //
 //
 //   static void startSound() {
@@ -89,19 +89,20 @@ public class ResourceSoundPack {
 //	}
 
 //	
-//	static public void drowSound() {
-//		try {//버튼 누를떄
-//			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("soundResourses/tada-fanfare-a-6313.wav");
-//			// 사운드 파일 경로 설정
-//			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-//			Clip clip = AudioSystem.getClip();
-//			clip.open(audioInputStream);
-//			clip.start();
-//		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
-//			ex.printStackTrace();
-//		}
-//	}
-//	
+ public static void InsideclickSound() {
+	try {//버튼 누를떄
+		URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/click.wav");
+		// 사운드 파일 경로 설정
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+			MiniBtnSoundClip = AudioSystem.getClip();
+			MiniBtnSoundClip.open(audioInputStream);
+			MiniBtnSoundClip.loop(0);
+			MiniBtnSoundClip.start();
+	} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+			ex.printStackTrace();
+		}
+}
+	
 
 	public static void backgrundsound() {
 		try {

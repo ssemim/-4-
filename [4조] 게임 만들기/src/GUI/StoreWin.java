@@ -108,7 +108,7 @@ public class StoreWin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000 || character > 0) {
-					
+				
 					if (character == 0) {
 						ResourceSoundPack.PickSound();
 						int point = s.getPoint();
