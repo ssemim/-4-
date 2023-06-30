@@ -21,7 +21,7 @@ public class Explanation extends JFrame {
 		} else if (i == 2) {
 			setSize(555, 465);
 		} else if (i == 3) {
-			setSize(489, 520);
+			setSize(600, 709);
 		} else if (i == 4) {
 			setSize(799, 619);
 		}
