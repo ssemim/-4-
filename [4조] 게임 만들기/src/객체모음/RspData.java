@@ -6,15 +6,21 @@ public class RspData {
 	private String studentId;
 	private String myChoice;
 	private String comChoice;
-	private String winLose;
-	public RspData(int playLog, int playTime, Student s, String myChoice, String comChoice, String winLose) {
+	public RspData(int playLog, int playTime, Student s, String myChoice, String comChoice) {
 		super();
 		this.playLog = playLog;
 		this.playTime = playTime;
 		this.studentId = s.getId();
 		this.myChoice = myChoice;
 		this.comChoice = comChoice;
-		this.winLose = winLose;
+	}
+	public RspData(int playLog, int playTime, String studentId, String myChoice, String comChoice) {
+		super();
+		this.playLog = playLog;
+		this.playTime = playTime;
+		this.studentId = studentId;
+		this.myChoice = myChoice;
+		this.comChoice = comChoice;
 	}
 	public int getPlayLog() {
 		return playLog;
@@ -46,16 +52,10 @@ public class RspData {
 	public void setComChoice(String comChoice) {
 		this.comChoice = comChoice;
 	}
-	public String getWinLose() {
-		return winLose;
-	}
-	public void setWinLose(String winLose) {
-		this.winLose = winLose;
-	}
 	@Override
 	public String toString() {
 		return "RspData [playLog=" + playLog + ", playTime=" + playTime + ", studentId=" + studentId + ", myChoice="
-				+ myChoice + ", comChoice=" + comChoice + ", winLose=" + winLose + "]";
+				+ myChoice + ", comChoice=" + comChoice + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -66,7 +66,6 @@ public class RspData {
 		result = prime * result + playLog;
 		result = prime * result + playTime;
 		result = prime * result + ((studentId == null) ? 0 : studentId.hashCode());
-		result = prime * result + ((winLose == null) ? 0 : winLose.hashCode());
 		return result;
 	}
 	@Override
@@ -97,12 +96,8 @@ public class RspData {
 				return false;
 		} else if (!studentId.equals(other.studentId))
 			return false;
-		if (winLose == null) {
-			if (other.winLose != null)
-				return false;
-		} else if (!winLose.equals(other.winLose))
-			return false;
 		return true;
 	}
+	
 	
 }
