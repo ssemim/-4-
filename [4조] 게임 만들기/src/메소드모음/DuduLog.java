@@ -83,7 +83,7 @@ public class DuduLog {
 			stmt.setString(1, s.getId());
 			stmt.setInt(2, count);
 			stmt.setInt(3, countAll - count);
-			stmt.setInt(4, num.get(0)-1);
+			stmt.setInt(4, num.get(0));
 			stmt.setInt(5, num.get(1));
 			stmt.setInt(6, num.get(2));
 			stmt.executeUpdate();
