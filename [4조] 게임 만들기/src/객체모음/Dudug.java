@@ -7,20 +7,18 @@ public class Dudug {
 	private String id;
 	private int success;
 	private int failure;
-	private List<Integer> list = new ArrayList<>();
-	
+
 	public Dudug(String id, int success, int failure) {
 		super();
 		this.id = id;
 		this.success = success;
 		this.failure = failure;
-		this.list = list;
 	}
 
 	public String getId() {
 		return id;
 	}
-
+	
 	public void setId(String id) {
 		this.id = id;
 	}
