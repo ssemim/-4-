@@ -160,7 +160,7 @@ public class RankWin extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("길드내 랭킹");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(48, 30, 147, 40);
+		lblNewLabel_1.setBounds(49, 30, 147, 40);
 		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		JLabel lblNewLabel_4_1 = new JLabel("");
@@ -200,7 +200,7 @@ public class RankWin extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("길드별 랭킹");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(50, 35, 140, 35);
+		lblNewLabel.setBounds(55, 30, 140, 35);
 		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		lblNewLabel.setForeground(Color.WHITE);
 		JLabel lblNewLabel_3 = new JLabel("");
@@ -274,6 +274,7 @@ public class RankWin extends JFrame {
 		JButton btnNewButton_1 = new JButton(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setBorderPainted(false); // 버튼 테두리 제거
+		btnNewButton_1.setBounds(198, 26, 40, 35);
 		btnNewButton_1.setBounds(202, 32, 40, 40);
 		AllStudentpanel.add(btnNewButton_1);
 
