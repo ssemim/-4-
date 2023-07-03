@@ -249,16 +249,23 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 			} catch (InterruptedException e) {
 			}
-			
-			
-			
+
+			// 여기에다가 추가
+			if (time <= 10 && time >= 8) {
+				num.put(0, (num.get(0)) + 1);
+			} else if (time <= 7 && time >= 5) {
+				num.put(1, (num.get(1)) + 1);
+			} else if (time <= 4 && time >= 1) {
+				num.put(2, (num.get(2)) + 1);
+			}
+
 			time--;
 
 			if (time == 0) {
 				System.out.println("리스트 클릭한 번호 : " + list.toString());
 				System.out.println("몇초에 몇개" + num.toString());
 				System.out.println("클릭한 번호가 맞았는지?" + result.toString());
-				System.out.println("버튼 클랙 개수 : "+countAll);
+				System.out.println("버튼 클랙 개수 : " + countAll);
 				System.out.println("맞은 개수 : " + count);
 				time_jlb.setText("게임이 끝났습니다.");
 				start.setEnabled(true);
@@ -276,6 +283,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 				DL.insertDudu(s, countAll, count, list, num);
 				break;
 			}
+
 			time_jlb.setText("시간 => 0:0" + time);
 		}
 
