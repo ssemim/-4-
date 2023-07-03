@@ -5,6 +5,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,10 +18,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import GUI.SelectgameWin;
+import dbutil.DBUtil;
+import 객체모음.RspData;
 import 객체모음.Student;
 import 메소드모음.InsertPoint;
+import 메소드모음.RspGG;
 
 public class RSP extends JFrame {
+	private int playLog;
+	private int playTime = 0;
+	private String myChoice;
+	private String comChoice;
+	private List<RspData> list;
 
 	ImageIcon[] gbb = { new ImageIcon(RSP.class.getResource("/이미지/gawi.png")),
 			new ImageIcon(RSP.class.getResource("/이미지/bawi.png")),
@@ -36,8 +48,11 @@ public class RSP extends JFrame {
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
 	private String[] equi;
+	private RspGG rg;
 
 	public RSP(Student s,String[] equipmentName) {
+		list = new ArrayList<>();
+		rg = new RspGG();
 		this.s = s;
 		equi = equipmentName;
 		setUndecorated(true); // 창 프레임 없애기
@@ -104,13 +119,15 @@ public class RSP extends JFrame {
 	}
 
 	class MyActionListener implements ActionListener {
+		private int n;
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (life > 0) {
 				String w;
 				JButton b = (JButton) e.getSource();
 
-				int n = (int) (Math.random() * 3);
+				n = (int) (Math.random() * 3);
 				if (btn[0] == b) {
 					if (n == 0) {
 						w = "  비김";
@@ -162,6 +179,27 @@ public class RSP extends JFrame {
 						return;
 				}
 			}
+			if (e.getSource() == btn[0]) {
+				myChoice = "가위";
+			}
+			if (e.getSource() == btn[1]) {
+				myChoice = "바위";
+			}
+			if (e.getSource() == btn[2]) {
+				myChoice = "보";
+			}
+			if (n == 0) {
+				comChoice = "가위";
+			}
+			if (n == 1) {
+				comChoice = "바위";
+			}
+			if (n == 2) {
+				comChoice = "보";
+			}
+			playTime ++;
+			System.out.println(comChoice);
+			list.add(new RspData(playLog, playTime, s, myChoice, comChoice));
 			if (life == 0) {
 				System.out.println("게임종료");
 				int totalPoint = (winCount * 100);
@@ -170,8 +208,26 @@ public class RSP extends JFrame {
 				InsertPoint.test(s, totalPoint);
 				s.setPoint(s.getPoint() + totalPoint);
 				life--;
+				for (JButton jButton : btn) {
+					jButton.setEnabled(false);
+				}
+				
+				
+				Connection conn = null;
+				try {
+					conn = DBUtil.getConnection();
+					playLog = rg.selectPlayLog(conn);
+					for (RspData rd : list) {
+						rd.setPlayLog(playLog);
+						rg.insert(rd, conn);
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} finally {
+					DBUtil.close(conn);
+				}
+				
 			}
-
 		}
 	}
 	
