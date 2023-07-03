@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import GUI.MainWin;
 import GUI.SelectgameWin;
 import 객체모음.Student;
+import 메소드모음.EquipmentItem;
 import 메소드모음.InsertPoint;
 
 /*
@@ -65,6 +66,7 @@ public class HangMan extends JFrame {
 	private static ArrayList<Character> userput;
 	private int pointAll;
 	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_3;
 
 	public static void start() {
 
@@ -91,6 +93,8 @@ public class HangMan extends JFrame {
 		}
 		countLabel.setText(computerAnswer.length() + "개의 철자:");
 		System.out.println("정답 : " + computerAnswer);
+		
+		
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 
@@ -110,7 +114,6 @@ public class HangMan extends JFrame {
 				// 단어가 맞았을 경우 추가된 userAnswerList를 answeredField에 갱신해주기
 				answeredField.setText(userAnswerList.toString());
 				System.out.println("사용자가 입력한 단어가 맞아서 userAnswerList가 갱신됨 : " + userAnswerList.toString());
-
 			} else { // 사용자가 입력한 단어가 정답에 없는 경우 -----------------------------
 				System.out.println("사용자가 입력한 단어가 답에 없는 경우");
 				countField.setText(Integer.toString(--cnt)); // 카운트다운을 줄이면서 countField값 수정하기
@@ -125,7 +128,10 @@ public class HangMan extends JFrame {
 			int response = -1;
 			// 사용자가 승리한 경우
 			if (userAnswerList.equals(computerAnswerList)) {
-				//
+				lblNewLabel.setText("승리하셨습니다.");
+				lblNewLabel.setVisible(true);
+				lblNewLabel_3.setText("Enter를 누를시 다음 단어로 넘어갑니다.");
+				lblNewLabel_3.setVisible(true);
 			}
 
 			// 사용자가 패배한 경우
@@ -190,6 +196,14 @@ public class HangMan extends JFrame {
 				dispose();
 			}
 		});
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(Color.RED);
+		lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(239, 239, 321, 15);
+		inputedPanel.add(lblNewLabel_3);
+		lblNewLabel_3.setVisible(false);
 		Backbtn.setLocation(510, 10);
 		Backbtn.setSize(40, 40);
 		inputedPanel.add(Backbtn);
@@ -279,6 +293,7 @@ public class HangMan extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				lblNewLabel.setVisible(false);
+				lblNewLabel_3.setVisible(false);
 				if (!(cnt < 1)) {
 					System.out.println(e.getKeyCode());
 					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -330,8 +345,14 @@ public class HangMan extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 14));
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(306, 220, 244, 28);
+		lblNewLabel.setBounds(237, 215, 323, 28);
 		inputedPanel.add(lblNewLabel);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(87, 35, 150, 200);
+		EquipmentItem.equipmentItem(equi, panel);
+		inputedPanel.add(panel);
+
 		lblNewLabel.setVisible(false);
 		setVisible(true);
 //		new PlayMusic("Blues.wav"); // 음악 재생 

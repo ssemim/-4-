@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import 객체모음.School;
 import 객체모음.Student;
 import 메소드모음.RankingSystem;
+import 유틸.ResourceSoundPack;
 import 유틸.Util;
 
 public class RankWin extends JFrame {
@@ -46,9 +47,9 @@ public class RankWin extends JFrame {
 	 * Create the frame.
 	 */
 	public RankWin(Student s) {
-		gameList.put("똥 피하기", 1);
+		gameList.put("POOP", 1);
 		gameList.put("행맨", 2);
-		gameList.put("두더지", 3);
+		gameList.put("Whack", 3);
 		gameList.put("R.S.P", 4);
 
 		RankingSystem RS = new RankingSystem();
@@ -97,9 +98,9 @@ public class RankWin extends JFrame {
 		cutbtn.setBounds(755, 13, 30, 30);
 		contentPane.add(cutbtn);
 
-		JLabel allRankLbl = new JLabel("똥 피하기");
+		JLabel allRankLbl = new JLabel("POOP");
 		allRankLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		allRankLbl.setBounds(64, 26, 122, 35);
+		allRankLbl.setBounds(47, 35, 158, 35);
 		allRankLbl.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		allRankLbl.setForeground(Color.WHITE);
 
@@ -274,12 +275,13 @@ public class RankWin extends JFrame {
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setBorderPainted(false); // 버튼 테두리 제거
 		btnNewButton_1.setBounds(198, 26, 40, 35);
+		btnNewButton_1.setBounds(202, 32, 40, 40);
 		AllStudentpanel.add(btnNewButton_1);
 
 		JButton btnNewButton = new JButton(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setBorderPainted(false); // 버튼 테두리 제거
-		btnNewButton.setBounds(12, 26, 40, 35);
+		btnNewButton.setBounds(8, 33, 40, 40);
 		AllStudentpanel.add(btnNewButton);
 		AllStudentpanel.add(lblNewLabel_3_2);
 		AllStudentpanel.add(lblNewLabel_4_2);
@@ -289,6 +291,7 @@ public class RankWin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) - 1);
 				String key = null;
 				if (newList != null) {
@@ -350,6 +353,7 @@ public class RankWin extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.InsideclickSound(); 
 				List<Student> newList = RS.gameSelect(gameList.get(allRankLbl.getText()) + 1);
 				String key = null;
 				if (newList != null) {

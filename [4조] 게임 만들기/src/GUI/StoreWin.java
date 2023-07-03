@@ -24,6 +24,7 @@ import 객체모음.Student;
 import 메소드모음.EquipmentItem;
 import 메소드모음.PickItem;
 import 유틸.Music;
+import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
 
@@ -60,8 +61,8 @@ public class StoreWin extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		setBackground(Color.BLACK);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -101,13 +102,16 @@ public class StoreWin extends JFrame {
 		// 캐릭터 뽑기 버튼
 		SoundButton Charbtn = new SoundButton(Music.S1);
 		Charbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/캐릭터뽑기더미.png")));
-		Charbtn.setBounds(38, 167, 250, 250);
+		Charbtn.setBounds(31, 167, 250, 250);
 		Charbtn.setBorderPainted(false); // 버튼 테두리 제거
+		Charbtn.setContentAreaFilled(false); // 버튼 배경 투명화
 		Charbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000 || character > 0) {
+				
 					if (character == 0) {
+						ResourceSoundPack.PickSound();
 						int point = s.getPoint();
 						PickItem pick = new PickItem(s, "캐릭터");
 						item = ItemLook("캐릭터", pick.pickItem());
@@ -141,13 +145,16 @@ public class StoreWin extends JFrame {
 
 		SoundButton BackWinbtn = new SoundButton(Music.S1); // 배경뽑기
 		BackWinbtn.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/배경뽑기더미.png")));
-		BackWinbtn.setBounds(316, 167, 250, 250);
+		BackWinbtn.setBounds(312, 167, 250, 250);
 		BackWinbtn.setBorderPainted(false); // 버튼 테두리 제거
+		BackWinbtn.setContentAreaFilled(false); // 버튼 배경 투명화
 		BackWinbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (s.getPoint() >= 1000 || countBack > 0) {
+					
 					if (countBack == 0) {
+						ResourceSoundPack.PickSound();
 						int a = s.getPoint();
 						PickItem pick = new PickItem(s, "배경");
 						item = ItemLook("배경", pick.pickItem());
@@ -205,6 +212,20 @@ public class StoreWin extends JFrame {
 		CoinImgLbl.setBounds(601, 187, 20, 20);
 		contentPane.add(CoinImgLbl);
 		Util.removeAllButtonFocus(contentPane);
+		
+		JLabel cwBackLbl = new JLabel("");
+		cwBackLbl.setBounds(12, 143, 570, 300);
+		contentPane.add(cwBackLbl);
+		
+		JLabel charBackLbl = new JLabel("");
+		charBackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/아이템들 배경.png")));
+		charBackLbl.setBounds(31, 167, 250, 250);
+		contentPane.add(charBackLbl);
+		
+		JLabel wbackLbl = new JLabel("");
+		wbackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/아이템들 배경.png")));
+		wbackLbl.setBounds(312, 167, 250, 250);
+		contentPane.add(wbackLbl);
 		StoreBackLbl.setIcon(new ImageIcon(StoreWin.class.getResource("/이미지/상점배경움짤.gif")));
 		StoreBackLbl.setBounds(0, 0, 800, 600);
 		contentPane.add(StoreBackLbl);

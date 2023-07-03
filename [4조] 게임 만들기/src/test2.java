@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+<<<<<<< HEAD
 
 public class test2 extends JFrame {
 
@@ -37,4 +38,33 @@ public class test2 extends JFrame {
 		setContentPane(contentPane);
 	}
 
+=======
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Color;
+
+public class test2 extends JFrame {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					test2 frame = new test2();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public test2() {
+	}
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 }
