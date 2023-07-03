@@ -63,11 +63,15 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private String[] equi;
 
+<<<<<<< HEAD
 	public static List<Integer> list = null;
 
 	public static HashMap<Integer, Integer> num = new HashMap<Integer, Integer>();
 
 	public static HashMap<Integer, Boolean> result = null;
+=======
+	public static List<Integer> list = new ArrayList<Integer>();
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 
 	private int countAll = 0;
 
@@ -155,6 +159,13 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (count != -1) {
+					InsertPoint.test(s, count * 30);
+					InsertPoint.insertGameLog(s, 3, count * 30);
+					DL.insertDudu(s, countAll, count, list);
+					int point = s.getPoint();
+					s.setPoint(point + count * 30);
+				}
 				SelectgameWin SW = new SelectgameWin(s, equi);
 				SW.setVisible(true);
 				dispose();

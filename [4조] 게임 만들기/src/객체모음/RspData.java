@@ -14,6 +14,14 @@ public class RspData {
 		this.myChoice = myChoice;
 		this.comChoice = comChoice;
 	}
+	public RspData(int playLog, int playTime, String studentId, String myChoice, String comChoice) {
+		super();
+		this.playLog = playLog;
+		this.playTime = playTime;
+		this.studentId = studentId;
+		this.myChoice = myChoice;
+		this.comChoice = comChoice;
+	}
 	public int getPlayLog() {
 		return playLog;
 	}
@@ -43,6 +51,11 @@ public class RspData {
 	}
 	public void setComChoice(String comChoice) {
 		this.comChoice = comChoice;
+	}
+	@Override
+	public String toString() {
+		return "RspData [playLog=" + playLog + ", playTime=" + playTime + ", studentId=" + studentId + ", myChoice="
+				+ myChoice + ", comChoice=" + comChoice + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -85,10 +98,6 @@ public class RspData {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "RspData [playLog=" + playLog + ", playTime=" + playTime + ", studentId=" + studentId + ", myChoice="
-				+ myChoice + ", comChoice=" + comChoice + "]";
-	}
+	
 	
 }
