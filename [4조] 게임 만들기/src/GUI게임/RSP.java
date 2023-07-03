@@ -188,6 +188,7 @@ public class RSP extends JFrame {
 
 	class MyActionListener implements ActionListener {
 		private int n;
+		private String winLose;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -209,18 +210,21 @@ public class RSP extends JFrame {
 					if (n == 0) {
 						w = TIE;
 						draw(gbb[0], gbb[n], w);
+						winLose = "무";
 
 					} else if (n == 1) {
 						w = LOSE;
 						life--;
 						System.out.println("남은 목숨 :" + life);
 						draw(gbb[0], gbb[n], w);
+						winLose = "패";
 					} else if (n == 2) {
 						w = WIN;
 
 						winCount++;
 						System.out.println("여기 작동됌?");
 						draw(gbb[0], gbb[n], w);
+						winLose = "승";
 					}
 				} else if (btn[1] == b) {
 					myChoice = "바위";
@@ -230,14 +234,17 @@ public class RSP extends JFrame {
 						winCount++;
 
 						draw(gbb[1], gbb[n], w);
+						winLose = "승";
 					} else if (n == 1) {
 						w = TIE;
 						draw(gbb[1], gbb[n], w);
+						winLose = "무";
 					} else if (n == 2) {
 						w = LOSE;
 						life--;
 						System.out.println("남은 목숨 :" + life);
 						draw(gbb[1], gbb[n], w);
+						winLose = "패";
 					}
 				} else if (btn[2] == b) {
 					myChoice = "보";
@@ -246,14 +253,17 @@ public class RSP extends JFrame {
 						life--;
 						System.out.println("남은 목숨 :" + life);
 						draw(gbb[2], gbb[n], w);
+						winLose = "패";
 					} else if (n == 1) {
 						w = WIN;
 
 						winCount++;
 						draw(gbb[2], gbb[n], w);
+						winLose = "승";
 					} else if (n == 2) {
 						w = TIE;
 						draw(gbb[2], gbb[n], w);
+						winLose = "무";
 					} else
 						return;
 				}
@@ -268,7 +278,7 @@ public class RSP extends JFrame {
 				heart[1].setVisible(false);
 			}
 			playTime++;
-			list.add(new RspData(playLog, playTime, s, myChoice, comChoice));
+			list.add(new RspData(playLog, playTime, s, myChoice, comChoice, winLose));
 			System.out.printf("playLog %d, playTime %d, s %s, myChoice %s, comChoice %s\n", playLog, playTime,
 					s.getId(), myChoice, comChoice);
 			if (life == 0) {

@@ -33,13 +33,14 @@ public class RspGG {
 		
 		try {
 			String sql = "INSERT INTO `team4`.`rsplog` (`playLog`, `playTime`, `studentId`, `myChoice`, `comChoice`) "
-					+ "VALUES (?, ?, ?, ?, ?);";
+					+ "VALUES (?, ?, ?, ?, ?, ?);";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, rd.getPlayLog());
 			stmt.setInt(2, rd.getPlayTime());
 			stmt.setString(3, rd.getStudentId());
 			stmt.setString(4, rd.getMyChoice());
 			stmt.setString(5, rd.getComChoice());
+			stmt.setString(6, rd.getWinLose());
 			return stmt.executeUpdate();
 		} finally {
 			DBUtil.close(rs);
