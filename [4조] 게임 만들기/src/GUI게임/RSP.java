@@ -50,10 +50,10 @@ public class RSP extends JFrame {
 
 	private int life = 5;
 	private int winCount = 0;
+	private int totalPoint = 0;
 
 	Student s;
 
-	JLabel Life = new JLabel("남은 목숨 : " + life + "");
 	JLabel WinCount = new JLabel("" + winCount + "");
 	JLabel GameOver = new JLabel(Over);
 
@@ -76,12 +76,6 @@ public class RSP extends JFrame {
 		backGround.add(GameOver, JLayeredPane.POPUP_LAYER);
 		GameOver.setBounds(400, 80, 300, 200);
 		GameOver.setVisible(false);
-
-		WinCount.setBounds(800, 40, 85, 15); // 이긴 횟수(받아갈 포인트)가 카운트 되는 라벨
-		WinCount.setFont(new Font("굴림", Font.BOLD, 24));
-
-		Life.setBounds(0, 90, 85, 15); // 남은 목숨이 카운트 되는 라벨
-		Life.setFont(new Font("굴림", Font.BOLD, 12));
 
 		JButton back = new JButton(); // 뒤로 가기 버튼
 
@@ -118,7 +112,6 @@ public class RSP extends JFrame {
 			heart[i] = new JLabel();
 			heart[i].setIcon(HEART);
 			backGround.add(heart[i]);
-
 			heart[i].setBounds(10, 40 + (30 * i), 30, 50);
 
 		}
@@ -146,8 +139,9 @@ public class RSP extends JFrame {
 		HowMuch.setBounds(350, 180, 300, 200);
 		HowMuch.setVisible(false);
 
-		backGround.add(WinCount, JLayeredPane.POPUP_LAYER);
-		WinCount.setBounds(370, 180, 300, 200);
+		backGround.add(WinCount);
+		WinCount.setBounds(200, 180, 300, 200);
+		WinCount.setFont(new Font("굴림", Font.BOLD, 36));
 		WinCount.setVisible(false);
 
 		this.setLayout(null);
@@ -165,7 +159,6 @@ public class RSP extends JFrame {
 		me.setIcon(m);
 		com.setIcon(c);
 		win.setIcon(w);
-		Life.setText("남은 목숨 : " + life + "");
 
 		revalidate();
 		repaint();
@@ -182,7 +175,7 @@ public class RSP extends JFrame {
 				int n = (int) (Math.random() * 3);
 				if (btn[0] == b) {
 					if (n == 0) {
-						w = WIN;
+						w = TIE;
 						draw(gbb[0], gbb[n], w);
 
 					} else if (n == 1) {
@@ -194,7 +187,7 @@ public class RSP extends JFrame {
 						w = WIN;
 
 						winCount++;
-						System.out.println("여기 작동됌?");
+
 						draw(gbb[0], gbb[n], w);
 					}
 				} else if (btn[1] == b) {
@@ -243,11 +236,11 @@ public class RSP extends JFrame {
 
 			if (life == 0) {
 				heart[0].setVisible(false);
-				WinCount.setVisible(true);
 				HowMuch.setVisible(true);
+				WinCount.setVisible(true);
 				GameOver.setVisible(true);
 				System.out.println("게임종료");
-				int totalPoint = (winCount * 100);
+				totalPoint = (winCount * 100);
 //            남은목숨 출력만 만들기
 				InsertPoint.insertGameLog(s, 4, totalPoint);
 				InsertPoint.test(s, totalPoint);
