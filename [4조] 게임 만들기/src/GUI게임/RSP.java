@@ -35,7 +35,7 @@ public class RSP extends JFrame {
 	ImageIcon[] gbb = { new ImageIcon(RSP.class.getResource("/이미지/gawi.png")),
 			new ImageIcon(RSP.class.getResource("/이미지/bawi.png")),
 			new ImageIcon(RSP.class.getResource("/이미지/bo.png")) };
-	JButton[] btn = new JButton[gbb.length]; // 가위바위보 버튼 배열
+	JButton[] btn = new JButton[gbb.length];
 
 	ImageIcon WIN = new ImageIcon(RSP.class.getResource("/이미지/WIN.png")); // 이겼을떄
 	ImageIcon LOSE = new ImageIcon(RSP.class.getResource("/이미지/lose.png")); // 졌을때
@@ -66,13 +66,13 @@ public class RSP extends JFrame {
 	Student s;
 
 	JLabel Life = new JLabel("남은 목숨 : " + life + "");
-	JLabel WinCount = new JLabel("" + winCount + "");
+	JLabel WinCount = new JLabel("받아갈 포인트 : " + winCount + "");
 	JLabel GameOver = new JLabel(Over);
 
 	private String[] equi;
 	private RspGG rg;
 
-	public RSP(Student s,String[] equipmentName) {
+	public RSP(Student s, String[] equipmentName) {
 		list = new ArrayList<>();
 		rg = new RspGG();
 		this.s = s;
@@ -101,7 +101,7 @@ public class RSP extends JFrame {
 		JButton back = new JButton(); // 뒤로 가기 버튼
 		back.setBorderPainted(false); // 버튼 테두리 없애기
 		back.setContentAreaFilled(false); // 버튼 내부를 투명하게
-		back.setBackground(Color.WHITE); 
+		back.setBackground(Color.WHITE);
 		back.setIcon(new ImageIcon(RSP.class.getResource("/이미지/뒤로가기버튼.png")));
 		back.addActionListener(new ActionListener() {
 			@Override
@@ -184,7 +184,6 @@ public class RSP extends JFrame {
 
 		revalidate();
 		repaint();
-
 	}
 
 	class MyActionListener implements ActionListener {
@@ -197,9 +196,18 @@ public class RSP extends JFrame {
 				JButton b = (JButton) e.getSource();
 
 				n = (int) (Math.random() * 3);
+				System.out.println(n);
+				if (n == 0) {
+					comChoice = "가위";
+				} else if (n == 1) {
+					comChoice = "바위";
+				} else if (n == 2) {
+					comChoice = "보";
+				}
 				if (btn[0] == b) {
+					myChoice = "가위";
 					if (n == 0) {
-						w = WIN;
+						w = TIE;
 						draw(gbb[0], gbb[n], w);
 
 					} else if (n == 1) {
@@ -215,6 +223,7 @@ public class RSP extends JFrame {
 						draw(gbb[0], gbb[n], w);
 					}
 				} else if (btn[1] == b) {
+					myChoice = "바위";
 					if (n == 0) {
 						w = WIN;
 
@@ -231,6 +240,7 @@ public class RSP extends JFrame {
 						draw(gbb[1], gbb[n], w);
 					}
 				} else if (btn[2] == b) {
+					myChoice = "보";
 					if (n == 0) {
 						w = LOSE;
 						life--;
@@ -248,27 +258,6 @@ public class RSP extends JFrame {
 						return;
 				}
 			}
-			if (e.getSource() == btn[0]) {
-				myChoice = "가위";
-			}
-			if (e.getSource() == btn[1]) {
-				myChoice = "바위";
-			}
-			if (e.getSource() == btn[2]) {
-				myChoice = "보";
-			}
-			if (n == 0) {
-				comChoice = "가위";
-			}
-			if (n == 1) {
-				comChoice = "바위";
-			}
-			if (n == 2) {
-				comChoice = "보";
-			}
-			playTime ++;
-			System.out.println(comChoice);
-			list.add(new RspData(playLog, playTime, s, myChoice, comChoice));
 			if (life == 4) {
 				heart[4].setVisible(false);
 			} else if (life == 3) {
@@ -278,7 +267,10 @@ public class RSP extends JFrame {
 			} else if (life == 1) {
 				heart[1].setVisible(false);
 			}
-
+			playTime++;
+			list.add(new RspData(playLog, playTime, s, myChoice, comChoice));
+			System.out.printf("playLog %d, playTime %d, s %s, myChoice %s, comChoice %s\n", playLog, playTime,
+					s.getId(), myChoice, comChoice);
 			if (life == 0) {
 				heart[0].setVisible(false);
 				WinCount.setVisible(true);
@@ -286,13 +278,15 @@ public class RSP extends JFrame {
 				GameOver.setVisible(true);
 				System.out.println("게임종료");
 				int totalPoint = (winCount * 100);
-//            남은목숨 출력만 만들기
+//				남은목숨 출력만 만들기
 				InsertPoint.insertGameLog(s, 4, totalPoint);
 				InsertPoint.test(s, totalPoint);
 				s.setPoint(s.getPoint() + totalPoint);
 				life--;
-				
-				
+				btn[0].setEnabled(false);
+				btn[1].setEnabled(false);
+				btn[2].setEnabled(false);
+
 				Connection conn = null;
 				try {
 					conn = DBUtil.getConnection();
@@ -306,10 +300,7 @@ public class RSP extends JFrame {
 				} finally {
 					DBUtil.close(conn);
 				}
-				
-				btn[0].setEnabled(false);
-				btn[1].setEnabled(false);
-				btn[2].setEnabled(false);
+
 			}
 		}
 	}
