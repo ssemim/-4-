@@ -59,7 +59,7 @@ public class LoginWin extends JFrame {
 		// 로그인 프레임 설정
 		setTitle("Login"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null); // 창 가운데 두기
 		IDField = new JTextField();
 		IDField.setBounds(84, 38, 164, 30);
 		IDField.setColumns(10);

@@ -55,10 +55,12 @@ public class JoinWin extends JFrame {
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
 		// 가입창 프레임 설정
 		setTitle("Join"); // 타이틀 이름
 		setResizable(false); // 창의 크기를 변경하지 못하게
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null); 
+		
 		JLabel IDlbl = new JLabel("ID"); // ID
 		IDlbl.setBounds(45, 113, 26, 15);
 		IDlbl.setFont(new Font("굴림", Font.BOLD, 12));
@@ -186,7 +188,7 @@ public class JoinWin extends JFrame {
 		});
 		cutbtn.setBounds(258, 10, 30, 30);
 		contentPane.add(cutbtn);
-		
+
 		JButton Backbtn = new JButton(""); // 뒤로가기
 		Backbtn.setBounds(248, 450, 40, 40);
 		Backbtn.setBackground(Color.BLACK);
@@ -230,8 +232,6 @@ public class JoinWin extends JFrame {
 		contentPane.add(IDField);
 		contentPane.add(Backbtn);
 		Util.removeAllButtonFocus(contentPane);
-		
-		
 
 	}
 }
