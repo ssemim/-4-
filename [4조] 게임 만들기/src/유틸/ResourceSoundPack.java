@@ -146,7 +146,7 @@ public class ResourceSoundPack {
 		PrologSoundClip.close();
 	}
 
-	public boolean proisLoopSoundPlaying() {
-		return PrologSoundClip.isActive();
+	public static boolean isLoopSoundPlaying() {
+		return BackgrundSoundClip.isActive();
 	}
 }

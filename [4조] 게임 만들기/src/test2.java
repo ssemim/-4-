@@ -66,5 +66,4 @@ public class test2 extends JFrame {
 	 */
 	public test2() {
 	}
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 }

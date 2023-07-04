@@ -113,6 +113,8 @@ public class LoginWin extends JFrame {
 						Prolog PL = new Prolog(login.login(IDField.getText(), PWField.getText()));
 						PL.setVisible(true);
 						ResourceSoundPack.Prologsound();
+						ResourceSoundPack.backgrundsound();
+						ResourceSoundPack.stopLoopSound();
 						dispose();
 					} else {
 						lblNewLabel.setText("아이디와 비밀번호가 일치하지 않습니다.");

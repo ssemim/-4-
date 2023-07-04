@@ -166,8 +166,15 @@ public class MainWin extends JFrame {
 //		ResourceSoundPack.backgrundsound();
 		Util.removeAllButtonFocus(contentPane);
 
-		JCheckBox chckbxNewCheckBox = new JCheckBox("음소거");
-		chckbxNewCheckBox.setBounds(672, 17, 67, 23);
+		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		ImageIcon checkedIcon = new ImageIcon("/이미지/음소거됐을때.png"); // 체크된 상태의 이미지 경로를 지정해주세요
+        ImageIcon uncheckedIcon = new ImageIcon("/이미지/음소거.png"); // 체크되지 않은 상태의 이미지 경로를 지정해주세요
+        chckbxNewCheckBox.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/음소거.png")));
+        chckbxNewCheckBox.setSelectedIcon(new ImageIcon(MainWin.class.getResource("/이미지/음소거됐을때.png")));
+
+		chckbxNewCheckBox.setBackground(Color.BLACK);
+		chckbxNewCheckBox.setOpaque(false);
+		chckbxNewCheckBox.setBounds(758, 564, 30, 30);
 		contentPane.add(chckbxNewCheckBox);
 
 		chckbxNewCheckBox.addItemListener(new ItemListener() {
@@ -184,5 +191,10 @@ public class MainWin extends JFrame {
 			}
 		});
 
+		if (ResourceSoundPack.isLoopSoundPlaying()) {
+			chckbxNewCheckBox.setSelected(false);
+		} else {
+			chckbxNewCheckBox.setSelected(true);
+		}
 	}
 }

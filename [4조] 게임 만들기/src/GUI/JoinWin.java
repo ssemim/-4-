@@ -76,7 +76,7 @@ public class JoinWin extends JFrame {
 		PWPWlbl.setFont(new Font("굴림", Font.BOLD, 12));
 		PWPWlbl.setForeground(Color.WHITE);
 		PWPWlbl.setBackground(Color.WHITE);
-		JLabel Schoollbl = new JLabel("Group"); // 학교
+		JLabel Schoollbl = new JLabel("Group"); // 그룹
 		Schoollbl.setBounds(30, 308, 54, 24);
 		Schoollbl.setFont(new Font("굴림", Font.BOLD, 12));
 		Schoollbl.setForeground(Color.WHITE);
@@ -123,13 +123,13 @@ public class JoinWin extends JFrame {
 								lblNewLabel.setText("회원가입이 실패했습니다.");
 							}
 							if (result == -2) {
-								lblNewLabel.setText("<html>아이디는 영소문자, 대문자, 숫자를 포함해야 합니다.(2 ~ 4자)</html>");
+								lblNewLabel.setText("<html>아이디는 영소문자, 숫자를 포함해야 합니다.(2 ~ 4자)</html>");
 								IDlbl.setForeground(Color.RED);
 							} else {
 								IDlbl.setForeground(Color.WHITE);
 							}
 							if (result == -3) {
-								lblNewLabel.setText("<html>비밀번호는 영소문자, 대문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)</html>");
+								lblNewLabel.setText("<html>비밀번호는 영소문자, 숫자, 특수문자를 포함해야 합니다.(8 ~ 20자)</html>");
 								PWlbl.setForeground(Color.RED);
 								PWPWlbl.setForeground(Color.RED);
 							} else {
@@ -138,7 +138,7 @@ public class JoinWin extends JFrame {
 							}
 
 						} else {
-							lblNewLabel.setText("소속된 학교를 입력해주세요");
+							lblNewLabel.setText("본인의 그룹을 생성해주세요");
 							Schoollbl.setForeground(Color.RED);
 						}
 

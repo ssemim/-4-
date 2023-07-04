@@ -118,12 +118,12 @@ public class Prolog extends JFrame {
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResourceSoundPack.prostopLoopSound();
+				ResourceSoundPack.LoopSoundPlaying();
 				MainWin MW = new MainWin(s);
 				MW.setVisible(true);
-				ResourceSoundPack.prostopLoopSound();
 //				BasicMusic bm = new BasicMusic();
 //				bm.setVisible(false);
-				ResourceSoundPack.backgrundsound();
 				dispose();
 			}
 
