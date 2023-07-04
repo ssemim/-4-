@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,6 +23,7 @@ import 유틸.Music;
 import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
+import javax.swing.JCheckBox;
 
 public class MainWin extends JFrame {
 
@@ -128,6 +131,7 @@ public class MainWin extends JFrame {
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
+		cutbtn.setOpaque(false);
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -162,6 +166,23 @@ public class MainWin extends JFrame {
 //		ResourceSoundPack.backgrundsound();
 		Util.removeAllButtonFocus(contentPane);
 
-	}
+		JCheckBox chckbxNewCheckBox = new JCheckBox("음소거");
+		chckbxNewCheckBox.setBounds(672, 17, 67, 23);
+		contentPane.add(chckbxNewCheckBox);
 
+		chckbxNewCheckBox.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				JCheckBox c = (JCheckBox) e.getSource();
+				if (c.isSelected()) {
+					ResourceSoundPack.stopLoopSound();
+					System.out.println("체크됨");
+				} else if (!c.isSelected()) {
+					ResourceSoundPack.LoopSoundPlaying();
+					System.out.println("체크취소됨");
+				}
+			}
+		});
+
+	}
 }

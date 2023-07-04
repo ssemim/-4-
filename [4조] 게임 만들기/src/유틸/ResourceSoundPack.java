@@ -16,6 +16,8 @@ public class ResourceSoundPack {
 	static Clip BtnSoundClip;
 	static Clip PickSoundClip;
 	static Clip MiniBtnSoundClip;
+	static Clip PrologSoundClip;
+
 //
 //
 //   static void startSound() {
@@ -88,21 +90,19 @@ public class ResourceSoundPack {
 //		}
 //	}
 
-//	
- public static void InsideclickSound() {
-	try {//버튼 누를떄
-		URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/click.wav");
-		// 사운드 파일 경로 설정
+	public static void InsideclickSound() {
+		try {// 버튼 누를떄
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/click.wav");
+			// 사운드 파일 경로 설정
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			MiniBtnSoundClip = AudioSystem.getClip();
 			MiniBtnSoundClip.open(audioInputStream);
 			MiniBtnSoundClip.loop(0);
 			MiniBtnSoundClip.start();
-	} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
 			ex.printStackTrace();
 		}
-}
-	
+	}
 
 	public static void backgrundsound() {
 		try {
@@ -118,12 +118,35 @@ public class ResourceSoundPack {
 
 	}
 
-	static public void stopLoopSound() {
-		BackgrundSoundClip.stop();
-		BackgrundSoundClip.flush();
+	public static void Prologsound() {
+		try {
+			URL soundFile = ResourceSoundPack.class.getClassLoader().getResource("소리모음/testPro.wav"); // 프롤로그 배경음 사운드 파일
+																										// 경로
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+
+			PrologSoundClip = AudioSystem.getClip();
+			PrologSoundClip.open(audioInputStream);
+			PrologSoundClip.loop(Clip.LOOP_CONTINUOUSLY);
+		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+			ex.printStackTrace();
+		}
+
 	}
 
-	public boolean isLoopSoundPlaying() {
-		return BackgrundSoundClip.isActive();
+	static public void stopLoopSound() {
+		BackgrundSoundClip.stop();
+	}
+
+	public static void LoopSoundPlaying() {
+		BackgrundSoundClip.loop(Clip.LOOP_CONTINUOUSLY);
+	}
+
+	static public void prostopLoopSound() {
+		PrologSoundClip.stop();
+		PrologSoundClip.close();
+	}
+
+	public boolean proisLoopSoundPlaying() {
+		return PrologSoundClip.isActive();
 	}
 }

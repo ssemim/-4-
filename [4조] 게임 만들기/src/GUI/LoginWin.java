@@ -15,11 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
 import 메소드모음.Login;
 import 소리모음.BasicMusic;
 import 유틸.Music;
+import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
 
@@ -89,7 +92,6 @@ public class LoginWin extends JFrame {
 				dispose();
 			}
 		});
-		
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -110,8 +112,7 @@ public class LoginWin extends JFrame {
 						lblNewLabel.setText("");
 						Prolog PL = new Prolog(login.login(IDField.getText(), PWField.getText()));
 						PL.setVisible(true);
-						BasicMusic bm = new BasicMusic();
-						bm.setVisible(false);
+						ResourceSoundPack.Prologsound();
 						dispose();
 					} else {
 						lblNewLabel.setText("아이디와 비밀번호가 일치하지 않습니다.");
@@ -122,7 +123,7 @@ public class LoginWin extends JFrame {
 
 			}
 		});
-		
+
 //		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 //		Loginbtn.setBounds(156, 162, 80, 40);
 //		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
@@ -148,8 +149,6 @@ public class LoginWin extends JFrame {
 //
 //			}
 //		});
-
-
 
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);
