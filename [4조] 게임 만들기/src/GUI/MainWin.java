@@ -10,6 +10,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +24,6 @@ import 유틸.Music;
 import 유틸.ResourceSoundPack;
 import 유틸.SoundButton;
 import 유틸.Util;
-import javax.swing.JCheckBox;
 
 public class MainWin extends JFrame {
 
@@ -55,7 +55,7 @@ public class MainWin extends JFrame {
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600); // 프레임 크기
-		setUndecorated(true); // 창 프레임 없애기
+		setUndecorated(true); // ㅊ ㅍㄹㅇ ㅇㅇㄱ
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -131,7 +131,6 @@ public class MainWin extends JFrame {
 		cutbtn.setBackground(Color.BLACK);
 		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
 		cutbtn.setIcon(new ImageIcon(MainWin.class.getResource("/이미지/종료버튼.png")));
-		cutbtn.setOpaque(false);
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -197,4 +196,5 @@ public class MainWin extends JFrame {
 			chckbxNewCheckBox.setSelected(true);
 		}
 	}
+
 }

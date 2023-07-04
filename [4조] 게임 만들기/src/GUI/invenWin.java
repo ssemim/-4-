@@ -112,7 +112,6 @@ public class invenWin extends JFrame {
 		contentPane.add(cLbl);
 
 		SoundButton cBtnLeft = new SoundButton(Music.S1);
-		cBtnLeft.setContentAreaFilled(false);
 		cBtnLeft.setBackground(Color.BLACK);
 		cBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
 		cBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
@@ -121,7 +120,6 @@ public class invenWin extends JFrame {
 		contentPane.add(cBtnLeft);
 
 		SoundButton cBtnRight = new SoundButton(Music.S1);
-		cBtnRight.setContentAreaFilled(false);
 		cBtnRight.setBackground(Color.BLACK);
 		cBtnRight.setBorderPainted(false); // 버튼 테두리 제거
 		cBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
@@ -134,18 +132,16 @@ public class invenWin extends JFrame {
 		contentPane.add(wLbl);
 
 		SoundButton wBtnLeft = new SoundButton(Music.S1);
-//		wBtnLeft.setBackground(Color.BLACK);
+		wBtnLeft.setBackground(Color.BLACK);
 		wBtnLeft.setBorderPainted(false); // 버튼 테두리 제거
-		wBtnLeft.setContentAreaFilled(false); // 버튼 배경 투명화
 		wBtnLeft.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/왼쪽버튼.png")));
 		wBtnLeft.setBounds(318, 307, 30, 50);
 		wBtnLeft.setEnabled(false);
 		contentPane.add(wBtnLeft);
 
 		SoundButton wBtnRight = new SoundButton(Music.S1);
-//		wBtnRight.setBackground(Color.BLACK);
+		wBtnRight.setBackground(Color.BLACK);
 		wBtnRight.setBorderPainted(false); // 버튼 테두리 제거
-		wBtnRight.setContentAreaFilled(false); // 버튼 배경 투명화
 		wBtnRight.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/오른쪽버튼.png")));
 		wBtnRight.setBounds(530, 307, 30, 50);
 		contentPane.add(wBtnRight);
@@ -186,6 +182,14 @@ public class invenWin extends JFrame {
 		cutbtn.setIcon(new ImageIcon(invenWin.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
+
+		Backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
 
 		cutbtn.addActionListener(new ActionListener() {
 			@Override

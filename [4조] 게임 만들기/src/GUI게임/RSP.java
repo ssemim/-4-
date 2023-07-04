@@ -59,10 +59,10 @@ public class RSP extends JFrame {
 
 	JLabel backGround = new JLabel(backGound);
 	JLabel HowMuch = new JLabel(POINT);
-	JLabel getPoint = new JLabel("");
 
 	private int life = 5;
 	private int winCount = 0;
+//	private int totalPoint = 0;
 
 	Student s;
 
@@ -157,10 +157,6 @@ public class RSP extends JFrame {
 		HowMuch.setBounds(350, 180, 300, 200);
 		HowMuch.setVisible(false);
 
-		getPoint.setBounds(500, 105, 400, 400);
-		getPoint.setFont(new Font("둥근모꼴", Font.BOLD, 36));
-		getPoint.setVisible(false);
-
 		backGround.add(WinCount);
 		WinCount.setBounds(200, 180, 300, 200);
 		WinCount.setFont(new Font("굴림", Font.BOLD, 36));
@@ -168,7 +164,6 @@ public class RSP extends JFrame {
 
 		this.setLayout(null);
 		this.add(ButtonPanel, JLayeredPane.POPUP_LAYER);
-		this.add(getPoint, JLayeredPane.POPUP_LAYER);
 		this.add(DrawingPanel, JLayeredPane.POPUP_LAYER);
 		this.add(backGround, JLayeredPane.DEFAULT_LAYER);
 		this.setSize(800, 600);
@@ -182,7 +177,7 @@ public class RSP extends JFrame {
 		me.setIcon(m);
 		com.setIcon(c);
 		win.setIcon(w);
-		getPoint.setText("" + winCount * 100 + "");
+
 		revalidate();
 		repaint();
 	}
@@ -275,12 +270,12 @@ public class RSP extends JFrame {
 			if (life == 0) {
 				heart[0].setVisible(false);
 				HowMuch.setVisible(true);
-				getPoint.setVisible(true);
 				WinCount.setVisible(true);
 				GameOver.setVisible(true);
 				System.out.println("게임종료");
 
 				int totalPoint = (winCount * 100);
+//				남은목숨 출력만 만들기
 
 				InsertPoint.insertGameLog(s, 4, totalPoint);
 				InsertPoint.test(s, totalPoint);
