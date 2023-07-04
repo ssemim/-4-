@@ -269,8 +269,21 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 					s.setPoint(point + count * 30);
 				}
 				DL.insertDudu(s, countAll, count, num);
+<<<<<<< HEAD
 				for (int i = 0; i < result.size(); i++) {
 					DL.duduGameLog(s, list, result, i);
+=======
+				Connection conn = null;
+				try {
+					conn = DBUtil.getConnection();
+					for(int i = 0; i < result.size(); i++) {
+						DL.duduGameLog(s, list, result, i, conn);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					DBUtil.close(conn);
+>>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
 				}
 				randomsu = 0;
 				break;
