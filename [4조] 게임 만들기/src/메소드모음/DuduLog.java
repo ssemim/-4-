@@ -16,7 +16,6 @@ import 객체모음.Dudug;
 import 객체모음.Student;
 
 public class DuduLog {
-	private List<Dudug> list = new ArrayList<>();
 	private int[] arr = new int[12];
 	int result = 0;
 	
@@ -25,7 +24,7 @@ public class DuduLog {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM dudulog where studentid = ?;";
-		List<Integer> number = new ArrayList<Integer>();
+		List<Dudug> dudu = new ArrayList<Dudug>();
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -34,11 +33,16 @@ public class DuduLog {
 
 			rs = stmt.executeQuery();
 			while (rs.next()) {
+				int play = rs.getInt("play");
 				String id = rs.getString("studentId");
 				int success = rs.getInt("success");
 				int failure = rs.getInt("failure");
+				int ttoe = rs.getInt("ttoe");
+				int stof = rs.getInt("stof");
+				int ftoo = rs.getInt("ftoo");
+				
+				dudu.add(new Dudug(play, id, success, failure, ttoe, stof, ftoo));
 			}
-			System.out.println(list.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -72,7 +76,7 @@ public class DuduLog {
 		}
 	}
 
-	public void insertDudu(Student s, int countAll, int count, List<Integer> number, HashMap<Integer, Integer> num) {
+	public void insertDudu(Student s, int countAll, int count, HashMap<Integer, Integer> num) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = "INSERT INTO `team4`.`dudulog` (`studentId`, `success`, `failure`, `ttoe`, `stof`, `ftoo`) VALUES (?, ?, ?, ?, ?, ?);";
@@ -95,8 +99,8 @@ public class DuduLog {
 		}
 	}
 	
-	public void duduGameLog(Student s, List<Integer> number, HashMap<Integer, Boolean> num, int index) {
-		Connection conn = null;
+	public void duduGameLog(Student s, List<Integer> number, HashMap<Integer, Boolean> num, int index, Connection conn) {
+		printPlayLog();
 		PreparedStatement stmt = null;
 		String sql = "INSERT INTO `dudustatistics` (`log`, `id`, `number`, `result`) VALUES (?, ?, ?, ?);";
 		try {
@@ -104,12 +108,14 @@ public class DuduLog {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, result);
 			stmt.setString(2, s.getId());
-			stmt.setInt(3,number.get(index));
+			stmt.setInt(3, number.get(index));
 			stmt.setBoolean(4, num.get(index));
 			
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(stmt);
 		}
 	}
 }

@@ -10,6 +10,9 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +26,7 @@ import javax.swing.SwingConstants;
 
 import GUI.MainWin;
 import GUI.SelectgameWin;
+import dbutil.DBUtil;
 import 객체모음.Student;
 import 메소드모음.DuduLog;
 import 메소드모음.InsertPoint;
@@ -63,15 +67,13 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 
 	private String[] equi;
 
-<<<<<<< HEAD
 	public static List<Integer> list = null;
 
 	public static HashMap<Integer, Integer> num = new HashMap<Integer, Integer>();
 
 	public static HashMap<Integer, Boolean> result = null;
-=======
-	public static List<Integer> list = new ArrayList<Integer>();
->>>>>>> branch 'master' of https://github.com/ssemim/-4-.git
+	
+//	public static List<Integer> list = new ArrayList<Integer>();
 
 	private int countAll = 0;
 
@@ -159,13 +161,6 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
 		Backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (count != -1) {
-					InsertPoint.test(s, count * 30);
-					InsertPoint.insertGameLog(s, 3, count * 30);
-					DL.insertDudu(s, countAll, count, list);
-					int point = s.getPoint();
-					s.setPoint(point + count * 30);
-				}
 				SelectgameWin SW = new SelectgameWin(s, equi);
 				SW.setVisible(true);
 				dispose();
@@ -258,6 +253,7 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 		time = 10;
 		countAll = 0;
 		result = new HashMap<Integer, Boolean>();
+		result.put(0, true);
 		list = new ArrayList<Integer>();
 		num.put(0, 0);
 		num.put(1, 0);
@@ -286,14 +282,19 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 					int point = s.getPoint();
 					s.setPoint(point + count * 30);
 				}
-//				DL.insertDudu(s, countAll, count, list, num);
-//				DL.printPlayLog();
-				System.out.println("리스트  "+list.size());
-				System.out.println("num  "+num.size());
-				System.out.println("result  "+result.size());
-//				for(int i = 0; i < list.size(); i++) {
-//					DL.duduGameLog(s, list, result, i);
-//				}
+				DL.insertDudu(s, countAll, count, num);
+				Connection conn = null;
+				PreparedStatement stmt = null;
+				try {
+					conn = DBUtil.getConnection();
+					for(int i = 0; i < result.size(); i++) {
+						DL.duduGameLog(s, list, result, i, conn);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					DBUtil.close(conn);
+				}
 				randomsu = 0;
 				break;
 			}
