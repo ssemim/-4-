@@ -18,14 +18,14 @@ import 객체모음.Student;
 public class DuduLog {
 	private int[] arr = new int[12];
 	int result = 0;
-	
+
 	public void selectDudu(Student s) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM dudulog where studentid = ?;";
 		List<Dudug> dudu = new ArrayList<Dudug>();
-		
+
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class DuduLog {
 				int ttoe = rs.getInt("ttoe");
 				int stof = rs.getInt("stof");
 				int ftoo = rs.getInt("ftoo");
-				
+
 				dudu.add(new Dudug(play, id, success, failure, ttoe, stof, ftoo));
 			}
 		} catch (SQLException e) {
@@ -51,20 +51,20 @@ public class DuduLog {
 			DBUtil.close(conn);
 		}
 	}
-	
+
 	public void printPlayLog() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "SELECT * FROM team4.dudulog order by play desc limit 1;";
-		
+
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				result = rs.getInt("play");
 			}
 		} catch (SQLException e) {
@@ -98,9 +98,10 @@ public class DuduLog {
 			DBUtil.close(conn);
 		}
 	}
-	
-	public void duduGameLog(Student s, List<Integer> number, HashMap<Integer, Boolean> num, int index, Connection conn) {
+
+	public void duduGameLog(Student s, List<Integer> number, HashMap<Integer, Boolean> num, int index) {
 		printPlayLog();
+		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = "INSERT INTO `dudustatistics` (`log`, `id`, `number`, `result`) VALUES (?, ?, ?, ?);";
 		try {
@@ -110,12 +111,13 @@ public class DuduLog {
 			stmt.setString(2, s.getId());
 			stmt.setInt(3, number.get(index));
 			stmt.setBoolean(4, num.get(index));
-			
+
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(stmt);
+			DBUtil.close(conn);
 		}
 	}
 }
