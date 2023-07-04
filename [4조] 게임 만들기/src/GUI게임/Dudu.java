@@ -284,7 +284,6 @@ public class Dudu extends JFrame implements ActionListener, Runnable {
 				}
 				DL.insertDudu(s, countAll, count, num);
 				Connection conn = null;
-				PreparedStatement stmt = null;
 				try {
 					conn = DBUtil.getConnection();
 					for(int i = 0; i < result.size(); i++) {

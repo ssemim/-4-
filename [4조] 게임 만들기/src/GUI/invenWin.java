@@ -183,14 +183,6 @@ public class invenWin extends JFrame {
 		cutbtn.setBounds(758, 10, 30, 30);
 		contentPane.add(cutbtn);
 
-		Backbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainWin MW = new MainWin(s);
-				MW.setVisible(true);
-				dispose();
-			}
-		});
-
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
