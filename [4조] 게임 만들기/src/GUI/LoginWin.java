@@ -100,7 +100,7 @@ public class LoginWin extends JFrame {
 		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
 		Loginbtn.setBounds(156, 162, 80, 40);
 		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
-		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		// 로그인 버튼을 누르면 프롤로그로 이동하는 액션리스너
 		Loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
@@ -108,8 +108,8 @@ public class LoginWin extends JFrame {
 				if (login.duplication(IDField.getText())) {
 					if (login.login(IDField.getText(), PWField.getText()) != null) {
 						lblNewLabel.setText("");
-						MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
-						MW.setVisible(true);
+						Prolog PL = new Prolog(login.login(IDField.getText(), PWField.getText()));
+						PL.setVisible(true);
 						BasicMusic bm = new BasicMusic();
 						bm.setVisible(false);
 						dispose();
@@ -122,24 +122,34 @@ public class LoginWin extends JFrame {
 
 			}
 		});
-
+		
 //		SoundButton Loginbtn = new SoundButton(Music.S1); // 로그인 버튼
-//		Loginbtn.setBounds(158, 137, 80, 40);
+//		Loginbtn.setBounds(156, 162, 80, 40);
 //		Loginbtn.setIcon(new ImageIcon(LoginWin.class.getResource("/이미지/로그인버튼.png")));
 //		// 가입하기버튼을 누르면 MainWin으로 이동하는 액션리스너
 //		Loginbtn.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 //				Login login = new Login();
-//				if (login.login(IDField.getText(), PWField.getText()) != null) {
-//					MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
-//					MW.setVisible(true);
-//					dispose();
+//				// 존재하는 아이디인지 확인하기
+//				if (login.duplication(IDField.getText())) {
+//					if (login.login(IDField.getText(), PWField.getText()) != null) {
+//						lblNewLabel.setText("");
+//						MainWin MW = new MainWin(login.login(IDField.getText(), PWField.getText()));
+//						MW.setVisible(true);
+//						BasicMusic bm = new BasicMusic();
+//						bm.setVisible(false);
+//						dispose();
+//					} else {
+//						lblNewLabel.setText("아이디와 비밀번호가 일치하지 않습니다.");
+//					}
 //				} else {
-//					System.out.println("아이디와 비밀번호가 일치하지 않습니다.");
+//					lblNewLabel.setText("존재하지 않는 아이디 입니다.");
 //				}
 //
 //			}
 //		});
+
+
 
 		JButton cutbtn = new JButton(); // 종료버튼
 		cutbtn.setBackground(Color.BLACK);

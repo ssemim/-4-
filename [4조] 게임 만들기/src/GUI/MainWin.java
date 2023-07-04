@@ -52,7 +52,7 @@ public class MainWin extends JFrame {
 		String[] equipmentName = e.selectItemIamgeName(e.itemNos(s));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600); // 프레임 크기
-		setUndecorated(true); // ㅊ ㅍㄹㅇ ㅇㅇㄱ
+		setUndecorated(true); // 창 프레임 없애기
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

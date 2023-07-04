@@ -14,6 +14,9 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import 객체모음.Student;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
@@ -35,26 +38,46 @@ public class Prolog extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Font font = new Font("굴림", Font.PLAIN, 15);
+//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//					Prolog frame = new Prolog();
+//					frame.setVisible(true);
+//					frame.startAnimation();
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Font font = new Font("굴림", Font.PLAIN, 15);
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Prolog frame = new Prolog();
-					frame.setVisible(true);
-					frame.startAnimation();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	    EventQueue.invokeLater(new Runnable() {
+	        public void run() {
+	            try {
+//	                Font font = new Font("굴림", Font.PLAIN, 15);
+	                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	                Student student = new Student(); // 학생 객체 생성
+	                Prolog frame = new Prolog(student); // 생성자 호출
+	                frame.setVisible(true);
+	                frame.startAnimation();
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    });
 	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	public Prolog() {
+	public Prolog(Student s) {
+		Font font = new Font("굴림", Font.PLAIN, 15);
+		
 		getContentPane().setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -63,8 +86,9 @@ public class Prolog extends JFrame {
 		getContentPane().setLayout(null);
 
 		JButton cutbtn = new JButton(""); // 종료하기
-		cutbtn.setBorderPainted(true);
-		cutbtn.setBackground(Color.BLACK);
+		cutbtn.setBorderPainted(false); // 버튼 테두리 제거
+		cutbtn.setContentAreaFilled(false); // 버튼 내용 투명화
+		cutbtn.setOpaque(false); // 버튼 배경 투명화
 		cutbtn.setIcon(new ImageIcon(Prolog.class.getResource("/이미지/종료버튼.png")));
 		cutbtn.addActionListener(new ActionListener() {
 			@Override
@@ -75,20 +99,28 @@ public class Prolog extends JFrame {
 		cutbtn.setBounds(770, 0, 30, 30);
 		getContentPane().add(cutbtn);
 		
-		JButton skipBtn = new JButton(""); // 스킵버튼(누를시 메인으로간다? 근데 로그인된사람만 스킵이 가능해야하네,,,
-		skipBtn.setBorderPainted(true);
-		skipBtn.setBackground(Color.BLACK);
+		JButton skipBtn = new JButton(""); // 스킵버튼
+		skipBtn.setBorderPainted(false); // 버튼 테두리 제거
+		skipBtn.setContentAreaFilled(false);
+		skipBtn.setOpaque(false);
 		skipBtn.setIcon(new ImageIcon(Prolog.class.getResource("/이미지/skip.png")));
-		skipBtn.setBounds(700, 570, 100, 30);
+		// 뒤로가기버튼을 누르면 MainWin으로 이동하는 액션리스너
+		skipBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainWin MW = new MainWin(s);
+				MW.setVisible(true);
+				dispose();
+			}
+		});
+		skipBtn.setBounds(714, 570, 100, 30);
 		getContentPane().add(skipBtn);
-		
-
-		label = new JLabel();
-		label.setBounds(0, 0, 800, 600);
-		label.setForeground(Color.WHITE);
-		
-				label.setHorizontalAlignment(SwingConstants.CENTER); // 글자놓는 방향
-				getContentPane().add(label); // 보더레이아웃방향
+				
+				label = new JLabel();
+				label.setBounds(0, 0, 800, 600);
+				label.setForeground(Color.WHITE);
+				
+						label.setHorizontalAlignment(SwingConstants.CENTER); // 글자놓는 방향
+						getContentPane().add(label); // 보더레이아웃방향
 
 		timer = new Timer(100, new ActionListener() {
 			@Override
@@ -111,11 +143,25 @@ public class Prolog extends JFrame {
 							}
 						} else {
 							timer.stop();
+							// 대사 출력이 모두 끝난 후 버튼 추가
+							JButton nextbtn = new JButton("다음으로");
+							nextbtn.setBounds(609, 411, 100, 30);
+							getContentPane().add(nextbtn);
+							nextbtn.addActionListener(new ActionListener() {
+	                            public void actionPerformed(ActionEvent e) {
+	                                // 다음으로 버튼을 누르면 MainWin으로 이동
+	                                MainWin MW = new MainWin(s);
+	                                MW.setVisible(true);
+	                                dispose();
+	                            }
+	                        });
+	                    
 						}
 					}
 				}
 			}
 		});
+		timer.start();
 
 	}
 
