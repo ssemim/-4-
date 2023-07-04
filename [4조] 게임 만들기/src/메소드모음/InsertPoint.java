@@ -18,7 +18,7 @@ public class InsertPoint {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, point);
 			stmt.setString(2, s.getId());
-			System.out.println("저장되는 포인트 : " + point);
+//			System.out.println("저장되는 포인트 : " + point);
 			return stmt.executeUpdate();
 
 		} catch (SQLException e) {
